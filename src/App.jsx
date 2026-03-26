@@ -47,7 +47,7 @@ export default function App() {
         }
       }}
     >
-      <Portal />
+      {({ signOut, user }) => <Portal />}
     </Authenticator>
   )
 }
