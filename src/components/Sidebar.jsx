@@ -29,7 +29,11 @@ function NavItem({ active, onClick, icon, label }) {
 }
 
 export default function Sidebar({ page, setPage, user, signOut }) {
-  const email = user?.signInDetails?.loginId || user?.username || 'admin'
+  // Compatível com Amplify v5 e v6
+  const email = user?.attributes?.email
+    || user?.signInDetails?.loginId
+    || user?.username
+    || 'admin'
   const initials = email.substring(0, 2).toUpperCase()
 
   return (
