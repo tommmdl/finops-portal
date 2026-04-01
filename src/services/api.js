@@ -1,9 +1,9 @@
-import { Auth } from 'aws-amplify'
+import { fetchAuthSession } from 'aws-amplify/auth'
 import { API_URL } from '../aws-config'
 
 async function getHeaders() {
-  const session = await Auth.currentSession()
-  const token   = session.getIdToken().getJwtToken()
+  const session = await fetchAuthSession()
+  const token   = session.tokens?.idToken?.toString()
   return {
     'Content-Type':  'application/json',
     'Authorization': `Bearer ${token}`,
