@@ -13,31 +13,37 @@ const fmtMes = (mesAno) => {
   return `${nomes[parseInt(mes)-1]}/${ano.slice(2)}`
 }
 
+async function getAuthHeaders() {
+  try {
+    const session = await Auth.currentSession()
+    const token   = session.getIdToken().getJwtToken()
+    return { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+  } catch {
+    return { 'Content-Type': 'application/json' }
+  }
+}
+
 // ── Billing Chart ─────────────────────────────────────────────
 function BillingChart({ clienteNome }) {
   const [data,    setData]    = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [loaded,  setLoaded]  = useState(false)
+  const [loading, setLoading] = useState(true)
   const [hover,   setHover]   = useState(null)
 
-  async function load() {
-    if (loaded) return
-    setLoading(true)
-    try {
-      const session = await Auth.currentSession()
-      const token   = session.getIdToken().getJwtToken()
-      const res = await fetch(
-        `${API_URL}/billing/${encodeURIComponent(clienteNome)}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      const json = await res.json()
-      setData((json.items || []).sort((a, b) => a.mesAno.localeCompare(b.mesAno)))
-    } catch { setData([]) }
-    finally { setLoading(false); setLoaded(true) }
-  }
-
-  // Carrega ao montar
-  useState(() => { load() }, [])
+  useState(() => {
+    async function load() {
+      try {
+        const headers = await getAuthHeaders()
+        const res = await fetch(
+          `${API_URL}/billing/${encodeURIComponent(clienteNome)}`,
+          { headers }
+        )
+        const json = await res.json()
+        setData((json.items || []).sort((a, b) => a.mesAno.localeCompare(b.mesAno)))
+      } catch { setData([]) }
+      finally { setLoading(false) }
+    }
+    load()
+  }, [])
 
   if (loading) return (
     <div style={{ padding: '32px 0', textAlign: 'center', color: 'var(--muted)', fontSize: 13 }}>
@@ -60,12 +66,11 @@ function BillingChart({ clienteNome }) {
 
   return (
     <div>
-      {/* KPIs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 20 }}>
         {[
-          { label: 'Último mês',      value: fmt(data[data.length-1]?.consumo_usd), sub: data[data.length-1]?.mesAno },
-          { label: 'Média 12 meses',  value: fmt(avg12),  sub: 'consumo médio' },
-          { label: 'Pico histórico',  value: fmt(maxVal), sub: data.find(d => d.consumo_usd === maxVal)?.mesAno },
+          { label: 'Último mês',     value: fmt(data[data.length-1]?.consumo_usd), sub: data[data.length-1]?.mesAno },
+          { label: 'Média 12 meses', value: fmt(avg12),  sub: 'consumo médio' },
+          { label: 'Pico histórico', value: fmt(maxVal), sub: data.find(d => d.consumo_usd === maxVal)?.mesAno },
         ].map(k => (
           <div key={k.label} style={{ background: 'var(--surface3)', borderRadius: 8, padding: '10px 14px' }}>
             <div style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 4 }}>{k.label}</div>
@@ -75,7 +80,6 @@ function BillingChart({ clienteNome }) {
         ))}
       </div>
 
-      {/* Gráfico */}
       <div style={{ overflowX: 'auto', paddingBottom: 8 }}>
         <div style={{ position: 'relative', display: 'flex', alignItems: 'flex-end', gap: GAP, minWidth: data.length * (BAR_W + GAP), paddingTop: 24 }}>
           {data.map((d, i) => {
@@ -85,7 +89,6 @@ function BillingChart({ clienteNome }) {
             return (
               <div key={d.mesAno} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, cursor: 'pointer', position: 'relative' }}
                 onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}>
-                {/* Tooltip */}
                 {isHover && (
                   <div style={{
                     position: 'absolute', bottom: '100%', left: '50%',
@@ -101,14 +104,11 @@ function BillingChart({ clienteNome }) {
                     {d.cotacao > 0 && <div style={{ color: 'var(--muted)' }}>R$ {d.cotacao.toFixed(4)}</div>}
                   </div>
                 )}
-                {/* Barra */}
                 <div style={{
                   width: BAR_W, height: h,
                   background: isHover ? '#00f0c0' : isLast ? 'var(--accent)' : 'rgba(0,212,170,0.3)',
-                  borderRadius: '4px 4px 2px 2px',
-                  transition: 'background 0.15s',
+                  borderRadius: '4px 4px 2px 2px', transition: 'background 0.15s',
                 }} />
-                {/* Label */}
                 <div style={{
                   fontSize: 9, color: isHover ? 'var(--text)' : 'var(--muted)',
                   fontFamily: 'DM Mono, monospace',
@@ -120,7 +120,6 @@ function BillingChart({ clienteNome }) {
         </div>
       </div>
 
-      {/* Tabela últimos 6 meses */}
       <div style={{ marginTop: 24 }}>
         <div style={{ fontSize: 11, color: 'var(--muted)', fontFamily: 'DM Mono, monospace', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 10 }}>
           Últimos 6 meses
@@ -145,16 +144,6 @@ function BillingChart({ clienteNome }) {
           </tbody>
         </table>
       </div>
-    </div>
-  )
-}
-
-// ── Field / Input / Select ────────────────────────────────────
-function Field({ label, value }) {
-  return (
-    <div style={{ background: 'var(--surface2)', borderRadius: 'var(--radius-sm)', padding: '12px 14px' }}>
-      <div style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 4 }}>{label}</div>
-      <div style={{ fontSize: 14, fontWeight: 500 }}>{value || '—'}</div>
     </div>
   )
 }
@@ -184,7 +173,6 @@ function Select({ label, name, value, onChange, options }) {
   )
 }
 
-// ── ClientModal ───────────────────────────────────────────────
 export default function ClientModal({ client, onClose, onSaved }) {
   const isNew  = !client?.id
   const [tab,  setTab]  = useState('dados')
@@ -206,86 +194,67 @@ export default function ClientModal({ client, onClose, onSaved }) {
     if (!form.nome.trim()) { setError('Nome é obrigatório'); return }
     setSaving(true); setError('')
     try {
-      const session = await Auth.currentSession()
-      const token   = session.getIdToken().getJwtToken()
+      const headers = await getAuthHeaders()
       const method  = isNew ? 'POST' : 'PUT'
       const url     = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
-      const res = await fetch(url, {
-        method, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify(form),
-      })
+      const res = await fetch(url, { method, headers, body: JSON.stringify(form) })
       if (!res.ok) throw new Error('Erro ao salvar')
       onSaved()
-    } catch (e) {
-      setError('Erro ao salvar. Tente novamente.')
-    } finally { setSaving(false) }
+    } catch { setError('Erro ao salvar. Tente novamente.') }
+    finally { setSaving(false) }
   }
 
-  const overlay  = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }
-  const modal    = { background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 16, width: '100%', maxWidth: 700, maxHeight: '92vh', overflowY: 'auto' }
-  const header   = { padding: '24px 24px 0', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', position: 'sticky', top: 0, background: 'var(--surface)', zIndex: 1, paddingBottom: 0 }
-  const body     = { padding: '0 24px 24px' }
-  const footer   = { padding: '16px 24px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', bottom: 0, background: 'var(--surface)' }
-  const grid2    = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }
-  const secTitle = { fontSize: 11, color: 'var(--muted)', fontFamily: 'DM Mono, monospace', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12, marginTop: 20 }
-
-  const TABS = [
-    { id: 'dados',     label: 'Dados' },
-    { id: 'historico', label: 'Histórico de Consumo' },
-  ]
+  const overlay = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }
+  const modal   = { background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 16, width: '100%', maxWidth: 700, maxHeight: '92vh', overflowY: 'auto' }
+  const body    = { padding: '0 24px 24px' }
+  const footer  = { padding: '16px 24px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', bottom: 0, background: 'var(--surface)' }
+  const grid2   = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }
+  const secTit  = { fontSize: 11, color: 'var(--muted)', fontFamily: 'DM Mono, monospace', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12, marginTop: 20 }
 
   return (
     <div style={overlay} onClick={e => e.target === e.currentTarget && onClose()}>
       <div style={modal}>
-        {/* Header */}
-        <div style={header}>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'Syne, sans-serif', fontSize: 20, fontWeight: 700 }}>
-              {isNew ? 'Novo Cliente' : client.nome}
-            </div>
-            <div style={{ fontSize: 13, color: 'var(--muted)', marginTop: 4 }}>
-              {isNew ? 'Preencha os dados' : client.razaoSocial || '—'}
-            </div>
-
-            {/* Tabs — só para clientes existentes */}
-            {!isNew && (
-              <div style={{ display: 'flex', gap: 4, marginTop: 16 }}>
-                {TABS.map(t => (
-                  <button key={t.id} onClick={() => setTab(t.id)} style={{
-                    padding: '7px 16px', borderRadius: '8px 8px 0 0', border: 'none',
-                    fontSize: 13, fontWeight: 500, cursor: 'pointer',
-                    fontFamily: 'DM Sans, sans-serif', transition: 'all 0.15s',
-                    background: tab === t.id ? 'var(--surface2)' : 'transparent',
-                    color:      tab === t.id ? 'var(--accent)'   : 'var(--muted)',
-                    borderBottom: tab === t.id ? '2px solid var(--accent)' : '2px solid transparent',
-                  }}>{t.label}</button>
-                ))}
+        <div style={{ padding: '24px 24px 0', position: 'sticky', top: 0, background: 'var(--surface)', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: 'Syne, sans-serif', fontSize: 20, fontWeight: 700 }}>
+                {isNew ? 'Novo Cliente' : client.nome}
               </div>
-            )}
+              <div style={{ fontSize: 13, color: 'var(--muted)', marginTop: 4 }}>
+                {isNew ? 'Preencha os dados' : client.razaoSocial || '—'}
+              </div>
+              {!isNew && (
+                <div style={{ display: 'flex', gap: 4, marginTop: 16 }}>
+                  {[{id:'dados',label:'Dados'},{id:'historico',label:'Histórico de Consumo'}].map(t => (
+                    <button key={t.id} onClick={() => setTab(t.id)} style={{
+                      padding: '7px 16px', borderRadius: '8px 8px 0 0', border: 'none',
+                      fontSize: 13, fontWeight: 500, cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
+                      background: tab === t.id ? 'var(--surface2)' : 'transparent',
+                      color:      tab === t.id ? 'var(--accent)'   : 'var(--muted)',
+                      borderBottom: tab === t.id ? '2px solid var(--accent)' : '2px solid transparent',
+                    }}>{t.label}</button>
+                  ))}
+                </div>
+              )}
+            </div>
+            <button onClick={onClose} style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 8, width: 32, height: 32, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)', flexShrink: 0, marginLeft: 12 }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
           </div>
-          <button onClick={onClose} style={{ background: 'var(--surface2)', border: '1px solid var(--border)', borderRadius: 8, width: 32, height: 32, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)', flexShrink: 0, marginLeft: 12 }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
+          <div style={{ height: 1, background: 'var(--border)', marginTop: 0 }} />
         </div>
 
-        {/* Divider */}
-        <div style={{ height: 1, background: 'var(--border)', margin: '0 24px' }} />
-
-        {/* Body */}
         <div style={body}>
-
-          {/* TAB DADOS */}
           {(tab === 'dados' || isNew) && (
             <>
-              <div style={secTitle}>Identificação</div>
+              <div style={secTit}>Identificação</div>
               <div style={grid2}>
                 <Input label="Nome / Apelido *" name="nome" value={form.nome} onChange={handleChange} />
                 <Input label="Razão Social" name="razaoSocial" value={form.razaoSocial} onChange={handleChange} />
                 <Input label="CNPJ" name="cnpj" value={form.cnpj} onChange={handleChange} />
                 <Input label="Conta Payer AWS" name="contaPayer" value={form.contaPayer} onChange={handleChange} />
               </div>
-
-              <div style={secTitle}>Classificação & Consumo</div>
+              <div style={secTit}>Classificação & Consumo</div>
               <div style={grid2}>
                 <Select label="Status" name="ativo" value={form.ativo} onChange={handleChange} options={['Sim','Não']} />
                 <Input label="Consumo médio / mês (USD)" name="consumo" value={form.consumo} onChange={handleChange} type="number" />
@@ -293,24 +262,20 @@ export default function ClientModal({ client, onClose, onSaved }) {
                 <Select label="Simples Nacional" name="simplesNacional" value={form.simplesNacional} onChange={handleChange} options={['Sim','Não']} />
                 <Select label="Envio de Fatura" name="envioFatura" value={form.envioFatura} onChange={handleChange} options={['Padrão','Data Corte - dia 10']} />
               </div>
-
-              <div style={secTitle}>Relacionamento</div>
+              <div style={secTit}>Relacionamento</div>
               <div style={grid2}>
                 <Select label="Responsável" name="responsavel" value={form.responsavel} onChange={handleChange} options={RESPONSAVEIS} />
                 <Input label="AM do Cliente" name="amCliente" value={form.amCliente} onChange={handleChange} />
                 <Select label="Acesso à Conta" name="acessoConta" value={form.acessoConta} onChange={handleChange} options={['Individual','Solvimm','Sem Acesso']} />
                 <Select label="Dashboard BI" name="dashBI" value={form.dashBI} onChange={handleChange} options={['Sem Acesso','Liberar','Acessando']} />
               </div>
-
-              <div style={secTitle}>Serviços</div>
+              <div style={secTit}>Serviços</div>
               <div style={{ ...grid2, gridTemplateColumns: '1fr 1fr 1fr' }}>
                 <Select label="CMS" name="cms" value={form.cms} onChange={handleChange} options={['Sim','Não']} />
                 <Select label="PLS" name="pls" value={form.pls} onChange={handleChange} options={['Sim','Não']} />
               </div>
             </>
           )}
-
-          {/* TAB HISTÓRICO */}
           {tab === 'historico' && !isNew && (
             <div style={{ paddingTop: 20 }}>
               <BillingChart clienteNome={client.nome} />
@@ -318,18 +283,16 @@ export default function ClientModal({ client, onClose, onSaved }) {
           )}
         </div>
 
-        {/* Footer */}
         <div style={footer}>
           <div style={{ fontSize: 13, color: 'var(--accent4)' }}>{error}</div>
-          {(tab === 'dados' || isNew) && (
+          {(tab === 'dados' || isNew) ? (
             <div style={{ display: 'flex', gap: 10 }}>
               <button onClick={onClose} style={{ background: 'var(--surface2)', border: '1px solid var(--border2)', borderRadius: 'var(--radius-sm)', padding: '8px 16px', fontSize: 13, color: 'var(--text)', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>Cancelar</button>
               <button onClick={handleSave} disabled={saving} style={{ background: 'var(--accent)', border: 'none', borderRadius: 'var(--radius-sm)', padding: '8px 18px', fontSize: 13, fontWeight: 600, color: '#000', cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.7 : 1, fontFamily: 'DM Sans, sans-serif' }}>
                 {saving ? 'Salvando...' : 'Salvar'}
               </button>
             </div>
-          )}
-          {tab === 'historico' && !isNew && (
+          ) : (
             <button onClick={onClose} style={{ background: 'var(--surface2)', border: '1px solid var(--border2)', borderRadius: 'var(--radius-sm)', padding: '8px 16px', fontSize: 13, color: 'var(--text)', cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}>Fechar</button>
           )}
         </div>
