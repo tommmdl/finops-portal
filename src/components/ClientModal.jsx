@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Auth } from 'aws-amplify'
 import { API_URL } from '../aws-config'
 
 const NIVEIS       = ['Nível 1 - Acima de 50K','Nível 2 - Entre 10k e 50K','Nível 3 - Entre 5K e 10K','Nível 4 - Abaixo de 5K']
