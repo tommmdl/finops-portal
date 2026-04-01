@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { API_URL } from '../aws-config'
 
 const NIVEIS       = ['Nível 1 - Acima de 50K','Nível 2 - Entre 10k e 50K','Nível 3 - Entre 5K e 10K','Nível 4 - Abaixo de 5K']
@@ -12,13 +12,14 @@ const fmtMes = (mesAno) => {
   return `${nomes[parseInt(mes)-1]}/${ano.slice(2)}`
 }
 
-async function getAuthHeaders() {
+async function getToken() {
   try {
+    const { Auth } = await import('aws-amplify')
     const session = await Auth.currentSession()
-    const token   = session.getIdToken().getJwtToken()
-    return { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-  } catch {
-    return { 'Content-Type': 'application/json' }
+    return session.getIdToken().getJwtToken()
+  } catch(e) {
+    console.error('Auth error:', e)
+    return null
   }
 }
 
@@ -28,21 +29,31 @@ function BillingChart({ clienteNome }) {
   const [loading, setLoading] = useState(true)
   const [hover,   setHover]   = useState(null)
 
-  useState(() => {
+  useEffect(() => {
     async function load() {
       try {
-        const headers = await getAuthHeaders()
+        const token = await getToken()
+        const headers = token
+          ? { Authorization: `Bearer ${token}` }
+          : {}
+        console.log('[Billing] fetching for:', clienteNome)
         const res = await fetch(
           `${API_URL}/billing/${encodeURIComponent(clienteNome)}`,
           { headers }
         )
+        console.log('[Billing] status:', res.status)
         const json = await res.json()
+        console.log('[Billing] items:', json.count)
         setData((json.items || []).sort((a, b) => a.mesAno.localeCompare(b.mesAno)))
-      } catch { setData([]) }
-      finally { setLoading(false) }
+      } catch(e) {
+        console.error('[Billing] error:', e)
+        setData([])
+      } finally {
+        setLoading(false)
+      }
     }
     load()
-  }, [])
+  }, [clienteNome])
 
   if (loading) return (
     <div style={{ padding: '32px 0', textAlign: 'center', color: 'var(--muted)', fontSize: 13 }}>
@@ -193,9 +204,13 @@ export default function ClientModal({ client, onClose, onSaved }) {
     if (!form.nome.trim()) { setError('Nome é obrigatório'); return }
     setSaving(true); setError('')
     try {
-      const headers = await getAuthHeaders()
-      const method  = isNew ? 'POST' : 'PUT'
-      const url     = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
+      const token = await getToken()
+      const headers = {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {})
+      }
+      const method = isNew ? 'POST' : 'PUT'
+      const url    = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
       const res = await fetch(url, { method, headers, body: JSON.stringify(form) })
       if (!res.ok) throw new Error('Erro ao salvar')
       onSaved()
