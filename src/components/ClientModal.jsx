@@ -201,26 +201,27 @@ export default function ClientModal({ client, onClose, onSaved }) {
   }
 
   async function handleSave() {
-    if (!form.nome.trim()) { setError('Nome é obrigatório'); return }
-    setSaving(true); setError('')
-    try {
-      const token = await getToken()
-      const headers = {
-        'Content-Type': 'application/json',
-        ...(token ? { Authorization: `Bearer ${token}` } : {})
-      }
-      const method = isNew ? 'POST' : 'PUT'
-      const url    = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
-      const payload = {
-        ...form,
-        consumo: parseFloat(String(form.consumo).replace(',', '.')) || 0
-      }
-      const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
-      if (!res.ok) throw new Error('Erro ao salvar')
-      onSaved()
-    } catch { setError('Erro ao salvar. Tente novamente.') }
-    finally { setSaving(false) }
-  }
+  if (!form.nome.trim()) { setError('Nome é obrigatório'); return }
+  setSaving(true); setError('')
+  try {
+    const token = await getToken()
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
+    }
+    const method  = isNew ? 'POST' : 'PUT'
+    const url     = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
+    const payload = {
+      ...form,
+      consumo: parseFloat(String(form.consumo).replace(',', '.')) || 0
+    }
+    const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
+    if (!res.ok) throw new Error('Erro ao salvar')
+    onSaved()
+  } catch { setError('Erro ao salvar. Tente novamente.') }
+  finally { setSaving(false) }
+}
+
 const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
       if (!res.ok) throw new Error('Erro ao salvar')
       onSaved()
