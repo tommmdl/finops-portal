@@ -222,12 +222,6 @@ export default function ClientModal({ client, onClose, onSaved }) {
   finally { setSaving(false) }
 }
 
-const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
-      if (!res.ok) throw new Error('Erro ao salvar')
-      onSaved()
-    } catch { setError('Erro ao salvar. Tente novamente.') }
-    finally { setSaving(false) }
-  }
 
   const overlay = { position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }
   const modal   = { background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 16, width: '100%', maxWidth: 700, maxHeight: '92vh', overflowY: 'auto' }
