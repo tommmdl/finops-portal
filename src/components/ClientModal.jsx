@@ -211,7 +211,17 @@ export default function ClientModal({ client, onClose, onSaved }) {
       }
       const method = isNew ? 'POST' : 'PUT'
       const url    = isNew ? `${API_URL}/clients` : `${API_URL}/clients/${client.id}`
-      const res = await fetch(url, { method, headers, body: JSON.stringify(form) })
+      const payload = {
+        ...form,
+        consumo: parseFloat(String(form.consumo).replace(',', '.')) || 0
+      }
+      const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
+      if (!res.ok) throw new Error('Erro ao salvar')
+      onSaved()
+    } catch { setError('Erro ao salvar. Tente novamente.') }
+    finally { setSaving(false) }
+  }
+const res = await fetch(url, { method, headers, body: JSON.stringify(payload) })
       if (!res.ok) throw new Error('Erro ao salvar')
       onSaved()
     } catch { setError('Erro ao salvar. Tente novamente.') }
@@ -271,7 +281,7 @@ export default function ClientModal({ client, onClose, onSaved }) {
               <div style={secTit}>Classificação & Consumo</div>
               <div style={grid2}>
                 <Select label="Status" name="ativo" value={form.ativo} onChange={handleChange} options={['Sim','Não']} />
-                <Input label="Consumo médio / mês (USD)" name="consumo" value={form.consumo} onChange={handleChange} type="number" />
+                <Input label="Consumo médio / mês (USD)" name="consumo" value={form.consumo} onChange={handleChange} type="text" />
                 <Select label="Nível" name="nivel" value={form.nivel} onChange={handleChange} options={NIVEIS} />
                 <Select label="Simples Nacional" name="simplesNacional" value={form.simplesNacional} onChange={handleChange} options={['Sim','Não']} />
                 <Select label="Envio de Fatura" name="envioFatura" value={form.envioFatura} onChange={handleChange} options={['Padrão','Data Corte - dia 10']} />
