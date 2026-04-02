@@ -14,9 +14,9 @@ const fmtMes = (mesAno) => {
 
 async function getToken() {
   try {
-    const { Auth } = await import('aws-amplify')
-    const session = await Auth.currentSession()
-    return session.getIdToken().getJwtToken()
+    const { fetchAuthSession } = await import('aws-amplify/auth')
+    const { tokens } = await fetchAuthSession()
+    return tokens?.idToken?.toString() ?? null
   } catch(e) {
     console.error('Auth error:', e)
     return null
