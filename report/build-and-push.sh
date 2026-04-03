@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builda a imagem Docker do report-lambda e faz push para o ECR.
 #
-# Uso:
+# Uso (também executado automaticamente pelo GitHub Actions):
 #   ./build-and-push.sh                        # usa outputs do terraform (infra/)
 #   ./build-and-push.sh <ecr_url> [região]     # passa a URL manualmente
 #
