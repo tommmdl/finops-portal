@@ -23,32 +23,32 @@ O FinOps Portal centraliza o acompanhamento de custos AWS por cliente, permitind
 ┌─────────────────────────────────────────────────────────────────┐
 │                         GitHub Actions                          │
 │  push em app/   → Amplify deploy automático                     │
-│  push em infra/ → Terraform plan/apply                         │
-│  push em report/→ Build Docker → Push ECR → Update Lambda      │
+│  push em infra/ → Terraform plan/apply                          │
+│  push em report/→ Build Docker → Push ECR → Update Lambda       │
 └──────────────────────────────┬──────────────────────────────────┘
                                │
 ┌──────────────────────────────▼──────────────────────────────────┐
 │                           AWS Cloud                             │
 │                                                                 │
-│   ┌─────────────┐     ┌──────────────┐     ┌────────────────┐  │
-│   │   Amplify   │     │ API Gateway  │     │    Cognito     │  │
-│   │  (React SPA)│────▶│  REST API    │◀────│  (Auth/JWT)    │  │
-│   └─────────────┘     └──────┬───────┘     └────────────────┘  │
+│   ┌─────────────┐     ┌──────────────┐     ┌────────────────┐   │
+│   │   Amplify   │     │ API Gateway  │     │    Cognito     │   │
+│   │  (React SPA)│────▶│  REST API    │◀────│  (Auth/JWT)   │   │
+│   └─────────────┘     └──────┬───────┘     └────────────────┘   │
 │                              │                                  │
-│               ┌──────────────┼──────────────┐                  │
-│               │              │              │                  │
-│               ▼              ▼              ▼                  │
-│        ┌────────────┐ ┌────────────┐ ┌──────────────┐         │
-│        │  Lambda    │ │  Lambda    │ │   DynamoDB   │         │
-│        │ (API CRUD) │ │  (Report)  │ │  (Clientes + │         │
-│        │  Node.js   │ │  Python    │ │   Billing)   │         │
-│        └────────────┘ └─────┬──────┘ └──────────────┘         │
-│                             │                                  │
-│                             ▼                                  │
-│                      ┌────────────┐                            │
-│                      │     S3     │                            │
-│                      │ (Reports)  │                            │
-│                      └────────────┘                            │
+│               ┌──────────────┼──────────────┐                   │
+│               │              │              │                   │
+│               ▼              ▼              ▼                   │
+│        ┌────────────┐ ┌────────────┐ ┌──────────────┐           │
+│        │  Lambda    │ │  Lambda    │ │   DynamoDB   │           │
+│        │ (API CRUD) │ │  (Report)  │ │  (Clientes + │           │
+│        │  Node.js   │ │  Python    │ │   Billing)   │           │
+│        └────────────┘ └─────┬──────┘ └──────────────┘           │
+│                             │                                   │
+│                             ▼                                   │
+│                      ┌────────────┐                             │
+│                      │     S3     │                             │
+│                      │ (Reports)  │                             │
+│                      └────────────┘                             │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
