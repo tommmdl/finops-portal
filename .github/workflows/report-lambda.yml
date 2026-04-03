@@ -1,0 +1,61 @@
+name: Deploy Report Lambda
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "report/**"
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPO: finops-portal-prod-report
+
+jobs:
+  deploy:
+    name: Build & Push to ECR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login no ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag e push da imagem
+        id: build
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          FULL_IMAGE="$ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG"
+          LATEST="$ECR_REGISTRY/$ECR_REPO:latest"
+
+          docker build --platform linux/amd64 -t "$FULL_IMAGE" -t "$LATEST" report/
+          docker push "$FULL_IMAGE"
+          docker push "$LATEST"
+
+          echo "image=$FULL_IMAGE" >> $GITHUB_OUTPUT
+
+      - name: Atualiza Lambda com nova imagem
+        env:
+          FUNCTION_NAME: finops-portal-prod-report
+        run: |
+          aws lambda update-function-code \
+            --function-name "$FUNCTION_NAME" \
+            --image-uri "${{ steps.build.outputs.image }}" \
+            --region "$AWS_REGION"
+
+          aws lambda wait function-updated \
+            --function-name "$FUNCTION_NAME" \
+            --region "$AWS_REGION"
+
+          echo "Lambda atualizada: ${{ steps.build.outputs.image }}"
