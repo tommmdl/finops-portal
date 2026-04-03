@@ -9,9 +9,9 @@ resource "aws_iam_role_policy" "lambda_sts_ce" {
     Statement = [
       {
         # Assume role em qualquer conta cliente
-        Sid    = "AssumeClientRoles"
-        Effect = "Allow"
-        Action = "sts:AssumeRole"
+        Sid      = "AssumeClientRoles"
+        Effect   = "Allow"
+        Action   = "sts:AssumeRole"
         Resource = "arn:aws:iam::*:role/CrossAccountAccess-FinOpsCrossAccountReadOnlyRole"
       },
       {
@@ -27,9 +27,9 @@ resource "aws_iam_role_policy" "lambda_sts_ce" {
       },
       {
         # SNS para disparar alertas
-        Sid    = "SNSPublish"
-        Effect = "Allow"
-        Action = "sns:Publish"
+        Sid      = "SNSPublish"
+        Effect   = "Allow"
+        Action   = "sns:Publish"
         Resource = "*"
       }
     ]

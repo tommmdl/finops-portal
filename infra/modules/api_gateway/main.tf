@@ -9,11 +9,11 @@ resource "aws_api_gateway_rest_api" "main" {
 
 # ── Authorizer Cognito ────────────────────────────────────────
 resource "aws_api_gateway_authorizer" "cognito" {
-  name                   = "cognito-authorizer"
-  rest_api_id            = aws_api_gateway_rest_api.main.id
-  type                   = "COGNITO_USER_POOLS"
-  identity_source        = "method.request.header.Authorization"
-  provider_arns          = [var.cognito_user_pool_arn]
+  name            = "cognito-authorizer"
+  rest_api_id     = aws_api_gateway_rest_api.main.id
+  type            = "COGNITO_USER_POOLS"
+  identity_source = "method.request.header.Authorization"
+  provider_arns   = [var.cognito_user_pool_arn]
 }
 
 # ── Recurso /clients ──────────────────────────────────────────
@@ -45,15 +45,15 @@ resource "aws_api_gateway_resource" "billing_cliente" {
 # ── Métodos ───────────────────────────────────────────────────
 locals {
   methods = {
-    "GET_clients"         = { resource = aws_api_gateway_resource.clients.id,         http = "GET" }
-    "POST_clients"        = { resource = aws_api_gateway_resource.clients.id,         http = "POST" }
-    "GET_client"          = { resource = aws_api_gateway_resource.client_id.id,       http = "GET" }
-    "PUT_client"          = { resource = aws_api_gateway_resource.client_id.id,       http = "PUT" }
-    "DELETE_client"       = { resource = aws_api_gateway_resource.client_id.id,       http = "DELETE" }
-    "OPTIONS_clients"     = { resource = aws_api_gateway_resource.clients.id,         http = "OPTIONS" }
-    "OPTIONS_client"      = { resource = aws_api_gateway_resource.client_id.id,       http = "OPTIONS" }
-    "GET_billing"         = { resource = aws_api_gateway_resource.billing_cliente.id, http = "GET" }
-    "OPTIONS_billing"     = { resource = aws_api_gateway_resource.billing_cliente.id, http = "OPTIONS" }
+    "GET_clients"     = { resource = aws_api_gateway_resource.clients.id, http = "GET" }
+    "POST_clients"    = { resource = aws_api_gateway_resource.clients.id, http = "POST" }
+    "GET_client"      = { resource = aws_api_gateway_resource.client_id.id, http = "GET" }
+    "PUT_client"      = { resource = aws_api_gateway_resource.client_id.id, http = "PUT" }
+    "DELETE_client"   = { resource = aws_api_gateway_resource.client_id.id, http = "DELETE" }
+    "OPTIONS_clients" = { resource = aws_api_gateway_resource.clients.id, http = "OPTIONS" }
+    "OPTIONS_client"  = { resource = aws_api_gateway_resource.client_id.id, http = "OPTIONS" }
+    "GET_billing"     = { resource = aws_api_gateway_resource.billing_cliente.id, http = "GET" }
+    "OPTIONS_billing" = { resource = aws_api_gateway_resource.billing_cliente.id, http = "OPTIONS" }
   }
 }
 
@@ -116,10 +116,10 @@ resource "aws_api_gateway_integration" "reports_post" {
 }
 
 resource "aws_api_gateway_integration" "reports_options" {
-  rest_api_id = aws_api_gateway_rest_api.main.id
-  resource_id = aws_api_gateway_resource.reports_generate.id
-  http_method = aws_api_gateway_method.reports_options.http_method
-  type        = "MOCK"
+  rest_api_id       = aws_api_gateway_rest_api.main.id
+  resource_id       = aws_api_gateway_resource.reports_generate.id
+  http_method       = aws_api_gateway_method.reports_options.http_method
+  type              = "MOCK"
   request_templates = { "application/json" = "{\"statusCode\": 200}" }
 }
 
