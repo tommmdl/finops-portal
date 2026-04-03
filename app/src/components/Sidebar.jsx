@@ -6,7 +6,7 @@ const S = {
   sep: { height:1, background:'var(--border)', margin:'8px 0' },
   footer: { padding:'16px 20px', borderTop:'1px solid var(--border)' },
   userChip: { display:'flex', alignItems:'center', gap:10 },
-  avatar: { width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg, #00d4aa, #0ea5e9)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600, color:'#000', flexShrink:0 },
+  avatar: { width:30, height:30, borderRadius:'50%', background:'linear-gradient(135deg, #00BEC8, #0096DC)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600, color:'#000', flexShrink:0 },
 }
 
 function NavItem({ active, onClick, icon, label }) {

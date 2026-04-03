@@ -73,7 +73,7 @@ export default function AuthPage({ onSignIn }) {
             </div>
             <div style={css.brand}>FinOps Portal</div>
             <div style={css.brandSub}>AWS MANAGEMENT</div>
-            <div style={css.welcomeTitle}>{isLogin ? 'BEM-VINDO\nDE VOLTA!' : 'OLÁ!'}</div>
+            <div style={css.welcomeTitle}>{isLogin ? 'BEM-VINDO\nE-COREAN!' : 'OLÁ!'}</div>
             <div style={css.welcomeText}>
               {isLogin
                 ? 'Acesse sua conta para gerenciar os clientes FinOps da e-Core.'
@@ -171,7 +171,7 @@ function Field({ icon, name, type, placeholder, value, onChange }) {
       </svg>
       <input name={name} type={type} placeholder={placeholder} value={value} onChange={onChange} required
         style={{ width:'100%', background:'#191d24', border:'1px solid rgba(255,255,255,0.1)', borderRadius:10, padding:'12px 14px 12px 42px', fontSize:14, color:'#e8eaf0', fontFamily:'DM Sans, sans-serif', outline:'none', boxSizing:'border-box', transition:'border-color 0.2s' }}
-        onFocus={e => e.target.style.borderColor = '#00d4aa'}
+        onFocus={e => e.target.style.borderColor = '#00BEC8'}
         onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
       />
     </div>
@@ -194,18 +194,18 @@ const css = {
     transition: 'transform 0.4s cubic-bezier(0.4,0,0.2,1)',
   },
   welcome: {
-    background: 'linear-gradient(135deg, #042c1e 0%, #0a3d2b 40%, #0f6e56 100%)',
+    background: 'linear-gradient(135deg, #001a35 0%, #00325A 40%, #113157 100%)',
     position: 'relative', overflow: 'hidden',
   },
   welcomeInner: {
     padding: '48px 40px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 12,
   },
   logoMark: {
-    width: 44, height: 44, background: '#00d4aa', borderRadius: 12,
+    width: 44, height: 44, background: '#00BEC8', borderRadius: 12,
     display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8,
   },
   brand: { fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 18, color: '#e8eaf0' },
-  brandSub: { fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#00d4aa', letterSpacing: '0.12em', marginTop: -8 },
+  brandSub: { fontFamily: 'DM Mono, monospace', fontSize: 10, color: '#00BEC8', letterSpacing: '0.12em', marginTop: -8 },
   welcomeTitle: {
     fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 36, color: '#ffffff',
     lineHeight: 1.15, marginTop: 16, whiteSpace: 'pre-line',
@@ -213,7 +213,7 @@ const css = {
   welcomeText: { fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, maxWidth: 260 },
   ghostBtn: {
     marginTop: 8, padding: '10px 24px', background: 'transparent',
-    border: '1.5px solid #00d4aa', borderRadius: 25, color: '#00d4aa',
+    border: '1.5px solid #00BEC8', borderRadius: 25, color: '#00BEC8',
     fontSize: 13, fontWeight: 500, cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
     transition: 'all 0.2s',
   },
@@ -225,13 +225,13 @@ const css = {
   },
   formEl: { display: 'flex', flexDirection: 'column' },
   btn: {
-    width: '100%', padding: '13px', background: '#00d4aa', border: 'none',
+    width: '100%', padding: '13px', background: '#00BEC8', border: 'none',
     borderRadius: 10, color: '#000', fontSize: 14, fontWeight: 600,
     cursor: 'pointer', fontFamily: 'DM Sans, sans-serif', marginTop: 4,
     transition: 'background 0.2s',
   },
   switchText: { textAlign: 'center', fontSize: 13, color: '#6b7280', marginTop: 20 },
-  link: { color: '#00d4aa', cursor: 'pointer', fontWeight: 500 },
+  link: { color: '#00BEC8', cursor: 'pointer', fontWeight: 500 },
   error: {
     background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)',
     borderRadius: 8, padding: '10px 14px', fontSize: 13, color: '#ef4444', marginBottom: 12,

@@ -9,8 +9,8 @@
   --border2:  rgba(255,255,255,0.12);
   --text:     #e8eaf0;
   --muted:    #6b7280;
-  --accent:   #00d4aa;
-  --accent2:  #0ea5e9;
+  --accent:   #00BEC8;
+  --accent2:  #0096DC;
   --accent3:  #f59e0b;
   --accent4:  #ef4444;
   --radius:   12px;
@@ -36,6 +36,7 @@ body {
   --amplify-colors-font-primary: var(--text);
   --amplify-colors-brand-primary-80: var(--accent);
   --amplify-colors-brand-primary-60: var(--accent);
+  --amplify-colors-brand-primary-100: var(--accent);
   min-height: 100vh;
   display: flex;
   align-items: center;
