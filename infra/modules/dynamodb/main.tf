@@ -1,6 +1,6 @@
 resource "aws_dynamodb_table" "clients" {
   name         = "${var.project}-${var.environment}-clients"
-  billing_mode = "PAY_PER_REQUEST"   # Sem custo fixo — paga só pelo uso
+  billing_mode = "PAY_PER_REQUEST" # Sem custo fixo — paga só pelo uso
   hash_key     = "id"
 
   attribute {

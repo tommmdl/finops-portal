@@ -53,6 +53,7 @@ echo ""
 echo "[ 2/3 ] Build da imagem (plataforma linux/amd64)..."
 docker build \
   --platform linux/amd64 \
+  -f "$SCRIPT_DIR/Dockerfile.lambda" \
   -t "$FULL_IMAGE" \
   "$SCRIPT_DIR"
 

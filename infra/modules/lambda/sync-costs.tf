@@ -13,7 +13,7 @@ resource "aws_lambda_function" "sync_costs" {
   role             = var.lambda_role_arn
   handler          = "sync-costs.handler"
   runtime          = "nodejs20.x"
-  timeout          = 300   # 5 min — processa ~40 contas
+  timeout          = 300 # 5 min — processa ~40 contas
   memory_size      = 256
 
   environment {
@@ -36,7 +36,7 @@ resource "aws_cloudwatch_log_group" "sync_costs" {
 resource "aws_cloudwatch_event_rule" "monthly_sync" {
   name                = "${var.project}-${var.environment}-monthly-cost-sync"
   description         = "Sincroniza custos AWS de todos os clientes FinOps"
-  schedule_expression = "cron(0 12 1 * ? *)"  # Todo dia 1º às 12:00 UTC = 09:00 BRT
+  schedule_expression = "cron(0 12 1 * ? *)" # Todo dia 1º às 12:00 UTC = 09:00 BRT
 }
 
 resource "aws_cloudwatch_event_target" "sync_costs" {

@@ -1,7 +1,7 @@
 resource "aws_amplify_app" "main" {
-  name       = "${var.project}-${var.environment}"
-  repository = var.github_repo != "" ? "https://github.com/${var.github_repo}" : null
-  access_token = var.github_token != "" ? var.github_token : null
+  name                 = "${var.project}-${var.environment}"
+  repository           = var.github_repo != "" ? "https://github.com/${var.github_repo}" : null
+  access_token         = var.github_token != "" ? var.github_token : null
   iam_service_role_arn = var.amplify_role_arn
 
   build_spec = <<-EOT
