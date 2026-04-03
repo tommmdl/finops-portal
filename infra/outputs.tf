@@ -27,3 +27,18 @@ output "amplify_app_id" {
   description = "ID do app no Amplify (para CI/CD)"
   value       = module.amplify.app_id
 }
+
+output "report_ecr_url" {
+  description = "URL do repositório ECR da report-lambda"
+  value       = module.report_lambda.ecr_repository_url
+}
+
+output "report_lambda_name" {
+  description = "Nome da função Lambda de reports"
+  value       = module.report_lambda.lambda_function_name
+}
+
+output "aws_region" {
+  description = "Região AWS do deploy"
+  value       = var.aws_region
+}
