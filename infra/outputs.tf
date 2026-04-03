@@ -42,3 +42,8 @@ output "aws_region" {
   description = "Região AWS do deploy"
   value       = var.aws_region
 }
+
+output "github_actions_role_arn" {
+  description = "ARN da role IAM usada pelo GitHub Actions (OIDC)"
+  value       = module.iam.github_actions_role_arn
+}

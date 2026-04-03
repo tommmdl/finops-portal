@@ -9,6 +9,11 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPO: finops-portal-prod-report
+  FUNCTION_NAME: finops-portal-prod-report
+
+permissions:
+  id-token: write   # necessário para OIDC
+  contents: read
 
 jobs:
   deploy:
@@ -19,11 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login no ECR
@@ -46,8 +50,6 @@ jobs:
           echo "image=$FULL_IMAGE" >> $GITHUB_OUTPUT
 
       - name: Atualiza Lambda com nova imagem
-        env:
-          FUNCTION_NAME: finops-portal-prod-report
         run: |
           aws lambda update-function-code \
             --function-name "$FUNCTION_NAME" \
