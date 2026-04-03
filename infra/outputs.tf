@@ -1,5 +1,5 @@
 output "api_url" {
-  description = "URL base da API Gateway"
+  description = "URL base da API Gateway (endpoint do API Gateway REST)"
   value       = module.api_gateway.api_url
 }
 
