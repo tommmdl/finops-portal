@@ -1,0 +1,15 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+*.tfplan
+handler.zip
+
+# Node
+node_modules/
+npm-debug.log
+
+# OS
+.DS_Store

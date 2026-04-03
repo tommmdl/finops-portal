@@ -1,0 +1,7 @@
+name: Compliance
+report_title: "Compliance - Report Mensal"
+aws_account_id: "ACCOUNT_ID_AQUI"
+aws_profile: "compliance"
+base_sheet_name: "Geral"
+currency_symbol: "$"
+usd_brl_rate: 5.5

@@ -1,0 +1,16 @@
+FROM public.ecr.aws/lambda/python:3.12
+
+# Dependências do sistema para matplotlib e fontes
+RUN dnf install -y gcc gcc-c++ fontconfig && dnf clean all
+
+WORKDIR ${LAMBDA_TASK_ROOT}
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Código-fonte
+COPY src/            ./
+COPY config/         ./config/
+COPY templates/      ./templates/
+
+CMD ["lambda_handler.lambda_handler"]

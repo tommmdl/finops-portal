@@ -1,0 +1,7 @@
+name: Wilson Sons
+report_title: "Wilson Sons _ Report Mensal"
+aws_account_id: "391747331706"
+aws_profile: "wilson-sons"
+base_sheet_name: "Dados Base"
+currency_symbol: "$"
+usd_brl_rate: 5.5

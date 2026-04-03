@@ -1,0 +1,7 @@
+name: Ubots
+report_title: "Ubots _ Report Mensal"
+aws_account_id: "ACCOUNT_ID_AQUI"
+aws_profile: "ubots"
+base_sheet_name: "Dados Base"
+currency_symbol: "$"
+usd_brl_rate: 5.5

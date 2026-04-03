@@ -1,0 +1,4567 @@
+{
+  "3SAT": {
+    "2023-10": {
+      "consumo_usd": 7670.1,
+      "valor_nf_brl": 37655.43,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 7542.54,
+      "valor_nf_brl": 35832.63,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 7376.36,
+      "valor_nf_brl": 35144.45,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 7208.25,
+      "valor_nf_brl": 34681.0,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 8017.45,
+      "valor_nf_brl": 38724.52,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 5351.43,
+      "valor_nf_brl": 26601.28,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 4298.85,
+      "valor_nf_brl": 22323.73,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 4536.42,
+      "valor_nf_brl": 0,
+      "cotacao": 0
+    },
+    "2024-07": {
+      "consumo_usd": 4098.0,
+      "valor_nf_brl": 22259.94,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 3972.3,
+      "valor_nf_brl": 21614.86,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 3617.6,
+      "valor_nf_brl": 19638.46,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 3685.26,
+      "valor_nf_brl": 20097.26,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 1412.87,
+      "valor_nf_brl": 7982.29,
+      "cotacao": 5.8851
+    }
+  },
+  "Atende Simples": {
+    "2023-10": {
+      "consumo_usd": 8838.27,
+      "valor_nf_brl": 45198.4,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 9024.34,
+      "valor_nf_brl": 44658.63,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 10277.47,
+      "valor_nf_brl": 48966.71,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 9244.93,
+      "valor_nf_brl": 44480.07,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 12653.9,
+      "valor_nf_brl": 61118.67,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 10360.24,
+      "valor_nf_brl": 51499.49,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 9720.08,
+      "valor_nf_brl": 48456.9,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 10768.25,
+      "valor_nf_brl": 56352.62,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 12197.84,
+      "valor_nf_brl": 65574.49,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 11863.8,
+      "valor_nf_brl": 63890.11,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 15096.44,
+      "valor_nf_brl": 81107.48,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 14367.41,
+      "valor_nf_brl": 78287.39,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 17183.08,
+      "valor_nf_brl": 97079.28,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 13483.91,
+      "valor_nf_brl": 80217.9,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 15396.29,
+      "valor_nf_brl": 89888.49,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 12318.93,
+      "valor_nf_brl": 68885.76,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 14852.26,
+      "valor_nf_brl": 83234.74,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 10956.39,
+      "valor_nf_brl": 61363.67,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 12313.94,
+      "valor_nf_brl": 67713.42,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 11053.63,
+      "valor_nf_brl": 59350.88,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 8706.4,
+      "valor_nf_brl": 46694.64,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 9194.14,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 8399.6,
+      "valor_nf_brl": 43704.9,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 7712.01,
+      "valor_nf_brl": 40266.55,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 6730.44,
+      "valor_nf_brl": 39642.61,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 6699.72,
+      "valor_nf_brl": 40241.33,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 6988.37,
+      "valor_nf_brl": 41190.88,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 6616.13,
+      "valor_nf_brl": 37983.26,
+      "cotacao": 5.2544
+    }
+  },
+  "Ativa GR": {
+    "2023-10": {
+      "consumo_usd": 2746.16,
+      "valor_nf_brl": 14043.69,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 2773.27,
+      "valor_nf_brl": 13723.94,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 3120.66,
+      "valor_nf_brl": 15487.75,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 3119.48,
+      "valor_nf_brl": 15634.1,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 3009.69,
+      "valor_nf_brl": 15142.6,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 3369.21,
+      "valor_nf_brl": 17445.74,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 3496.18,
+      "valor_nf_brl": 18155.5,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 3294.26,
+      "valor_nf_brl": 17957.89,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 3529.23,
+      "valor_nf_brl": 19763.28,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 3450.28,
+      "valor_nf_brl": 19354.99,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 3368.9,
+      "valor_nf_brl": 18853.93,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 3491.1,
+      "valor_nf_brl": 19831.75,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 3443.8,
+      "valor_nf_brl": 20267.13,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 3631.59,
+      "valor_nf_brl": 22505.1,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 3629.19,
+      "valor_nf_brl": 22071.22,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 3584.89,
+      "valor_nf_brl": 20881.42,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 4000.6,
+      "valor_nf_brl": 23354.19,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 3910.78,
+      "valor_nf_brl": 22819.06,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 4045.65,
+      "valor_nf_brl": 23174.5,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 4136.71,
+      "valor_nf_brl": 23140.29,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 4329.94,
+      "valor_nf_brl": 24190.1,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 4872.9,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 5102.83,
+      "valor_nf_brl": 27662.41,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 5348.24,
+      "valor_nf_brl": 28856.41,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 4823.1,
+      "valor_nf_brl": 29594.63,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 5013.39,
+      "valor_nf_brl": 31369.92,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 4763.53,
+      "valor_nf_brl": 29247.12,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 4577.02,
+      "valor_nf_brl": 27375.37,
+      "cotacao": 5.2544
+    }
+  },
+  "Avita Seg": {
+    "2023-10": {
+      "consumo_usd": 286.77,
+      "valor_nf_brl": 1466.32,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 330.17,
+      "valor_nf_brl": 1633.71,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 784.73,
+      "valor_nf_brl": 3894.46,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 428.15,
+      "valor_nf_brl": 2145.63,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 346.49,
+      "valor_nf_brl": 1742.43,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 313.18,
+      "valor_nf_brl": 1620.29,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 353.15,
+      "valor_nf_brl": 1832.65,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 499.73,
+      "valor_nf_brl": 2722.8,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 374.8,
+      "valor_nf_brl": 2097.44,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 369.78,
+      "valor_nf_brl": 2072.95,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 633.58,
+      "valor_nf_brl": 3544.42,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 527.8,
+      "valor_nf_brl": 2996.88,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 446.74,
+      "valor_nf_brl": 2627.64,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 593.18,
+      "valor_nf_brl": 3674.35,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 1030.66,
+      "valor_nf_brl": 6266.16,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 1507.08,
+      "valor_nf_brl": 8776.84,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 2377.7,
+      "valor_nf_brl": 13874.77,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 3644.95,
+      "valor_nf_brl": 21262.26,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 4307.62,
+      "valor_nf_brl": 24669.65,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 7482.46,
+      "valor_nf_brl": 41850.56,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 12094.42,
+      "valor_nf_brl": 67562.69,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 13432.69,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 11909.66,
+      "valor_nf_brl": 64556.92,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 13149.78,
+      "valor_nf_brl": 71524.25,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 11682.07,
+      "valor_nf_brl": 71677.48,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 13187.84,
+      "valor_nf_brl": 82515.3,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 13828.17,
+      "valor_nf_brl": 84898.24,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 14473.93,
+      "valor_nf_brl": 86565.63,
+      "cotacao": 5.2544
+    }
+  },
+  "Robox + Rits": {
+    "2023-10": {
+      "consumo_usd": 1489.38,
+      "valor_nf_brl": 7616.6,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 1577.33,
+      "valor_nf_brl": 7803.98,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 653.14,
+      "valor_nf_brl": 3891.38,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 832.05,
+      "valor_nf_brl": 4168.49,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 870.77,
+      "valor_nf_brl": 4379.38,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 873.89,
+      "valor_nf_brl": 4523.19,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 906.25,
+      "valor_nf_brl": 4703.98,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 889.46,
+      "valor_nf_brl": 4846.67,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 789.89,
+      "valor_nf_brl": 4423.31,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 795.1,
+      "valor_nf_brl": 4457.96,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 1125.83,
+      "valor_nf_brl": 6298.28,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 1112.86,
+      "valor_nf_brl": 6319.37,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 1111.62,
+      "valor_nf_brl": 6539.59,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 1122.22,
+      "valor_nf_brl": 6952.03,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 1049.56,
+      "valor_nf_brl": 6380.43,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 832.85,
+      "valor_nf_brl": 4849.13,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 888.08,
+      "valor_nf_brl": 5181.88,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 768.71,
+      "valor_nf_brl": 4483.08,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 735.71,
+      "valor_nf_brl": 4211.86,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 722.71,
+      "valor_nf_brl": 4040.27,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 749.07,
+      "valor_nf_brl": 4182.38,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 773.43,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 696.08,
+      "valor_nf_brl": 3771.0,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 669.99,
+      "valor_nf_brl": 3642.01,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 579.84,
+      "valor_nf_brl": 3555.63,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 546.18,
+      "valor_nf_brl": 3415.13,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 373.35,
+      "valor_nf_brl": 2290.08,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 305.04,
+      "valor_nf_brl": 1822.31,
+      "cotacao": 5.2544
+    }
+  },
+  "Caju": {
+    "2023-10": {
+      "consumo_usd": 43706.34,
+      "valor_nf_brl": 223506.51,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 39239.29,
+      "valor_nf_brl": 194182.91,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 52301.38,
+      "valor_nf_brl": 260297.45,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 51429.67,
+      "valor_nf_brl": 265248.96,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 55628.52,
+      "valor_nf_brl": 300192.41,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 71516.65,
+      "valor_nf_brl": 398273.87,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 94398.33,
+      "valor_nf_brl": 490206.23,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 111419.26,
+      "valor_nf_brl": 607375.96,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 157135.11,
+      "valor_nf_brl": 879941.12,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 171684.89,
+      "valor_nf_brl": 963098.49,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 141338.53,
+      "valor_nf_brl": 790998.55,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 156704.04,
+      "valor_nf_brl": 890179.92,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 170314.03,
+      "valor_nf_brl": 1002316.21,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 160586.54,
+      "valor_nf_brl": 995160.87,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 162873.01,
+      "valor_nf_brl": 990525.78,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 149164.8,
+      "valor_nf_brl": 868863.74,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 163454.31,
+      "valor_nf_brl": 954194.57,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 161942.52,
+      "valor_nf_brl": 944920.23,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 173607.08,
+      "valor_nf_brl": 994468.47,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 169474.32,
+      "valor_nf_brl": 948020.27,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 206074.25,
+      "valor_nf_brl": 1151280.12,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 208862.93,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 212677.6,
+      "valor_nf_brl": 1152922.92,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 210142.71,
+      "valor_nf_brl": 1143069.09,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 181972.72,
+      "valor_nf_brl": 1116585.18,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 184480.16,
+      "valor_nf_brl": 1154334.16,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 186136.41,
+      "valor_nf_brl": 1142838.29,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 172981.06,
+      "valor_nf_brl": 970291.06,
+      "cotacao": 5.2544
+    }
+  },
+  "Compliance": {
+    "2023-10": {
+      "consumo_usd": 26673.81,
+      "valor_nf_brl": 130951.86,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 26886.41,
+      "valor_nf_brl": 127730.29,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 29842.83,
+      "valor_nf_brl": 142185.3,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 29784.1,
+      "valor_nf_brl": 143300.04,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 33792.92,
+      "valor_nf_brl": 163220.82,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 31124.61,
+      "valor_nf_brl": 154716.47,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 34659.23,
+      "valor_nf_brl": 172784.45,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 33899.28,
+      "valor_nf_brl": 177402.21,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 37625.06,
+      "valor_nf_brl": 202268.75,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 36578.26,
+      "valor_nf_brl": 196984.88,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 31460.29,
+      "valor_nf_brl": 169024.27,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 37409.8,
+      "valor_nf_brl": 204011.29,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 31858.75,
+      "valor_nf_brl": 179992.45,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 32854.24,
+      "valor_nf_brl": 195455.02,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 27643.1,
+      "valor_nf_brl": 161917.03,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 25952.2,
+      "valor_nf_brl": 145176.96,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 39530.44,
+      "valor_nf_brl": 216920.19,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 35880.48,
+      "valor_nf_brl": 196797.72,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 36699.93,
+      "valor_nf_brl": 197706.42,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 35814.25,
+      "valor_nf_brl": 188755.01,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 37938.09,
+      "valor_nf_brl": 199694.38,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 37032.09,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 34239.5,
+      "valor_nf_brl": 174908.79,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 33874.9,
+      "valor_nf_brl": 173247.1,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 29876.75,
+      "valor_nf_brl": 172755.52,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 30703.67,
+      "valor_nf_brl": 181047.08,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 30507.42,
+      "valor_nf_brl": 176516.33,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 29234.53,
+      "valor_nf_brl": 164754.23,
+      "cotacao": 5.2544
+    }
+  },
+  "Datora": {
+    "2023-10": {
+      "consumo_usd": 218.09,
+      "valor_nf_brl": 1115.3,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 211.08,
+      "valor_nf_brl": 1044.57,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 218.08,
+      "valor_nf_brl": 1082.33,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 212.02,
+      "valor_nf_brl": 1062.59,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 226.55,
+      "valor_nf_brl": 1139.84,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 216.49,
+      "valor_nf_brl": 1120.98,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 0.14,
+      "valor_nf_brl": 0,
+      "cotacao": 0
+    },
+    "2024-06": {
+      "consumo_usd": 0.12,
+      "valor_nf_brl": 0,
+      "cotacao": 0
+    }
+  },
+  "Digesto": {
+    "2023-10": {
+      "consumo_usd": 5729.52,
+      "valor_nf_brl": 0,
+      "cotacao": 0
+    },
+    "2023-11": {
+      "consumo_usd": 10015.92,
+      "valor_nf_brl": 49565.64,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 17084.79,
+      "valor_nf_brl": 84791.66,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 26406.44,
+      "valor_nf_brl": 132342.84,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 48248.3,
+      "valor_nf_brl": 242750.77,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 66515.78,
+      "valor_nf_brl": 344418.19,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 8846.86,
+      "valor_nf_brl": 45941.34,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 11887.07,
+      "valor_nf_brl": 64799.57,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 13405.45,
+      "valor_nf_brl": 75069.19,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 23484.73,
+      "valor_nf_brl": 131741.98,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 20577.6,
+      "valor_nf_brl": 115162.17,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 22408.95,
+      "valor_nf_brl": 127297.27,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 36041.83,
+      "valor_nf_brl": 212110.01,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 28173.02,
+      "valor_nf_brl": 174589.28,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 26256.63,
+      "valor_nf_brl": 159681.89,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 25258.64,
+      "valor_nf_brl": 147127.97,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 39045.72,
+      "valor_nf_brl": 227936.57,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 53993.55,
+      "valor_nf_brl": 315047.56,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 66989.9,
+      "valor_nf_brl": 383736.35,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 53896.16,
+      "valor_nf_brl": 301489.09,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 54118.46,
+      "valor_nf_brl": 302344.97,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 49823.75,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 41025.5,
+      "valor_nf_brl": 222398.76,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 33712.69,
+      "valor_nf_brl": 183379.77,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 25871.33,
+      "valor_nf_brl": 158746.56,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 25689.18,
+      "valor_nf_brl": 160743.02,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 22090.87,
+      "valor_nf_brl": 135633.28,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 54138.02,
+      "valor_nf_brl": 240834.33,
+      "cotacao": 5.2544
+    }
+  },
+  "F360/P2CR": {
+    "2023-10": {
+      "consumo_usd": 1980.16,
+      "valor_nf_brl": 10126.41,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 1541.56,
+      "valor_nf_brl": 7628.7,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 1170.16,
+      "valor_nf_brl": 5575.19,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 1132.2,
+      "valor_nf_brl": 5447.35,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 1402.35,
+      "valor_nf_brl": 6773.39,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 1529.39,
+      "valor_nf_brl": 7602.4,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 1722.69,
+      "valor_nf_brl": 8591.41,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 1392.38,
+      "valor_nf_brl": 7286.57,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 1191.55,
+      "valor_nf_brl": 6405.66,
+      "cotacao": 5.5999
+    },
+    "2025-04": {
+      "consumo_usd": 533.31,
+      "valor_nf_brl": 2987.34,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 626.47,
+      "valor_nf_brl": 3445.03,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 614.37,
+      "valor_nf_brl": 0,
+      "cotacao": 5.5939
+    },
+    "2025-09": {
+      "consumo_usd": 2077.42,
+      "valor_nf_brl": 10811.18,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 2101.89,
+      "valor_nf_brl": 10975.88,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 2026.48,
+      "valor_nf_brl": 11937.12,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 2358.73,
+      "valor_nf_brl": 14168.74,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 1786.21,
+      "valor_nf_brl": 10528.27,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 1676.74,
+      "valor_nf_brl": 9627.52,
+      "cotacao": 5.2544
+    }
+  },
+  "GreenAnt": {
+    "2023-10": {
+      "consumo_usd": 9013.32,
+      "valor_nf_brl": 46089.86,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 8404.62,
+      "valor_nf_brl": 41587.46,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 8894.21,
+      "valor_nf_brl": 44137.39,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 8587.79,
+      "valor_nf_brl": 43036.06,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 8490.62,
+      "valor_nf_brl": 42714.23,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 8653.0,
+      "valor_nf_brl": 44800.84,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 8658.53,
+      "valor_nf_brl": 44959.05,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 8482.6,
+      "valor_nf_brl": 46236.27,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 7620.41,
+      "valor_nf_brl": 42668.45,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 6714.6,
+      "valor_nf_brl": 37661.98,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 6614.31,
+      "valor_nf_brl": 37012.72,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 6937.39,
+      "valor_nf_brl": 39403.89,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 6827.95,
+      "valor_nf_brl": 40178.62,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 7444.96,
+      "valor_nf_brl": 46131.13,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 7020.79,
+      "valor_nf_brl": 42692.41,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 6595.07,
+      "valor_nf_brl": 38410.22,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 7602.15,
+      "valor_nf_brl": 44375.48,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 7422.68,
+      "valor_nf_brl": 33857.89,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 8671.9,
+      "valor_nf_brl": 49673.41,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 7930.05,
+      "valor_nf_brl": 44358.3,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 8245.24,
+      "valor_nf_brl": 46062.32,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 7656.73,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 7486.93,
+      "valor_nf_brl": 40585.15,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 7716.88,
+      "valor_nf_brl": 41974.4,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 6722.27,
+      "valor_nf_brl": 41246.34,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 6847.73,
+      "valor_nf_brl": 42846.35,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 6950.23,
+      "valor_nf_brl": 42671.49,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 6302.18,
+      "valor_nf_brl": 37692.26,
+      "cotacao": 5.2544
+    }
+  },
+  "Housi": {
+    "2023-10": {
+      "consumo_usd": 3391.02,
+      "valor_nf_brl": 17340.24,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 3582.01,
+      "valor_nf_brl": 17724.41,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 3349.43,
+      "valor_nf_brl": 16621.75,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 3559.37,
+      "valor_nf_brl": 17837.27,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 3761.11,
+      "valor_nf_brl": 18921.55,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 3599.9,
+      "valor_nf_brl": 18638.39,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 4209.22,
+      "valor_nf_brl": 21856.32,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 4024.01,
+      "valor_nf_brl": 21933.66,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 3745.49,
+      "valor_nf_brl": 20971.91,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 3694.34,
+      "valor_nf_brl": 20721.46,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 3597.56,
+      "valor_nf_brl": 20132.28,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 3719.95,
+      "valor_nf_brl": 21128.65,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 3690.98,
+      "valor_nf_brl": 21718.34,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 3928.13,
+      "valor_nf_brl": 24338.93,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 3849.13,
+      "valor_nf_brl": 23404.79,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 3555.32,
+      "valor_nf_brl": 20705.22,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 4097.34,
+      "valor_nf_brl": 23914.77,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 4041.63,
+      "valor_nf_brl": 23578.08,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 4109.7,
+      "valor_nf_brl": 23536.77,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 4274.4,
+      "valor_nf_brl": 23905.61,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 4623.23,
+      "valor_nf_brl": 25823.58,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 3010.06,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 198.77,
+      "valor_nf_brl": 1072.17,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 201.94,
+      "valor_nf_brl": 1093.03,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 170.74,
+      "valor_nf_brl": 1042.26,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 175.05,
+      "valor_nf_brl": 1089.83,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 175.08,
+      "valor_nf_brl": 1069.48,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 162.07,
+      "valor_nf_brl": 969.28,
+      "cotacao": 5.2544
+    }
+  },
+  "IAPAJUS": {
+    "2023-10": {
+      "consumo_usd": 482.78,
+      "valor_nf_brl": 2468.9,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 477.81,
+      "valor_nf_brl": 2364.53,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 223.48,
+      "valor_nf_brl": 2791.19,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 609.94,
+      "valor_nf_brl": 3056.87,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 1660.44,
+      "valor_nf_brl": 8354.14,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 1560.35,
+      "valor_nf_brl": 8079.48,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 641.15,
+      "valor_nf_brl": 3329.46,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 642.58,
+      "valor_nf_brl": 3502.88,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 693.77,
+      "valor_nf_brl": 3885.04,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 713.43,
+      "valor_nf_brl": 4002.12,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 708.52,
+      "valor_nf_brl": 3965.22,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 730.79,
+      "valor_nf_brl": 4151.36,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 713.83,
+      "valor_nf_brl": 4200.97,
+      "cotacao": 5.8851
+    }
+  },
+  "Jadlog": {
+    "2023-10": {
+      "consumo_usd": 18033.25,
+      "valor_nf_brl": 89454.28,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 11731.22,
+      "valor_nf_brl": 56312.5,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 11420.13,
+      "valor_nf_brl": 54977.71,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 10831.3,
+      "valor_nf_brl": 52655.41,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 11816.02,
+      "valor_nf_brl": 57666.18,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 11752.92,
+      "valor_nf_brl": 59030.78,
+      "cotacao": 0
+    },
+    "2024-05": {
+      "consumo_usd": 12108.42,
+      "valor_nf_brl": 60992.17,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 11530.06,
+      "valor_nf_brl": 60967.81,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 13432.07,
+      "valor_nf_brl": 72961.72,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 13603.92,
+      "valor_nf_brl": 74024.26,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 12018.56,
+      "valor_nf_brl": 65243.81,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 12618.28,
+      "valor_nf_brl": 69529.56,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 12395.33,
+      "valor_nf_brl": 70759.4,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 10400.16,
+      "valor_nf_brl": 62516.62,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 4.89,
+      "valor_nf_brl": 28.85,
+      "cotacao": 6.0816
+    }
+  },
+  "Linux Solutions": {
+    "2023-10": {
+      "consumo_usd": 95.77,
+      "valor_nf_brl": 489.76,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 81.96,
+      "valor_nf_brl": 405.59,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 96.0,
+      "valor_nf_brl": 476.45,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 96.23,
+      "valor_nf_brl": 482.28,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 100.07,
+      "valor_nf_brl": 503.48,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 98.06,
+      "valor_nf_brl": 507.75,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 105.31,
+      "valor_nf_brl": 546.87,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 103.12,
+      "valor_nf_brl": 562.13,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 105.04,
+      "valor_nf_brl": 588.21,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 105.05,
+      "valor_nf_brl": 589.3,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 102.8,
+      "valor_nf_brl": 575.32,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 104.66,
+      "valor_nf_brl": 594.54,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 102.43,
+      "valor_nf_brl": 602.81,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 104.55,
+      "valor_nf_brl": 647.9,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 90.16,
+      "valor_nf_brl": 548.32,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 82.3,
+      "valor_nf_brl": 479.39,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 88.55,
+      "valor_nf_brl": 516.94,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 86.45,
+      "valor_nf_brl": 504.45,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 88.55,
+      "valor_nf_brl": 507.23,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 86.45,
+      "valor_nf_brl": 483.62,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 88.54,
+      "valor_nf_brl": 494.63,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 88.54,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 86.39,
+      "valor_nf_brl": 468.3,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 88.54,
+      "valor_nf_brl": 481.6,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 75.95,
+      "valor_nf_brl": 466.03,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 77.78,
+      "valor_nf_brl": 486.69,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 77.78,
+      "valor_nf_brl": 477.55,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 72.26,
+      "valor_nf_brl": 432.19,
+      "cotacao": 5.2544
+    }
+  },
+  "OneLaudos": {
+    "2023-10": {
+      "consumo_usd": 8141.26,
+      "valor_nf_brl": 39968.54,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 8051.21,
+      "valor_nf_brl": 38249.19,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 8110.8,
+      "valor_nf_brl": 38643.67,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 7580.78,
+      "valor_nf_brl": 36473.36,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 7706.44,
+      "valor_nf_brl": 37222.34,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 7901.13,
+      "valor_nf_brl": 39275.51,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 8176.29,
+      "valor_nf_brl": 40760.74,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 1329.26,
+      "valor_nf_brl": 42095.61,
+      "cotacao": 5.4513
+    }
+  },
+  "Previsiown": {
+    "2023-10": {
+      "consumo_usd": 2107.15,
+      "valor_nf_brl": 10775.83,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 1960.34,
+      "valor_nf_brl": 9701.11,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 1399.68,
+      "valor_nf_brl": 6946.6,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 1437.52,
+      "valor_nf_brl": 7204.51,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 1796.47,
+      "valor_nf_brl": 9038.55,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 2148.99,
+      "valor_nf_brl": 11127.45,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 2930.57,
+      "valor_nf_brl": 15218.32,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 2804.47,
+      "valor_nf_brl": 15287.91,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 3065.74,
+      "valor_nf_brl": 17167.84,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 2795.0,
+      "valor_nf_brl": 15679.07,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 2429.07,
+      "valor_nf_brl": 13594.25,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 2422.78,
+      "valor_nf_brl": 13762.95,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 2668.71,
+      "valor_nf_brl": 15705.64,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 2664.25,
+      "valor_nf_brl": 16510.46,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 2592.34,
+      "valor_nf_brl": 15765.53,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 2670.28,
+      "valor_nf_brl": 15554.0,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 3031.72,
+      "valor_nf_brl": 17698.22,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 2996.37,
+      "valor_nf_brl": 17483.55,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 3254.6,
+      "valor_nf_brl": 18643.26,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 3142.89,
+      "valor_nf_brl": 17580.98,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 2860.77,
+      "valor_nf_brl": 15982.35,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 2605.66,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 2777.62,
+      "valor_nf_brl": 15057.45,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 3110.59,
+      "valor_nf_brl": 16920.0,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 2702.66,
+      "valor_nf_brl": 16583.53,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 3047.59,
+      "valor_nf_brl": 19069.46,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 3081.27,
+      "valor_nf_brl": 18918.35,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 2361.58,
+      "valor_nf_brl": 14124.73,
+      "cotacao": 5.2544
+    }
+  },
+  "Rediseg Tecnologia": {
+    "2023-10": {
+      "consumo_usd": 16543.34,
+      "valor_nf_brl": 84601.65,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 15964.33,
+      "valor_nf_brl": 79002.45,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 19215.49,
+      "valor_nf_brl": 91551.65,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 20241.59,
+      "valor_nf_brl": 97388.22,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 21502.03,
+      "valor_nf_brl": 103855.4,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 23241.27,
+      "valor_nf_brl": 115529.45,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 26618.43,
+      "valor_nf_brl": 132699.17,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 33550.94,
+      "valor_nf_brl": 175579.28,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 30909.09,
+      "valor_nf_brl": 166164.28,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 27377.33,
+      "valor_nf_brl": 147435.17,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 25960.71,
+      "valor_nf_brl": 139477.1,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 30435.44,
+      "valor_nf_brl": 165348.82,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 30762.53,
+      "valor_nf_brl": 173799.13,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 32939.88,
+      "valor_nf_brl": 195964.57,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 30085.42,
+      "valor_nf_brl": 175648.32,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 29014.33,
+      "valor_nf_brl": 162244.21,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 30298.87,
+      "valor_nf_brl": 169800.17,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 28937.61,
+      "valor_nf_brl": 162094.52,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 26373.44,
+      "valor_nf_brl": 145031.28,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 22446.73,
+      "valor_nf_brl": 120541.9,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 24489.31,
+      "valor_nf_brl": 131342.45,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 28084.12,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 26943.24,
+      "valor_nf_brl": 140216.72,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 30877.37,
+      "valor_nf_brl": 161238.93,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 26660.07,
+      "valor_nf_brl": 157042.82,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 29054.79,
+      "valor_nf_brl": 174530.31,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 28073.39,
+      "valor_nf_brl": 165470.11,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 24274.98,
+      "valor_nf_brl": 139382.25,
+      "cotacao": 5.2544
+    }
+  },
+  "Rolim Wainstok Advogados": {
+    "2023-10": {
+      "consumo_usd": 2094.59,
+      "valor_nf_brl": 10711.6,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 2082.45,
+      "valor_nf_brl": 10305.39,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 2012.95,
+      "valor_nf_brl": 9990.25,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 2008.12,
+      "valor_nf_brl": 10064.22,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 2046.17,
+      "valor_nf_brl": 10294.86,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 2021.84,
+      "valor_nf_brl": 10469.07,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 2030.68,
+      "valor_nf_brl": 10545.23,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 2062.49,
+      "valor_nf_brl": 11243.18,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 2039.32,
+      "valor_nf_brl": 11419.99,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 2235.39,
+      "valor_nf_brl": 12539.84,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 2090.82,
+      "valor_nf_brl": 11701.24,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 2068.63,
+      "valor_nf_brl": 11751.15,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 2049.76,
+      "valor_nf_brl": 12063.06,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 2102.14,
+      "valor_nf_brl": 13027.04,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 2091.09,
+      "valor_nf_brl": 12717.14,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 3184.55,
+      "valor_nf_brl": 18549.55,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 1764.77,
+      "valor_nf_brl": 10302.17,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 1967.07,
+      "valor_nf_brl": 11477.67,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 2760.18,
+      "valor_nf_brl": 15811.06,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 2039.94,
+      "valor_nf_brl": 11411.21,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 2550.48,
+      "valor_nf_brl": 14248.85,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 2226.03,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 2940.8,
+      "valor_nf_brl": 15942.03,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 2217.97,
+      "valor_nf_brl": 12064.65,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 2034.08,
+      "valor_nf_brl": 12481.12,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 2297.71,
+      "valor_nf_brl": 14377.28,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 846.58,
+      "valor_nf_brl": 5197.83,
+      "cotacao": 5.3938
+    }
+  },
+  "SN Informática": {
+    "2023-10": {
+      "consumo_usd": 2.39,
+      "valor_nf_brl": 12.22,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 2.37,
+      "valor_nf_brl": 11.73,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 2.52,
+      "valor_nf_brl": 12.51,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 2.83,
+      "valor_nf_brl": 14.18,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 2.56,
+      "valor_nf_brl": 12.88,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 2.5,
+      "valor_nf_brl": 12.94,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 2.84,
+      "valor_nf_brl": 14.75,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 3.37,
+      "valor_nf_brl": 18.37,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 2.44,
+      "valor_nf_brl": 13.66,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 1.01,
+      "valor_nf_brl": 5.67,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 1.44,
+      "valor_nf_brl": 8.06,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 1.82,
+      "valor_nf_brl": 10.34,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 1.28,
+      "valor_nf_brl": 7.53,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 1.16,
+      "valor_nf_brl": 7.19,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 1.1,
+      "valor_nf_brl": 6.69,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 1.1,
+      "valor_nf_brl": 6.41,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 1.23,
+      "valor_nf_brl": 7.18,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 1.04,
+      "valor_nf_brl": 6.04,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 1.01,
+      "valor_nf_brl": 0,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 1.35,
+      "valor_nf_brl": 7.58,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 2.15,
+      "valor_nf_brl": 12.02,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 0.87,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 0.91,
+      "valor_nf_brl": 0,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 0.97,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 0.84,
+      "valor_nf_brl": 0,
+      "cotacao": 5.3905
+    },
+    "2026-01": {
+      "consumo_usd": 0.5,
+      "valor_nf_brl": 0,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 0.5,
+      "valor_nf_brl": 0,
+      "cotacao": 5.2544
+    }
+  },
+  "Solfácil": {
+    "2023-10": {
+      "consumo_usd": 29535.39,
+      "valor_nf_brl": 148021.27,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 27724.68,
+      "valor_nf_brl": 134455.5,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 34962.49,
+      "valor_nf_brl": 170046.63,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 35402.63,
+      "valor_nf_brl": 172092.15,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 36226.68,
+      "valor_nf_brl": 176797.05,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 40000.85,
+      "valor_nf_brl": 200908.87,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 48175.59,
+      "valor_nf_brl": 242666.84,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 48771.41,
+      "valor_nf_brl": 257888.4,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 49350.44,
+      "valor_nf_brl": 268065.44,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 109162.48,
+      "valor_nf_brl": 593993.16,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 49730.77,
+      "valor_nf_brl": 269965.25,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 55179.11,
+      "valor_nf_brl": 304045.6,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 65319.79,
+      "valor_nf_brl": 372876.71,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 68497.85,
+      "valor_nf_brl": 411746.09,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 46614.45,
+      "valor_nf_brl": 274980.97,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 61061.56,
+      "valor_nf_brl": 344994.97,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 73053.3,
+      "valor_nf_brl": 413663.74,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 77282.45,
+      "valor_nf_brl": 437407.9,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 80807.26,
+      "valor_nf_brl": 448997.6,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 78019.51,
+      "valor_nf_brl": 423337.39,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 75062.37,
+      "valor_nf_brl": 406768.71,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 63070.62,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 53724.28,
+      "valor_nf_brl": 282495.68,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 54287.66,
+      "valor_nf_brl": 286434.91,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 52684.2,
+      "valor_nf_brl": 313561.77,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 58321.17,
+      "valor_nf_brl": 353978.66,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 57669.93,
+      "valor_nf_brl": 343456.46,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 55514.88,
+      "valor_nf_brl": 322073.21,
+      "cotacao": 5.2544
+    }
+  },
+  "StayFilm": {
+    "2023-10": {
+      "consumo_usd": 2115.58,
+      "valor_nf_brl": 10818.94,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 2086.47,
+      "valor_nf_brl": 10325.28,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 1836.74,
+      "valor_nf_brl": 8842.25,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 1579.87,
+      "valor_nf_brl": 7601.22,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 1703.23,
+      "valor_nf_brl": 8312.35,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 1574.17,
+      "valor_nf_brl": 7906.51,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 1435.43,
+      "valor_nf_brl": 7230.5,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 1508.11,
+      "valor_nf_brl": 7974.47,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 1562.77,
+      "valor_nf_brl": 8488.82,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 1562.93,
+      "valor_nf_brl": 8504.52,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 1502.03,
+      "valor_nf_brl": 8153.9,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 1548.49,
+      "valor_nf_brl": 8532.53,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 1498.91,
+      "valor_nf_brl": 8556.61,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 1929.56,
+      "valor_nf_brl": 11598.83,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 1771.97,
+      "valor_nf_brl": 10453.09,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 2206.86,
+      "valor_nf_brl": 12469.01,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 1877.21,
+      "valor_nf_brl": 10629.8,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 1366.04,
+      "valor_nf_brl": 7731.63,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 1409.91,
+      "valor_nf_brl": 7834.08,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 1368.29,
+      "valor_nf_brl": 7424.42,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 1427.83,
+      "valor_nf_brl": 7737.6,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 1441.91,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 1467.21,
+      "valor_nf_brl": 7715.09,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 1439.02,
+      "valor_nf_brl": 7587.61,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 1468.09,
+      "valor_nf_brl": 8737.96,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 1685.54,
+      "valor_nf_brl": 10230.4,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 2098.92,
+      "valor_nf_brl": 12500.32,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 4371.79,
+      "valor_nf_brl": 25363.45,
+      "cotacao": 5.2544
+    }
+  },
+  "Telelaudo": {
+    "2023-10": {
+      "consumo_usd": 9729.67,
+      "valor_nf_brl": 49756.92,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 8955.92,
+      "valor_nf_brl": 44320.03,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 8960.67,
+      "valor_nf_brl": 43582.29,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 7501.0,
+      "valor_nf_brl": 36841.38,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 7927.24,
+      "valor_nf_brl": 39086.49,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 8158.34,
+      "valor_nf_brl": 41398.94,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 8814.48,
+      "valor_nf_brl": 44857.73,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 8566.7,
+      "valor_nf_brl": 45765.37,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 9868.29,
+      "valor_nf_brl": 54156.22,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 10509.03,
+      "valor_nf_brl": 57773.32,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 10920.96,
+      "valor_nf_brl": 59909.74,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 11903.6,
+      "valor_nf_brl": 66267.71,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 11458.16,
+      "valor_nf_brl": 66083.84,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 10351.55,
+      "valor_nf_brl": 62880.42,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 36994.84,
+      "valor_nf_brl": 220487.47,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 14130.13,
+      "valor_nf_brl": 80659.87,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 11959.2,
+      "valor_nf_brl": 68417.81,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 12608.17,
+      "valor_nf_brl": 72096.23,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 12516.93,
+      "valor_nf_brl": 70266.35,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 13535.23,
+      "valor_nf_brl": 74200.27,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 13762.82,
+      "valor_nf_brl": 75351.34,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 13095.67,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 26287.29,
+      "valor_nf_brl": 139653.01,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 14624.23,
+      "valor_nf_brl": 77957.41,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 12332.45,
+      "valor_nf_brl": 74158.02,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 12200.42,
+      "valor_nf_brl": 74813.98,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 11637.93,
+      "valor_nf_brl": 70025.34,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 11290.02,
+      "valor_nf_brl": 66175.63,
+      "cotacao": 5.2544
+    }
+  },
+  "Tem Saude": {
+    "2023-10": {
+      "consumo_usd": 12212.25,
+      "valor_nf_brl": 62452.68,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 12147.82,
+      "valor_nf_brl": 60115.69,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 11166.56,
+      "valor_nf_brl": 61229.99,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 11723.95,
+      "valor_nf_brl": 64208.93,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 14322.23,
+      "valor_nf_brl": 79340.39,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 14725.91,
+      "valor_nf_brl": 83324.94,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 16675.4,
+      "valor_nf_brl": 83130.81,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 18615.84,
+      "valor_nf_brl": 97420.74,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 21167.55,
+      "valor_nf_brl": 113794.73,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 22851.3,
+      "valor_nf_brl": 123061.1,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 22715.58,
+      "valor_nf_brl": 122042.24,
+      "cotacao": 5.5964
+    }
+  },
+  "Wilson Sons": {
+    "2023-10": {
+      "consumo_usd": 43330.83,
+      "valor_nf_brl": 217159.31,
+      "cotacao": 5.1139
+    },
+    "2023-11": {
+      "consumo_usd": 44551.16,
+      "valor_nf_brl": 216060.24,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 64673.68,
+      "valor_nf_brl": 314555.33,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 81363.29,
+      "valor_nf_brl": 407053.14,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 84456.9,
+      "valor_nf_brl": 416427.95,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 81868.14,
+      "valor_nf_brl": 415434.44,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 81894.58,
+      "valor_nf_brl": 416769.34,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 79185.85,
+      "valor_nf_brl": 423029.83,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 82272.43,
+      "valor_nf_brl": 451503.11,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 85366.76,
+      "valor_nf_brl": 469303.19,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 84541.09,
+      "valor_nf_brl": 463670.08,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 87117.67,
+      "valor_nf_brl": 484988.66,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 86083.61,
+      "valor_nf_brl": 496478.98,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 87954.04,
+      "valor_nf_brl": 534153.41,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 90531.52,
+      "valor_nf_brl": 539563.58,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 85730.86,
+      "valor_nf_brl": 489382.69,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 89753.11,
+      "valor_nf_brl": 513471.29,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 88050.69,
+      "valor_nf_brl": 503492.64,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 89104.67,
+      "valor_nf_brl": 500207.43,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 87564.0,
+      "valor_nf_brl": 480026.58,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 90043.7,
+      "valor_nf_brl": 492988.35,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 87337.52,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 86254.14,
+      "valor_nf_brl": 456151.86,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 92577.88,
+      "valor_nf_brl": 493504.97,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 81918.86,
+      "valor_nf_brl": 492601.36,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 87993.28,
+      "valor_nf_brl": 539581.99,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 91570.41,
+      "valor_nf_brl": 550978.54,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 92103.45,
+      "valor_nf_brl": 539627.21,
+      "cotacao": 5.2544
+    }
+  },
+  "Fiscontech": {
+    "2023-11": {
+      "consumo_usd": 395.73,
+      "valor_nf_brl": 1986.9,
+      "cotacao": 4.9487
+    },
+    "2024-07": {
+      "consumo_usd": 1.14,
+      "valor_nf_brl": 0,
+      "cotacao": 0
+    },
+    "2024-08": {
+      "consumo_usd": 1.05,
+      "valor_nf_brl": 0.0,
+      "cotacao": 5.6097
+    },
+    "2024-10": {
+      "consumo_usd": 1896.78,
+      "valor_nf_brl": 10343.55,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 1572.85,
+      "valor_nf_brl": 8885.46,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 1123.17,
+      "valor_nf_brl": 6681.32,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 1354.93,
+      "valor_nf_brl": 7910.05,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 1215.08,
+      "valor_nf_brl": 6794.22,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 1185.61,
+      "valor_nf_brl": 6643.92,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 1137.75,
+      "valor_nf_brl": 6372.65,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 1064.11,
+      "valor_nf_brl": 5851.25,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 830.01,
+      "valor_nf_brl": 4456.69,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 632.78,
+      "valor_nf_brl": 3392.94,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 596.62,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 661.79,
+      "valor_nf_brl": 3437.12,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 533.27,
+      "valor_nf_brl": 2783.99,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 428.42,
+      "valor_nf_brl": 2523.17,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 425.73,
+      "valor_nf_brl": 2556.91,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 396.9,
+      "valor_nf_brl": 2338.99,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 12.47,
+      "valor_nf_brl": 71.14,
+      "cotacao": 5.2544
+    }
+  },
+  "Kovi": {
+    "2023-11": {
+      "consumo_usd": 45080.39,
+      "valor_nf_brl": 212773.07,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 45438.32,
+      "valor_nf_brl": 216269.19,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 43906.86,
+      "valor_nf_brl": 209774.88,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 44859.26,
+      "valor_nf_brl": 223927.68,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 44704.47,
+      "valor_nf_brl": 230575.25,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 51708.99,
+      "valor_nf_brl": 243851.95,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 52224.87,
+      "valor_nf_brl": 259077.14,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 51231.58,
+      "valor_nf_brl": 261672.58,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 50163.42,
+      "valor_nf_brl": 256085.19,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 48677.51,
+      "valor_nf_brl": 247915.62,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 49914.0,
+      "valor_nf_brl": 258611.43,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 51107.52,
+      "valor_nf_brl": 273717.23,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 52561.43,
+      "valor_nf_brl": 296425.63,
+      "cotacao": 6.197
+    }
+  },
+  "Lead Energy": {
+    "2023-11": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 0,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 113.51,
+      "valor_nf_brl": 563.35,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 570.49,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 572.71,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 589.41,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 591.11,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 620.52,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 637.44,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 638.55,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 637.05,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 113.83,
+      "valor_nf_brl": 646.63,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 613.64,
+      "valor_nf_brl": 3611.34,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 610.54,
+      "valor_nf_brl": 3783.54,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 614.25,
+      "valor_nf_brl": 3735.61,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 597.73,
+      "valor_nf_brl": 3481.69,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 648.11,
+      "valor_nf_brl": 3783.46,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 679.94,
+      "valor_nf_brl": 3967.41,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 709.06,
+      "valor_nf_brl": 4061.69,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 689.88,
+      "valor_nf_brl": 3859.11,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 691.97,
+      "valor_nf_brl": 3865.87,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 740.63,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2026-01": {
+      "consumo_usd": 35.76,
+      "valor_nf_brl": 0,
+      "cotacao": 5.3938
+    }
+  },
+  "MailerWeb/Techcube": {
+    "2023-11": {
+      "consumo_usd": 43.85,
+      "valor_nf_brl": 217.0,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 1642.86,
+      "valor_nf_brl": 8153.5,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 1815.8,
+      "valor_nf_brl": 9100.36,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 2201.0,
+      "valor_nf_brl": 11073.85,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 2356.29,
+      "valor_nf_brl": 12200.85,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 5508.34,
+      "valor_nf_brl": 28604.56,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 8711.62,
+      "valor_nf_brl": 47489.35,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 7031.67,
+      "valor_nf_brl": 39376.66,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 4616.39,
+      "valor_nf_brl": 25896.5,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 3913.1,
+      "valor_nf_brl": 21899.59,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 4789.48,
+      "valor_nf_brl": 27207.33,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 2993.15,
+      "valor_nf_brl": 17615.01,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 5490.34,
+      "valor_nf_brl": 34023.85,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 7128.14,
+      "valor_nf_brl": 43350.38,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 4761.9,
+      "valor_nf_brl": 27737.39,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 5190.07,
+      "valor_nf_brl": 30297.99,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 5073.06,
+      "valor_nf_brl": 29600.83,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 5074.29,
+      "valor_nf_brl": 29066.88,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 5171.05,
+      "valor_nf_brl": 28926.29,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 5241.02,
+      "valor_nf_brl": 29280.16,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 4555.01,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 4377.13,
+      "valor_nf_brl": 23728.38,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 4418.91,
+      "valor_nf_brl": 24036.6,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 3140.46,
+      "valor_nf_brl": 19269.87,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 3134.87,
+      "valor_nf_brl": 19615.59,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 3155.35,
+      "valor_nf_brl": 19373.18,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 2957.43,
+      "valor_nf_brl": 17688.53,
+      "cotacao": 5.2544
+    }
+  },
+  "Swap": {
+    "2023-11": {
+      "consumo_usd": 91063.6,
+      "valor_nf_brl": 424718.02,
+      "cotacao": 4.9487
+    },
+    "2024-01": {
+      "consumo_usd": 98298.6,
+      "valor_nf_brl": 412642.04,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 114774.98,
+      "valor_nf_brl": 412642.04,
+      "cotacao": 4.963
+    },
+    "2024-03": {
+      "consumo_usd": 106606.55,
+      "valor_nf_brl": 458121.82,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 88106.7,
+      "valor_nf_brl": 389660.02,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 90757.96,
+      "valor_nf_brl": 402526.55,
+      "cotacao": 5.193
+    },
+    "2024-08": {
+      "consumo_usd": 62848.3,
+      "valor_nf_brl": 372697.45,
+      "cotacao": 5.6097
+    },
+    "2024-11": {
+      "consumo_usd": 76370.82,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8851
+    },
+    "2025-06": {
+      "consumo_usd": 107740.05,
+      "valor_nf_brl": 517481.07,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 110802.98,
+      "valor_nf_brl": 619024.98,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 173712.61,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-10": {
+      "consumo_usd": 14624.23,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4395
+    }
+  },
+  "Asaas": {
+    "2024-01": {
+      "consumo_usd": 65861.58,
+      "valor_nf_brl": 326869.72,
+      "cotacao": 4.963
+    },
+    "2024-02": {
+      "consumo_usd": 77358.96,
+      "valor_nf_brl": 387699.28,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 74722.01,
+      "valor_nf_brl": 375946.56,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 65679.8,
+      "valor_nf_brl": 351985.38,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 65756.4,
+      "valor_nf_brl": 353866.03,
+      "cotacao": 5.193
+    },
+    "2024-11": {
+      "consumo_usd": 77704.2,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8851
+    },
+    "2025-06": {
+      "consumo_usd": 112006.51,
+      "valor_nf_brl": 626551.71,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 137225.57,
+      "valor_nf_brl": 673494.34,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 133903.52,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    }
+  },
+  "Energisa": {
+    "2024-02": {
+      "consumo_usd": 98.95,
+      "valor_nf_brl": 915.62,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 18390.6,
+      "valor_nf_brl": 84487.14,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 20490.73,
+      "valor_nf_brl": 96901.86,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 19045.73,
+      "valor_nf_brl": 90332.32,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 17379.3,
+      "valor_nf_brl": 86536.52,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 20799.39,
+      "valor_nf_brl": 116471.82,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 26294.07,
+      "valor_nf_brl": 134727.87,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 20314.1,
+      "valor_nf_brl": 103840.63,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 19242.76,
+      "valor_nf_brl": 99844.88,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 18631.05,
+      "valor_nf_brl": 100155.33,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 18950.8,
+      "valor_nf_brl": 107268.63,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 19652.23,
+      "valor_nf_brl": 109166.54,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 64461.69,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 15910.99,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 10161.9,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 14716.54,
+      "valor_nf_brl": 0,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 12904.37,
+      "valor_nf_brl": 0,
+      "cotacao": 5.5939
+    }
+  },
+  "Truckpag": {
+    "2024-02": {
+      "consumo_usd": 8077.67,
+      "valor_nf_brl": 38864.04,
+      "cotacao": 5.0118
+    },
+    "2024-03": {
+      "consumo_usd": 7855.36,
+      "valor_nf_brl": 37941.63,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 7581.99,
+      "valor_nf_brl": 37689.11,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 8197.82,
+      "valor_nf_brl": 40868.07,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 8324.62,
+      "valor_nf_brl": 43564.52,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 8550.96,
+      "valor_nf_brl": 45969.15,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 9043.62,
+      "valor_nf_brl": 48702.6,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 8705.0,
+      "valor_nf_brl": 46768.68,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 9207.92,
+      "valor_nf_brl": 50214.64,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 8956.7,
+      "valor_nf_brl": 50602.69,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 9772.6,
+      "valor_nf_brl": 58138.73,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 4250.26,
+      "valor_nf_brl": 24814.38,
+      "cotacao": 6.0816
+    }
+  },
+  "Bolsa OTC": {
+    "2024-03": {
+      "consumo_usd": 6501.35,
+      "valor_nf_brl": 32055.97,
+      "cotacao": 5.0313
+    },
+    "2024-04": {
+      "consumo_usd": 7151.95,
+      "valor_nf_brl": 36292.08,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 7801.15,
+      "valor_nf_brl": 39700.79,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 7636.41,
+      "valor_nf_brl": 40795.59,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 7874.25,
+      "valor_nf_brl": 43213.12,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 7912.58,
+      "valor_nf_brl": 43499.35,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 6277.38,
+      "valor_nf_brl": 34428.67,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 5855.55,
+      "valor_nf_brl": 32597.97,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 5738.86,
+      "valor_nf_brl": 33098.38,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 5904.91,
+      "valor_nf_brl": 35861.1,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 5898.52,
+      "valor_nf_brl": 35154.89,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 5535.99,
+      "valor_nf_brl": 31601.42,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 6676.46,
+      "valor_nf_brl": 38195.56,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 6597.42,
+      "valor_nf_brl": 37725.37,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 6773.44,
+      "valor_nf_brl": 38024.18,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 6628.65,
+      "valor_nf_brl": 36338.33,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 7071.84,
+      "valor_nf_brl": 38718.19,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 7668.03,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 7493.31,
+      "valor_nf_brl": 39808.71,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 7696.15,
+      "valor_nf_brl": 41025.89,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 6592.92,
+      "valor_nf_brl": 39645.09,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 6802.97,
+      "valor_nf_brl": 41716.37,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 6807.56,
+      "valor_nf_brl": 40961.05,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 4300.03,
+      "valor_nf_brl": 0,
+      "cotacao": 5.2544
+    }
+  },
+  "Easycarros": {
+    "2024-04": {
+      "consumo_usd": 2067.55,
+      "valor_nf_brl": 10277.53,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 9639.51,
+      "valor_nf_brl": 48057.08,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 10089.83,
+      "valor_nf_brl": 52802.25,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 18258.68,
+      "valor_nf_brl": 98156.93,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 18570.96,
+      "valor_nf_brl": 100010.18,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 16533.94,
+      "valor_nf_brl": 88830.62,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 17817.95,
+      "valor_nf_brl": 97168.73,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 13925.14,
+      "valor_nf_brl": 78672.95,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 12863.22,
+      "valor_nf_brl": 76482.3,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 11195.27,
+      "valor_nf_brl": 65361.22,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 9983.94,
+      "valor_nf_brl": 55827.59,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 10601.67,
+      "valor_nf_brl": 59411.73,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 10316.66,
+      "valor_nf_brl": 57786.08,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 10647.4,
+      "valor_nf_brl": 58547.84,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 10267.19,
+      "valor_nf_brl": 55131.48,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 10231.26,
+      "valor_nf_brl": 54872.85,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 10342.28,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 10255.71,
+      "valor_nf_brl": 53372.24,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 10658.3,
+      "valor_nf_brl": 55656.71,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 9211.67,
+      "valor_nf_brl": 54261.92,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 9667.5,
+      "valor_nf_brl": 58072.06,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 9778.76,
+      "valor_nf_brl": 57637.94,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 9037.59,
+      "valor_nf_brl": 51892.15,
+      "cotacao": 5.2544
+    }
+  },
+  "Granito": {
+    "2024-04": {
+      "consumo_usd": 12740.62,
+      "valor_nf_brl": 63331.96,
+      "cotacao": 5.178
+    },
+    "2024-05": {
+      "consumo_usd": 13627.95,
+      "valor_nf_brl": 67938.59,
+      "cotacao": 5.193
+    },
+    "2024-06": {
+      "consumo_usd": 15322.98,
+      "valor_nf_brl": 80188.56,
+      "cotacao": 5.4513
+    },
+    "2024-07": {
+      "consumo_usd": 20686.96,
+      "valor_nf_brl": 111206.89,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 24531.98,
+      "valor_nf_brl": 132112.22,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 27030.41,
+      "valor_nf_brl": 145224.19,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 29208.48,
+      "valor_nf_brl": 159279.29,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 31606.66,
+      "valor_nf_brl": 178568.22,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 34162.97,
+      "valor_nf_brl": 203347.64,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 35505.28,
+      "valor_nf_brl": 207291.21,
+      "cotacao": 6.0816
+    }
+  },
+  "Delta Energia": {
+    "2024-07": {
+      "consumo_usd": 25573.14,
+      "valor_nf_brl": 143207.05,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 26067.96,
+      "valor_nf_brl": 143207.05,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 24693.49,
+      "valor_nf_brl": 138196.68,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 24820.84,
+      "valor_nf_brl": 135358.42,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 25447.29,
+      "valor_nf_brl": 143769.61,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 27671.44,
+      "valor_nf_brl": 164621.73,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 28516.33,
+      "valor_nf_brl": 166487.47,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 26945.14,
+      "valor_nf_brl": 150673.53,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 24801.78,
+      "valor_nf_brl": 138993.55,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 23070.64,
+      "valor_nf_brl": 129230.55,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 26172.13,
+      "valor_nf_brl": 143924.25,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 20805.71,
+      "valor_nf_brl": 111729.44,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 21304.88,
+      "valor_nf_brl": 114263.54,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 20828.23,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 19448.1,
+      "valor_nf_brl": 101220.79,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 17246.98,
+      "valor_nf_brl": 90069.07,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 14516.28,
+      "valor_nf_brl": 85515.19,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 15368.59,
+      "valor_nf_brl": 92318.16,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 15634.62,
+      "valor_nf_brl": 92153.54,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 14819.56,
+      "valor_nf_brl": 85039.1,
+      "cotacao": 5.2544
+    }
+  },
+  "MobileMed": {
+    "2024-07": {
+      "consumo_usd": 16933.36,
+      "valor_nf_brl": 94824.36,
+      "cotacao": 5.5999
+    },
+    "2024-08": {
+      "consumo_usd": 21896.36,
+      "valor_nf_brl": 113004.15,
+      "cotacao": 5.6097
+    },
+    "2024-09": {
+      "consumo_usd": 40800.98,
+      "valor_nf_brl": 219207.04,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 20090.44,
+      "valor_nf_brl": 109560.26,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 19840.93,
+      "valor_nf_brl": 112093.93,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 19800.61,
+      "valor_nf_brl": 117795.32,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 22326.57,
+      "valor_nf_brl": 130347.97,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 19038.41,
+      "valor_nf_brl": 106458.39,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 13877.52,
+      "valor_nf_brl": 77770.17,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 10080.32,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8349
+    }
+  },
+  "Xvision": {
+    "2024-09": {
+      "consumo_usd": 3033.71,
+      "valor_nf_brl": 16332.45,
+      "cotacao": 5.5964
+    },
+    "2024-10": {
+      "consumo_usd": 3128.28,
+      "valor_nf_brl": 17094.56,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 3051.16,
+      "valor_nf_brl": 17238.15,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 3677.54,
+      "valor_nf_brl": 21878.26,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 4049.05,
+      "valor_nf_brl": 23639.65,
+      "cotacao": 6.0816
+    },
+    "2025-03": {
+      "consumo_usd": 4090.22,
+      "valor_nf_brl": 22922.32,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 4195.3,
+      "valor_nf_brl": 23127.79,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 2684.58,
+      "valor_nf_brl": 15135.05,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 2699.01,
+      "valor_nf_brl": 14494.04,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 2785.69,
+      "valor_nf_brl": 14940.38,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 2623.86,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 2650.13,
+      "valor_nf_brl": 13791.68,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 2786.75,
+      "valor_nf_brl": 14552.16,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 2273.89,
+      "valor_nf_brl": 13368.16,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 2720.08,
+      "valor_nf_brl": 16339.35,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 2445.89,
+      "valor_nf_brl": 14416.56,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 2223.34,
+      "valor_nf_brl": 12764.78,
+      "cotacao": 5.2544
+    }
+  },
+  "Crefaz": {
+    "2024-10": {
+      "consumo_usd": 3418.46,
+      "valor_nf_brl": 19419.06,
+      "cotacao": 5.6806
+    },
+    "2024-11": {
+      "consumo_usd": 6477.84,
+      "valor_nf_brl": 38122.83,
+      "cotacao": 5.8851
+    },
+    "2024-12": {
+      "consumo_usd": 3101.77,
+      "valor_nf_brl": 19221.85,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 3557.11,
+      "valor_nf_brl": 21632.86,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 3935.67,
+      "valor_nf_brl": 22924.78,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 8878.17,
+      "valor_nf_brl": 51827.94,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 7466.44,
+      "valor_nf_brl": 43566.03,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 7064.34,
+      "valor_nf_brl": 40466.45,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 7295.4,
+      "valor_nf_brl": 40809.6,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 9431.34,
+      "valor_nf_brl": 52690.23,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 10797.81,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 13477.47,
+      "valor_nf_brl": 73061.31,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 11775.71,
+      "valor_nf_brl": 64053.77,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 9458.14,
+      "valor_nf_brl": 58035.19,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 8920.14,
+      "valor_nf_brl": 55815.4,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 9196.59,
+      "valor_nf_brl": 56465.12,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 8398.9,
+      "valor_nf_brl": 50234.24,
+      "cotacao": 5.2544
+    }
+  },
+  "Riverdata": {
+    "2024-12": {
+      "consumo_usd": 0.01,
+      "valor_nf_brl": 0,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 0.01,
+      "valor_nf_brl": 0,
+      "cotacao": 6.0816
+    },
+    "2025-04": {
+      "consumo_usd": 0.01,
+      "valor_nf_brl": 0,
+      "cotacao": 5.8349
+    },
+    "2025-09": {
+      "consumo_usd": 0.01,
+      "valor_nf_brl": 0,
+      "cotacao": 5.421
+    },
+    "2025-11": {
+      "consumo_usd": 0.01,
+      "valor_nf_brl": 0,
+      "cotacao": 5.3905
+    }
+  },
+  "Ubots": {
+    "2024-12": {
+      "consumo_usd": 16831.07,
+      "valor_nf_brl": 100130.62,
+      "cotacao": 6.197
+    },
+    "2025-01": {
+      "consumo_usd": 14517.52,
+      "valor_nf_brl": 84757.93,
+      "cotacao": 6.0816
+    },
+    "2025-02": {
+      "consumo_usd": 18654.87,
+      "valor_nf_brl": 104315.53,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 20817.98,
+      "valor_nf_brl": 116667.64,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 21461.22,
+      "valor_nf_brl": 120215.4,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 22272.48,
+      "valor_nf_brl": 122479.48,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 23112.2,
+      "valor_nf_brl": 124115.52,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 24985.05,
+      "valor_nf_brl": 134001.18,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 25167.76,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 26848.13,
+      "valor_nf_brl": 139721.67,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 29530.59,
+      "valor_nf_brl": 154206.14,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 24808.91,
+      "valor_nf_brl": 146138.45,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 26407.12,
+      "valor_nf_brl": 158625.85,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 28230.6,
+      "valor_nf_brl": 166396.79,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 27825.69,
+      "valor_nf_brl": 159769.74,
+      "cotacao": 5.2544
+    }
+  },
+  "Abbiamo": {
+    "2025-02": {
+      "consumo_usd": 1889.13,
+      "valor_nf_brl": 10794.87,
+      "cotacao": 5.8249
+    },
+    "2025-03": {
+      "consumo_usd": 2150.42,
+      "valor_nf_brl": 12553.36,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 3046.26,
+      "valor_nf_brl": 17774.54,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 3841.9,
+      "valor_nf_brl": 22007.26,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 4576.54,
+      "valor_nf_brl": 25600.46,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 4604.88,
+      "valor_nf_brl": 25725.96,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 3675.57,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 5335.89,
+      "valor_nf_brl": 28925.49,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 3822.79,
+      "valor_nf_brl": 20793.71,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 3549.26,
+      "valor_nf_brl": 21777.96,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 3382.66,
+      "valor_nf_brl": 21165.69,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 3327.94,
+      "valor_nf_brl": 20432.48,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 3228.52,
+      "valor_nf_brl": 19309.58,
+      "cotacao": 5.2544
+    }
+  },
+  "Bloxs": {
+    "2025-03": {
+      "consumo_usd": 1393.63,
+      "valor_nf_brl": 8135.57,
+      "cotacao": 5.8377
+    },
+    "2025-04": {
+      "consumo_usd": 1375.64,
+      "valor_nf_brl": 8026.74,
+      "cotacao": 5.8349
+    },
+    "2025-05": {
+      "consumo_usd": 1491.52,
+      "valor_nf_brl": 8543.76,
+      "cotacao": 5.7283
+    },
+    "2025-06": {
+      "consumo_usd": 1753.75,
+      "valor_nf_brl": 9810.22,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 1926.68,
+      "valor_nf_brl": 10763.77,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 2109.14,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 2765.3,
+      "valor_nf_brl": 14990.5,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 2197.94,
+      "valor_nf_brl": 11955.25,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 1854.94,
+      "valor_nf_brl": 11377.81,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 2100.59,
+      "valor_nf_brl": 13143.86,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 2278.0,
+      "valor_nf_brl": 13986.43,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 1684.34,
+      "valor_nf_brl": 10074.12,
+      "cotacao": 5.2544
+    }
+  },
+  "ITS Rio": {
+    "2025-06": {
+      "consumo_usd": 18.6,
+      "valor_nf_brl": 104.0,
+      "cotacao": 5.5939
+    },
+    "2025-07": {
+      "consumo_usd": 3054.29,
+      "valor_nf_brl": 17063.45,
+      "cotacao": 5.5867
+    },
+    "2025-08": {
+      "consumo_usd": 904.47,
+      "valor_nf_brl": 0,
+      "cotacao": 5.4987
+    },
+    "2025-09": {
+      "consumo_usd": 3990.53,
+      "valor_nf_brl": 21632.61,
+      "cotacao": 5.421
+    },
+    "2025-10": {
+      "consumo_usd": 1005.61,
+      "valor_nf_brl": 5470.02,
+      "cotacao": 5.4395
+    },
+    "2025-11": {
+      "consumo_usd": 954.21,
+      "valor_nf_brl": 5855.04,
+      "cotacao": 5.3905
+    },
+    "2025-12": {
+      "consumo_usd": 970.62,
+      "valor_nf_brl": 6073.39,
+      "cotacao": 5.497
+    },
+    "2026-01": {
+      "consumo_usd": 997.25,
+      "valor_nf_brl": 6122.9,
+      "cotacao": 5.3938
+    },
+    "2026-02": {
+      "consumo_usd": 928.03,
+      "valor_nf_brl": 5550.59,
+      "cotacao": 5.2544
+    }
+  }
+}

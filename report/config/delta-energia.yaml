@@ -1,0 +1,7 @@
+name: Delta Energia
+report_title: "Delta Energia _ Report Mensal"
+aws_account_id: "ACCOUNT_ID_AQUI"
+aws_profile: "delta-energia"
+base_sheet_name: "Dados"
+currency_symbol: "$"
+usd_brl_rate: 5.5

@@ -1,7 +1,22 @@
-node_modules/
-dist/
-.env.local
-.env*.local
-*.log
-.DS_Store
+# App
+app/node_modules/
+app/dist/
+app/.env.local
+app/.env*.local
 
+# Terraform
+infra/.terraform/
+infra/*.tfstate
+infra/*.tfstate.backup
+infra/*.tfvars
+infra/.terraform.lock.hcl
+
+# Report / Python
+report/__pycache__/
+report/*.pyc
+report/.venv/
+report/input/
+report/output/
+
+# General
+.DS_Store

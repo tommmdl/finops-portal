@@ -1,0 +1,22 @@
+# ──────────────────────────────────────────────────────────────
+# Copie este arquivo para terraform.tfvars e preencha os valores
+# NÃO commite terraform.tfvars no Git (já está no .gitignore)
+# ──────────────────────────────────────────────────────────────
+
+aws_region  = "us-east-1"
+project     = "finops-portal"
+environment = "prod"
+
+# E-mail do admin — receberá senha temporária por e-mail
+admin_email = "seu-email@empresa.com"
+
+# Após o primeiro deploy do Amplify, adicione a URL gerada aqui
+# e rode terraform apply novamente para atualizar o Cognito
+callback_urls = [
+  "http://localhost:3000",
+  # "https://main.XXXXXXXXXX.amplifyapp.com"
+]
+
+# Opcional: integração GitHub para CI/CD automático
+# github_repo  = "seu-usuario/finops-portal"
+# github_token = "ghp_XXXXXXXXXXXXXXXX"
