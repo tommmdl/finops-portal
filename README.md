@@ -32,7 +32,7 @@ O FinOps Portal centraliza o acompanhamento de custos AWS por cliente, permitind
 │                                                                 │
 │   ┌─────────────┐     ┌──────────────┐     ┌────────────────┐   │
 │   │   Amplify   │     │ API Gateway  │     │    Cognito     │   │
-│   │  (React SPA)│────▶│  REST API    │◀────│  (Auth/JWT)   │   │
+│   │  (React SPA)│───▶│  REST API     │◀───│  (Auth/JWT)    │   │
 │   └─────────────┘     └──────┬───────┘     └────────────────┘   │
 │                              │                                  │
 │               ┌──────────────┼──────────────┐                   │
