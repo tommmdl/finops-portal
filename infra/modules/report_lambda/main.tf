@@ -110,7 +110,9 @@ resource "aws_lambda_function" "report" {
 
   environment {
     variables = {
-      REPORT_BUCKET = aws_s3_bucket.reports.bucket
+      REPORT_BUCKET  = aws_s3_bucket.reports.bucket
+      MPLCONFIGDIR   = "/opt/matplotlib-cache"
+      FONTCONFIG_PATH = "/etc/fonts"
     }
   }
 

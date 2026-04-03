@@ -8,6 +8,13 @@ WORKDIR ${LAMBDA_TASK_ROOT}
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Pré-aquece o font cache do matplotlib dentro da imagem
+# Evita rebuild no cold start da Lambda
+ENV MPLCONFIGDIR=/opt/matplotlib-cache
+RUN mkdir -p /opt/matplotlib-cache && \
+    python -c "import matplotlib.font_manager" && \
+    chmod -R 755 /opt/matplotlib-cache
+
 # Código-fonte
 COPY src/            ./
 COPY config/         ./config/
