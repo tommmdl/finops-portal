@@ -51,13 +51,13 @@ resource "aws_api_gateway_resource" "billing_cliente" {
 # ── Métodos ───────────────────────────────────────────────────
 locals {
   methods = {
-    "GET_clients"     = { resource = aws_api_gateway_resource.clients.id, http = "GET" }
-    "POST_clients"    = { resource = aws_api_gateway_resource.clients.id, http = "POST" }
-    "GET_client"      = { resource = aws_api_gateway_resource.client_id.id, http = "GET" }
-    "PUT_client"      = { resource = aws_api_gateway_resource.client_id.id, http = "PUT" }
-    "DELETE_client"   = { resource = aws_api_gateway_resource.client_id.id, http = "DELETE" }
-    "OPTIONS_clients" = { resource = aws_api_gateway_resource.clients.id, http = "OPTIONS" }
-    "OPTIONS_client"  = { resource = aws_api_gateway_resource.client_id.id, http = "OPTIONS" }
+    "GET_clients"         = { resource = aws_api_gateway_resource.clients.id, http = "GET" }
+    "POST_clients"        = { resource = aws_api_gateway_resource.clients.id, http = "POST" }
+    "GET_client"          = { resource = aws_api_gateway_resource.client_id.id, http = "GET" }
+    "PUT_client"          = { resource = aws_api_gateway_resource.client_id.id, http = "PUT" }
+    "DELETE_client"       = { resource = aws_api_gateway_resource.client_id.id, http = "DELETE" }
+    "OPTIONS_clients"     = { resource = aws_api_gateway_resource.clients.id, http = "OPTIONS" }
+    "OPTIONS_client"      = { resource = aws_api_gateway_resource.client_id.id, http = "OPTIONS" }
     "GET_billing"         = { resource = aws_api_gateway_resource.billing_cliente.id, http = "GET" }
     "OPTIONS_billing"     = { resource = aws_api_gateway_resource.billing_cliente.id, http = "OPTIONS" }
     "GET_report_data"     = { resource = aws_api_gateway_resource.report_data.id, http = "GET" }
@@ -206,7 +206,7 @@ resource "aws_api_gateway_stage" "main" {
 
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.api_gw.arn
-    format = jsonencode({
+    format          = jsonencode({
       requestId      = "$context.requestId"
       ip             = "$context.identity.sourceIp"
       httpMethod     = "$context.httpMethod"
