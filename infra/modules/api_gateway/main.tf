@@ -151,7 +151,7 @@ resource "aws_api_gateway_integration_response" "reports_options" {
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,Authorization'"
     "method.response.header.Access-Control-Allow-Methods" = "'POST,OPTIONS'"
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://main.d4uovab8e7t0i.amplifyapp.com'"
   }
   depends_on = [aws_api_gateway_integration.reports_options]
 }

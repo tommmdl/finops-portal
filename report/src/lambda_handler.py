@@ -44,8 +44,9 @@ def _cors(body: dict, status: int = 200) -> dict:
         "statusCode": status,
         "headers": {
             "Content-Type":                 "application/json",
-            "Access-Control-Allow-Origin":  "*",
+            "Access-Control-Allow-Origin":  "https://main.d4uovab8e7t0i.amplifyapp.com",
             "Access-Control-Allow-Headers": "Content-Type,Authorization",
+            "Access-Control-Allow-Methods": "POST,OPTIONS",
         },
         "body": json.dumps(body),
     }
