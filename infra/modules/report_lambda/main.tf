@@ -93,6 +93,11 @@ resource "aws_iam_role_policy" "report_lambda" {
         Effect   = "Allow"
         Action   = ["s3:PutObject", "s3:GetObject"]
         Resource = "${aws_s3_bucket.reports.arn}/reports/*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["dynamodb:GetItem", "dynamodb:Query", "dynamodb:Scan"]
+        Resource = [var.clients_table_arn, var.billing_table_arn]
       }
     ]
   })
@@ -111,6 +116,8 @@ resource "aws_lambda_function" "report" {
   environment {
     variables = {
       REPORT_BUCKET   = aws_s3_bucket.reports.bucket
+      CLIENTS_TABLE   = var.clients_table_name
+      BILLING_TABLE   = var.billing_table_name
       MPLCONFIGDIR    = "/opt/matplotlib-cache"
       FONTCONFIG_PATH = "/etc/fonts"
     }

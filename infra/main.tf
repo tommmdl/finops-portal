@@ -66,9 +66,13 @@ module "lambda" {
 }
 
 module "report_lambda" {
-  source      = "./modules/report_lambda"
-  project     = var.project
-  environment = var.environment
+  source             = "./modules/report_lambda"
+  project            = var.project
+  environment        = var.environment
+  clients_table_name = module.dynamodb.clients_table_name
+  clients_table_arn  = module.dynamodb.clients_table_arn
+  billing_table_name = module.dynamodb.billing_history_table_name
+  billing_table_arn  = module.dynamodb.billing_history_table_arn
 }
 
 module "api_gateway" {
