@@ -3,6 +3,32 @@ data "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
 }
 
+# ── Import de recursos já existentes na AWS ───────────────────
+import {
+  to = aws_iam_role.github_actions
+  id = "finops-portal-prod-github-actions-role"
+}
+
+import {
+  to = aws_iam_role_policy.github_actions_ecr
+  id = "finops-portal-prod-github-actions-role:ecr-access"
+}
+
+import {
+  to = aws_iam_role_policy.github_actions_lambda
+  id = "finops-portal-prod-github-actions-role:lambda-deploy"
+}
+
+import {
+  to = aws_iam_role_policy.github_actions_terraform_state
+  id = "finops-portal-prod-github-actions-role:terraform-state"
+}
+
+import {
+  to = aws_iam_role_policy_attachment.github_actions_admin
+  id = "finops-portal-prod-github-actions-role/arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
 # ── Role assumida pelo GitHub Actions ────────────────────────
 resource "aws_iam_role" "github_actions" {
   name = "${var.project}-${var.environment}-github-actions-role"
