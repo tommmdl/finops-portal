@@ -13,10 +13,14 @@ infra/.terraform.lock.hcl
 
 # Report / Python
 report/__pycache__/
+report/**/__pycache__/
+report/**/*.pyc
 report/*.pyc
 report/.venv/
 report/input/
 report/output/
+report/smoke_test.json
 
 # General
 .DS_Store
+node_modules

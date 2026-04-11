@@ -74,6 +74,31 @@ exports.handler = async (event) => {
       return resp(200, { items, count: items.length });
     }
 
+    // ── GET /clients/:id/report-data ─────────────────────────
+    if (method === "GET" && id && path.endsWith("/report-data")) {
+      const clientResp = await db.send(new GetCommand({ TableName: TABLE, Key: { id } }));
+      if (!clientResp.Item) return resp(404, { error: "Cliente não encontrado" });
+
+      const clienteNome = clientResp.Item.nome;
+      const now = new Date();
+      const mesAnoValues = Array.from({ length: 6 }, (_, i) => {
+        const d = new Date(now.getFullYear(), now.getMonth() - (i + 1), 1);
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+      });
+
+      const billingResp = await db.send(new QueryCommand({
+        TableName: BILLING_TABLE,
+        KeyConditionExpression: "clienteNome = :n",
+        ExpressionAttributeValues: { ":n": clienteNome },
+      }));
+
+      const billingHistory = (billingResp.Items || [])
+        .filter(item => mesAnoValues.includes(item.mesAno))
+        .sort((a, b) => a.mesAno.localeCompare(b.mesAno));
+
+      return resp(200, { client: clientResp.Item, billingHistory });
+    }
+
     // ── GET /clients/:id ──────────────────────────────────────
     if (method === "GET" && id) {
       const r = await db.send(new GetCommand({ TableName: TABLE, Key: { id } }));

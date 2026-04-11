@@ -1,24 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { api } from '../services/api.js'
 import Topbar, { Btn } from '../components/Topbar.jsx'
-
-const CLIENTS = [
-  { slug: 'wilson-sons',   name: 'Wilson Sons' },
-  { slug: 'delta-energia', name: 'Delta Energia' },
-  { slug: 'easy-carros',   name: 'Easy Carros' },
-  { slug: 'compliance',    name: 'Compliance' },
-  { slug: 'rediseg',       name: 'Rediseg' },
-  { slug: 'ubots',         name: 'Ubots' },
-]
-
-function toBase64(file) {
-  return new Promise((res, rej) => {
-    const reader = new FileReader()
-    reader.onload  = () => res(reader.result.split(',')[1])
-    reader.onerror = rej
-    reader.readAsDataURL(file)
-  })
-}
 
 function DownloadBtn({ href, label, icon }) {
   return (
@@ -38,36 +20,36 @@ function DownloadBtn({ href, label, icon }) {
 }
 
 export default function Reports() {
-  const [clientSlug, setClientSlug] = useState('')
-  const [month,      setMonth]      = useState('')
-  const [csvFile,    setCsvFile]    = useState(null)
-  const [loading,    setLoading]    = useState(false)
-  const [result,     setResult]     = useState(null)
-  const [error,      setError]      = useState('')
+  const [clients,  setClients]  = useState([])
+  const [clientId, setClientId] = useState('')
+  const [month,    setMonth]    = useState('')
+  const [loading,  setLoading]  = useState(false)
+  const [result,   setResult]   = useState(null)
+  const [error,    setError]    = useState('')
 
-  const canGenerate = clientSlug && month && csvFile && !loading
+  useEffect(() => {
+    api.listClients({ ativo: 'Sim' })
+      .then(r => setClients(r.items || []))
+      .catch(() => {})
+  }, [])
+
+  const canGenerate = clientId && month && !loading
 
   async function handleGenerate() {
     setLoading(true)
     setError('')
     setResult(null)
     try {
-      const csvContent = await toBase64(csvFile)
-      const data = await api.generateReport({ client_slug: clientSlug, month, csv_content: csvContent })
+      const data = await api.generateReport({ client_id: clientId, month })
       setResult(data)
     } catch (e) {
-      setError(e.message || 'Erro ao gerar report. Verifique o CSV e tente novamente.')
+      setError(e.message || 'Erro ao gerar report. Verifique se o sync-costs já foi executado para este cliente.')
     } finally {
       setLoading(false)
     }
   }
 
-  const inp = {
-    background: 'var(--surface)', border: '1px solid var(--border2)',
-    borderRadius: 'var(--radius-sm)', padding: '10px 14px', fontSize: 13,
-    color: 'var(--text)', fontFamily: 'DM Sans, sans-serif', outline: 'none',
-    width: '100%',
-  }
+  const inp   = { background: 'var(--surface)', border: '1px solid var(--border2)', borderRadius: 'var(--radius-sm)', padding: '10px 14px', fontSize: 13, color: 'var(--text)', fontFamily: 'DM Sans, sans-serif', outline: 'none', width: '100%' }
   const label = { fontSize: 12, color: 'var(--muted)', fontFamily: 'DM Mono, monospace', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 6, display: 'block' }
   const card  = { background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: 28 }
 
@@ -76,18 +58,17 @@ export default function Reports() {
       <Topbar title="Relatórios Mensais" />
       <div style={{ padding: '28px 32px', maxWidth: 760 }}>
 
-        {/* Formulário */}
         <div style={card}>
           <div style={{ fontFamily: 'Syne, sans-serif', fontSize: 15, fontWeight: 600, marginBottom: 24 }}>
             Gerar Report Mensal
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
             <div>
               <label style={label}>Cliente</label>
-              <select value={clientSlug} onChange={e => setClientSlug(e.target.value)} style={inp}>
+              <select value={clientId} onChange={e => setClientId(e.target.value)} style={inp}>
                 <option value="">Selecione o cliente</option>
-                {CLIENTS.map(c => <option key={c.slug} value={c.slug}>{c.name}</option>)}
+                {clients.map(c => <option key={c.id} value={c.id}>{c.nome}</option>)}
               </select>
             </div>
             <div>
@@ -101,33 +82,6 @@ export default function Reports() {
             </div>
           </div>
 
-          <div style={{ marginBottom: 24 }}>
-            <label style={label}>CSV do Cost Explorer</label>
-            <div
-              onClick={() => document.getElementById('csv-input').click()}
-              style={{
-                border: `2px dashed ${csvFile ? 'var(--accent)' : 'var(--border2)'}`,
-                borderRadius: 'var(--radius-sm)', padding: '20px 16px',
-                textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s',
-                background: csvFile ? 'rgba(0,212,170,0.05)' : 'transparent',
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={csvFile ? 'var(--accent)' : 'var(--muted)'} strokeWidth="1.5" strokeLinecap="round" style={{ marginBottom: 8 }}>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-              <div style={{ fontSize: 13, color: csvFile ? 'var(--accent)' : 'var(--muted)' }}>
-                {csvFile ? csvFile.name : 'Clique para selecionar o CSV exportado do Cost Explorer'}
-              </div>
-              {csvFile && (
-                <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4, fontFamily: 'DM Mono, monospace' }}>
-                  {(csvFile.size / 1024).toFixed(1)} KB
-                </div>
-              )}
-            </div>
-            <input id="csv-input" type="file" accept=".csv" style={{ display: 'none' }}
-              onChange={e => setCsvFile(e.target.files[0] || null)} />
-          </div>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <Btn variant="primary" onClick={handleGenerate} disabled={!canGenerate}>
               {loading ? (
@@ -135,7 +89,7 @@ export default function Reports() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" style={{ animation: 'spin 1s linear infinite' }}>
                     <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
                   </svg>
-                  Gerando...
+                  Gerando PPTX...
                 </>
               ) : (
                 <>
@@ -148,20 +102,18 @@ export default function Reports() {
             </Btn>
             {loading && (
               <span style={{ fontSize: 12, color: 'var(--muted)' }}>
-                Processando dados e gerando arquivos... pode levar ~30s
+                Buscando dados e gerando apresentação... pode levar ~30s
               </span>
             )}
           </div>
         </div>
 
-        {/* Erro */}
         {error && (
           <div style={{ marginTop: 16, padding: '14px 18px', background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 'var(--radius-sm)', fontSize: 13, color: 'var(--accent4)' }}>
             {error}
           </div>
         )}
 
-        {/* Resultado */}
         {result && (
           <div style={{ ...card, marginTop: 20, borderColor: 'var(--accent)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -182,15 +134,6 @@ export default function Reports() {
 
             <div style={{ display: 'flex', gap: 12 }}>
               <DownloadBtn
-                href={result.excel_url}
-                label="Baixar Excel"
-                icon={
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-                  </svg>
-                }
-              />
-              <DownloadBtn
                 href={result.pptx_url}
                 label="Baixar PowerPoint"
                 icon={
@@ -202,13 +145,12 @@ export default function Reports() {
             </div>
 
             <div style={{ marginTop: 14, fontSize: 11, color: 'var(--muted)', fontFamily: 'DM Mono, monospace' }}>
-              Links expiram em 24 horas
+              Link expira em 5 minutos
             </div>
           </div>
         )}
 
       </div>
-
       <style>{`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}</style>
     </div>
   )

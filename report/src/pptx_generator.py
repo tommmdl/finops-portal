@@ -40,6 +40,37 @@ WHITE      = "#FFFFFF"
 CHART_COLORS = [BLUE_DARK, BLUE_MID, BLUE_LIGHT, ORANGE, "#70AD47",
                 "#ED7D31", "#A5A5A5", "#4472C4", "#9E480E", "#636363"]
 
+# Nomes curtos para serviços AWS nativos com nomes longos.
+# Serviços não listados (ex: Marketplace) mantêm o nome original da API.
+SERVICE_NAME_MAP = {
+    "Amazon Simple Storage Service":                         "S3",
+    "Amazon Elastic Compute Cloud - Compute":                "EC2-Instances",
+    "EC2 - Other":                                           "EC2-Other",
+    "Amazon Virtual Private Cloud":                          "VPC",
+    "AmazonCloudWatch":                                      "CloudWatch",
+    "Amazon Elastic File System":                            "Elastic File System",
+    "Amazon Elastic Load Balancing":                         "Elastic Load Balancing",
+    "Amazon FSx":                                            "FSx",
+    "AWS Config":                                            "Config",
+    "Amazon Relational Database Service":                    "RDS",
+    "Amazon Elastic Container Service":                      "ECS",
+    "Amazon Route 53":                                       "Route 53",
+    "AWS Key Management Service":                            "KMS",
+    "Amazon Redshift":                                       "Redshift",
+    "Savings Plans for AWS Compute usage":                   "Savings Plans for Compute usage",
+    "Amazon EC2 Container Registry (ECR)":                   "EC2 Container Registry (ECR)",
+    "AWS Identity and Access Management Access Analyzer":    "IAM Access Analyzer",
+    "Amazon Managed Workflows for Apache Airflow":           "MWAA",
+    "Amazon Elastic MapReduce":                              "EMR",
+    "AWS Lambda":                                            "Lambda",
+    "Amazon DynamoDB":                                       "DynamoDB",
+    "Amazon SageMaker":                                      "SageMaker",
+    "Amazon Bedrock":                                        "Bedrock",
+    "AWS Secrets Manager":                                   "Secrets Manager",
+    "AWS CloudTrail":                                        "CloudTrail",
+    "AWS Glue":                                              "Glue",
+}
+
 
 # ── Utilitários de gráfico ────────────────────────────────────────────────────
 
@@ -84,6 +115,12 @@ def _bar_chart_top10(top10: pd.DataFrame, last3_months: list[str]) -> io.BytesIO
     services  = top10["Service"].tolist()
     n_svc     = len(services)
     n_months  = len(last3_months)
+    if n_svc == 0 or n_months == 0:
+        fig, ax = plt.subplots(figsize=(10, 5), facecolor="white")
+        ax.text(0.5, 0.5, "Sem dados disponíveis", ha="center", va="center",
+                transform=ax.transAxes, fontsize=14, color=GRAY)
+        ax.axis("off")
+        return _chart_to_image(fig)
     w         = 0.7 / n_svc
     x_base    = list(range(n_months))
 
@@ -189,6 +226,33 @@ def _fmt_brl(value: float) -> str:
     return f"${s}" if value >= 0 else f"-${s}"
 
 
+def _fmt_reais(value: float) -> str:
+    s = f"{abs(value):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    return f"R${s}" if value >= 0 else f"-R${s}"
+
+
+def _rebuild_economia_table(slide, shape_idx: int,
+                             utilization_df_ytd: pd.DataFrame,
+                             usd_brl: float, reference: date):
+    """Atualiza a tabela de Economia Acumulada (3 colunas x 4 linhas)."""
+    shape = slide.shapes[shape_idx]
+    table = shape.table
+
+    sp_usd    = float(utilization_df_ytd["NetSavings"].sum()) \
+                if not utilization_df_ytd.empty and "NetSavings" in utilization_df_ytd.columns \
+                else 0.0
+    rds_usd   = 0.0   # RI savings ainda não coletados
+    total_usd = sp_usd + rds_usd
+
+    data = [
+        [f"Economia Acumulada {reference.year}", "Economia $",         "Economia R$"],
+        ["Compute Savings Plans",                 _fmt_brl(sp_usd),     _fmt_reais(sp_usd  * usd_brl)],
+        ["RDS",                                   _fmt_brl(rds_usd),    _fmt_reais(rds_usd * usd_brl)],
+        ["Total",                                 _fmt_brl(total_usd),  _fmt_reais(total_usd * usd_brl)],
+    ]
+    _update_table(table, data)
+
+
 def _rebuild_oscillation_table(slide, table_shape_idx: int,
                                 osc_df: pd.DataFrame, month_cols: list[str]):
     """Reconstrói a tabela de oscilações com dados dinâmicos."""
@@ -209,28 +273,56 @@ def _rebuild_oscillation_table(slide, table_shape_idx: int,
     _update_table(table, rows)
 
 
+def _abbrev_month(label: str) -> str:
+    """'Dezembro 2025' → 'Dez/25' — evita overflow nas células da tabela."""
+    parts = label.split(" ")
+    if len(parts) == 2:
+        return f"{parts[0][:3]}/{parts[1][2:]}"
+    return label
+
+
 def _rebuild_coverage_table(slide, shape_idx: int, coverage_df: pd.DataFrame,
-                             utilization_df: pd.DataFrame):
+                             utilization_df: pd.DataFrame, ri_coverage_df: pd.DataFrame,
+                             reference: date, n_months: int = 3):
     """Reconstrói a tabela de cobertura e utilização."""
+    from dateutil.relativedelta import relativedelta
+
+    # Meses fixos baseados no reference — independente do que tem dados no DynamoDB
+    months = []
+    d = date(reference.year, reference.month, 1)
+    for _ in range(n_months):
+        months.insert(0, _month_str_pt(d))
+        d = d - relativedelta(months=1)
+
     shape = slide.shapes[shape_idx]
     table = shape.table
-    months = coverage_df["Mês"].tolist() if not coverage_df.empty else []
+    months_abbrev = [_abbrev_month(m) for m in months]
 
-    header = ["Cobertura"] + months + ["", "Utilização"] + months
-    rows = [header]
-    for svc in ["Compute Savings Plans", "RDS"]:
-        row = [svc]
-        for m in months:
-            val = coverage_df[coverage_df["Mês"] == m]["CoveragePercentage"]
-            row.append(f"{val.values[0]:.0%}" if len(val) else "0%")
-        row.append("")
-        row.append(svc)
-        for m in months:
-            val = utilization_df[utilization_df["Mês"] == m]["UtilizationPercentage"]
-            row.append(f"{val.values[0]:.0%}" if len(val) else "0%")
-        rows.append(row)
+    def _pct(df: pd.DataFrame, mes: str, col: str) -> str:
+        if df.empty or col not in df.columns:
+            return "0%"
+        val = df[df["Mês"] == mes][col]
+        # CE API já retorna em %, ex: 86.23 — não usar :.0% (multiplica por 100)
+        return f"{val.values[0]:.0f}%" if len(val) else "0%"
 
-    _update_table(table, rows)
+    header = ["Cobertura"] + months_abbrev + ["", "Utilização"] + months_abbrev
+
+    # Linha Compute Savings Plans — usa dados de SP
+    sp_row  = ["Compute Savings Plans"]
+    sp_row += [_pct(coverage_df,    m, "CoveragePercentage")    for m in months]
+    sp_row += ["", "Compute Savings Plans"]
+    sp_row += [_pct(utilization_df, m, "UtilizationPercentage") for m in months]
+
+    # Linha RDS — usa dados de RI (riCoverage), independente do SP
+    rds_row  = ["RDS"]
+    rds_row += [_pct(ri_coverage_df, m, "CoveragePercentage")    for m in months]
+    rds_row += ["", "RDS"]
+    rds_row += [_pct(ri_coverage_df, m, "UtilizationPercentage") for m in months]
+
+    print(f"[debug] tabela colunas: {len(table.columns)}")
+    print(f"[debug] header length:  {len(header)}")
+    print(f"[debug] header: {header}")
+    _update_table(table, [header, sp_row, rds_row])
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
@@ -239,14 +331,28 @@ def generate(
     costs_df: pd.DataFrame,
     coverage_df: pd.DataFrame,
     utilization_df: pd.DataFrame,
+    ri_coverage_df: pd.DataFrame,
+    utilization_df_ytd: pd.DataFrame,
     recommendations: list[dict],
     client_name: str,
     reference: date,
+    usd_brl: float,
     template_path: Path,
     output_dir: Path,
 ) -> Path:
     month_str  = _month_str_pt(reference)
     month_cols = [c for c in costs_df.columns if c != "Service"]
+
+    # Garante dtype numérico independente da origem dos dados (DynamoDB Decimal, etc.)
+    for col in month_cols:
+        costs_df[col] = pd.to_numeric(costs_df[col], errors="coerce").fillna(0.0)
+
+    # Aplica nomes curtos — apenas serviços AWS nativos mapeados; demais mantêm nome original
+    costs_df["Service"] = costs_df["Service"].map(
+        lambda s: SERVICE_NAME_MAP.get(s, s)
+    )
+
+    print(f"[pptx_generator] costs_df shape: {costs_df.shape}, columns: {costs_df.columns.tolist()}")
 
     prs = Presentation(str(template_path))
 
@@ -277,15 +383,24 @@ def generate(
 
     # ── Slide 3: Top 10 serviços (substituir gráfico) ─────────────────────────
     slide3 = prs.slides[2]
-    top10   = costs_df.nlargest(10, month_cols[-1])
-    last3   = month_cols[-3:]
-    chart_buf2 = _bar_chart_top10(top10, last3)
 
-    pictures3 = [(i, s) for i, s in enumerate(slide3.shapes)
-                 if str(s.shape_type) == "PICTURE (13)" and s.width > 2000000]
-    if pictures3:
-        idx3 = max(pictures3, key=lambda x: x[1].width * x[1].height)[0]
-        _replace_picture(slide3, idx3, chart_buf2)
+    top10  = costs_df.nlargest(10, month_cols[-1]) if month_cols else pd.DataFrame()
+    last3  = month_cols[-3:]
+    print(f"[pptx_generator] top10 shape: {top10.shape}")
+    if not top10.empty and last3:
+        chart_buf2 = _bar_chart_top10(top10, last3)
+        pictures3 = [(i, s) for i, s in enumerate(slide3.shapes)
+                     if str(s.shape_type) == "PICTURE (13)" and s.width > 2000000]
+        if pictures3:
+            idx3   = max(pictures3, key=lambda x: x[1].width * x[1].height)[0]
+            old3   = slide3.shapes[idx3]
+            # Move o gráfico para baixo para não cobrir o subtítulo
+            TOP_OFFSET = Inches(0.35)
+            left3, top3, w3, h3 = old3.left, old3.top + TOP_OFFSET, old3.width, old3.height - TOP_OFFSET
+            old3._element.getparent().remove(old3._element)
+            slide3.shapes.add_picture(chart_buf2, left3, top3, w3, h3)
+    else:
+        print("[pptx_generator] WARNING: top10 vazio, slide 3 mantém imagem original")
 
     # ── Slide 4: Maior oscilação (atualizar tabela) ───────────────────────────
     # Apenas serviços com gasto real no último mês (>= $10) e com aumento efetivo
@@ -307,14 +422,24 @@ def generate(
 
     table_shapes = [(i, s) for i, s in enumerate(slide4.shapes) if s.has_table]
     if table_shapes:
-        _rebuild_oscillation_table(slide4, table_shapes[0][0], osc_df, month_cols)
+        tbl_idx = table_shapes[0][0]
+        _rebuild_oscillation_table(slide4, tbl_idx, osc_df, month_cols)
+        # Centraliza a tabela verticalmente abaixo do título (~1.2cm do topo)
+        tbl_shape  = slide4.shapes[tbl_idx]
+        title_btm  = Inches(1.2)
+        avail      = prs.slide_height - title_btm
+        tbl_shape.top = int(title_btm + (avail - tbl_shape.height) / 2)
 
     # ── Slide 5: Cobertura e Utilização (manual — não tocar se vazio) ────────
     if not coverage_df.empty:
         slide5 = prs.slides[4]
         cov_tables = [(i, s) for i, s in enumerate(slide5.shapes) if s.has_table]
         if cov_tables:
-            _rebuild_coverage_table(slide5, cov_tables[0][0], coverage_df, utilization_df)
+            _rebuild_coverage_table(slide5, cov_tables[0][0], coverage_df, utilization_df, ri_coverage_df, reference)
+
+        # Tabela de Economia Acumulada YTD (segunda tabela do slide 5 — shape_idx=3)
+        if len(cov_tables) >= 2:
+            _rebuild_economia_table(slide5, cov_tables[1][0], utilization_df_ytd, usd_brl, reference)
 
     # ── Slide 6: Pontos de Atenção (atualizar texto) ──────────────────────────
     slide6 = prs.slides[5]

@@ -29,6 +29,12 @@ resource "aws_api_gateway_resource" "client_id" {
   path_part   = "{id}"
 }
 
+resource "aws_api_gateway_resource" "report_data" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.client_id.id
+  path_part   = "report-data"
+}
+
 # ── Recurso /billing ──────────────────────────────────────────
 resource "aws_api_gateway_resource" "billing" {
   rest_api_id = aws_api_gateway_rest_api.main.id
@@ -52,8 +58,10 @@ locals {
     "DELETE_client"   = { resource = aws_api_gateway_resource.client_id.id, http = "DELETE" }
     "OPTIONS_clients" = { resource = aws_api_gateway_resource.clients.id, http = "OPTIONS" }
     "OPTIONS_client"  = { resource = aws_api_gateway_resource.client_id.id, http = "OPTIONS" }
-    "GET_billing"     = { resource = aws_api_gateway_resource.billing_cliente.id, http = "GET" }
-    "OPTIONS_billing" = { resource = aws_api_gateway_resource.billing_cliente.id, http = "OPTIONS" }
+    "GET_billing"         = { resource = aws_api_gateway_resource.billing_cliente.id, http = "GET" }
+    "OPTIONS_billing"     = { resource = aws_api_gateway_resource.billing_cliente.id, http = "OPTIONS" }
+    "GET_report_data"     = { resource = aws_api_gateway_resource.report_data.id, http = "GET" }
+    "OPTIONS_report_data" = { resource = aws_api_gateway_resource.report_data.id, http = "OPTIONS" }
   }
 }
 
@@ -176,6 +184,7 @@ resource "aws_api_gateway_deployment" "main" {
       aws_api_gateway_integration.reports_options,
       aws_api_gateway_method_response.reports_options,
       aws_api_gateway_integration_response.reports_options,
+      aws_api_gateway_resource.report_data,
     ]))
   }
 

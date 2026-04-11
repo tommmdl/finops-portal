@@ -1,151 +1,147 @@
 """
-AWS Lambda handler — recebe CSV em base64, gera Excel + PPTX, sobe para S3
-e retorna presigned URLs para download.
+AWS Lambda handler — recebe client_id + month, lê billing-history do DynamoDB,
+gera PPTX e retorna presigned URL válida por 5 minutos.
 
 Body esperado (JSON):
   {
-    "client_slug": "wilson-sons",
-    "month": "2026-03",
-    "csv_content": "<base64 do CSV>"
+    "client_id": "uuid-do-cliente",
+    "month": "2026-03"
   }
 """
-import base64
 import json
 import os
+import re
 import tempfile
 from datetime import date
 from pathlib import Path
 
 import boto3
+from boto3.dynamodb.conditions import Key
 import yaml
 
 from extractor import (
-    get_costs_by_service,
-    get_total_costs_by_month,
-    get_savings_plans_coverage,
-    get_savings_plans_utilization,
+    build_costs_df_from_dynamo,
+    build_totals_from_dynamo,
+    build_savings_plans_dfs,
     get_trusted_advisor_recommendations,
 )
-from excel_generator import generate as gen_excel
 from pptx_generator import generate as gen_pptx
 
-BUCKET         = os.environ["REPORT_BUCKET"]
-PRESIGN_EXPIRY = 60 * 60 * 24   # 24 horas
-CONFIG_DIR     = Path(__file__).parent / "config"
-TEMPLATE_PATH  = Path(__file__).parent / "templates" / "template.pptx"
+BUCKET        = os.environ["REPORT_BUCKET"]
+CLIENTS_TABLE = os.environ["CLIENTS_TABLE"]
+BILLING_TABLE = os.environ["BILLING_TABLE"]
+PRESIGN_EXPIRY = 300  # 5 minutos
+
+CONFIG_DIR    = Path(__file__).parent / "config"
+TEMPLATE_PATH = Path(__file__).parent / "templates" / "template.pptx"
+
+dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
+s3       = boto3.client("s3",        region_name="us-east-1")
 
 
 def _cors(body: dict, status: int = 200) -> dict:
     return {
         "statusCode": status,
         "headers": {
-            "Content-Type":                "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Content-Type":                 "application/json",
+            "Access-Control-Allow-Origin":  "*",
             "Access-Control-Allow-Headers": "Content-Type,Authorization",
         },
         "body": json.dumps(body),
     }
 
 
+def _slugify(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
 def lambda_handler(event, context):
-    # ── OPTIONS (preflight CORS) ──────────────────────────────
     if event.get("httpMethod") == "OPTIONS":
         return _cors({})
 
     try:
-        body = json.loads(event.get("body") or "{}")
-        client_slug = body["client_slug"]
-        month       = body["month"]          # "2026-03"
-        csv_b64     = body["csv_content"]    # base64
+        body      = json.loads(event.get("body") or "{}")
+        client_id = body["client_id"]
+        month     = body["month"]        # "2026-03"
     except (KeyError, json.JSONDecodeError) as e:
         return _cors({"error": f"Parâmetros inválidos: {e}"}, 400)
 
-    # ── Carrega config do cliente ─────────────────────────────
-    config_path = CONFIG_DIR / f"{client_slug}.yaml"
-    if not config_path.exists():
-        available = [p.stem for p in CONFIG_DIR.glob("*.yaml")]
-        return _cors({"error": f"Cliente '{client_slug}' não encontrado. Disponíveis: {available}"}, 404)
-
-    with open(config_path) as f:
-        cfg = yaml.safe_load(f)
-
-    client_name = cfg["name"]
-    usd_brl     = cfg.get("usd_brl_rate", 5.5)
-
-    # ── Parse mês ────────────────────────────────────────────
     try:
-        y, m  = month.split("-")
+        y, m      = month.split("-")
         reference = date(int(y), int(m), 1)
     except Exception:
         return _cors({"error": "Formato de mês inválido. Use YYYY-MM."}, 400)
 
-    # ── Decodifica CSV ────────────────────────────────────────
-    try:
-        csv_bytes = base64.b64decode(csv_b64)
-    except Exception:
-        return _cors({"error": "csv_content não é base64 válido."}, 400)
+    # ── Busca cliente no DynamoDB ─────────────────────────────
+    clients_tbl = dynamodb.Table(CLIENTS_TABLE)
+    client = clients_tbl.get_item(Key={"id": client_id}).get("Item")
+    if not client:
+        return _cors({"error": f"Cliente '{client_id}' não encontrado."}, 404)
 
-    # ── Processa em diretórios temporários ────────────────────
+    client_name = client["nome"]
+    client_slug = _slugify(client_name)
+
+    # Taxa USD/BRL do config YAML (fallback 5.5)
+    usd_brl = 5.5
+    config_path = CONFIG_DIR / f"{client_slug}.yaml"
+    if config_path.exists():
+        with open(config_path) as f:
+            usd_brl = yaml.safe_load(f).get("usd_brl_rate", 5.5)
+
+    # ── Busca billing-history ────────────────────────────────
+    billing_tbl  = dynamodb.Table(BILLING_TABLE)
+    billing_items = billing_tbl.query(
+        KeyConditionExpression=Key("clienteNome").eq(client_name)
+    ).get("Items", [])
+
+    if not billing_items:
+        return _cors({
+            "error": f"Sem dados de billing para '{client_name}'. Execute o sync-costs primeiro."
+        }, 404)
+
+    # ── Constrói DataFrames ───────────────────────────────────
+    costs_df        = build_costs_df_from_dynamo(billing_items, reference)
+    totals_by_month = build_totals_from_dynamo(billing_items, reference)
+    month_cols      = [c for c in costs_df.columns if c != "Service"]
+    # 3 meses para o slide de cobertura/utilização
+    coverage_df, utilization_df, ri_coverage_df = build_savings_plans_dfs(billing_items, reference, n_months=3)
+
+    # YTD para economia acumulada (todos os meses do ano de referência)
+    _, utilization_df_ytd, _ = build_savings_plans_dfs(billing_items, reference, n_months=reference.month)
+
+    recommendations = get_trusted_advisor_recommendations()
+
+    # ── Gera PPTX ────────────────────────────────────────────
     with tempfile.TemporaryDirectory() as tmp_str:
-        tmp_dir    = Path(tmp_str)
-        csv_path   = tmp_dir / "costs.csv"
-        output_dir = tmp_dir / "output"
+        output_dir = Path(tmp_str) / "output"
         output_dir.mkdir()
-
-        csv_path.write_bytes(csv_bytes)
-
-        costs_df        = get_costs_by_service(csv_path, reference)
-        totals_by_month = get_total_costs_by_month(csv_path, reference)
-        month_cols      = [c for c in costs_df.columns if c != "Service"]
-
-        coverage_df    = get_savings_plans_coverage()
-        utilization_df = get_savings_plans_utilization()
-        recommendations = get_trusted_advisor_recommendations()
-
-        excel_path = gen_excel(
-            costs_df=costs_df,
-            totals_by_month=totals_by_month,
-            month_cols=month_cols,
-            client_name=client_name,
-            reference=reference,
-            usd_brl=usd_brl,
-            output_dir=output_dir,
-        )
 
         pptx_path = gen_pptx(
             costs_df=costs_df,
             coverage_df=coverage_df,
             utilization_df=utilization_df,
+            ri_coverage_df=ri_coverage_df,
+            utilization_df_ytd=utilization_df_ytd,
             recommendations=recommendations,
             client_name=client_name,
             reference=reference,
+            usd_brl=usd_brl,
             template_path=TEMPLATE_PATH,
             output_dir=output_dir,
         )
 
-        # ── Sobe para S3 ─────────────────────────────────────
-        s3          = boto3.client("s3")
-        prefix      = f"reports/{client_slug}/{month}"
-        excel_key   = f"{prefix}/{excel_path.name}"
-        pptx_key    = f"{prefix}/{pptx_path.name}"
+        # ── Upload S3 ────────────────────────────────────────
+        key = f"reports/{client_slug}/{month}/relatorio-{client_slug}-{month}.pptx"
+        s3.upload_file(str(pptx_path), BUCKET, key)
 
-        s3.upload_file(str(excel_path), BUCKET, excel_key)
-        s3.upload_file(str(pptx_path),  BUCKET, pptx_key)
-
-    # ── Presigned URLs ────────────────────────────────────────
-    excel_url = s3.generate_presigned_url(
-        "get_object",
-        Params={"Bucket": BUCKET, "Key": excel_key},
-        ExpiresIn=PRESIGN_EXPIRY,
-    )
+    # ── Presigned URL (5 min) ─────────────────────────────────
     pptx_url = s3.generate_presigned_url(
         "get_object",
-        Params={"Bucket": BUCKET, "Key": pptx_key},
+        Params={"Bucket": BUCKET, "Key": key},
         ExpiresIn=PRESIGN_EXPIRY,
     )
 
     return _cors({
-        "excel_url":   excel_url,
         "pptx_url":    pptx_url,
         "client_name": client_name,
         "month":       month,
