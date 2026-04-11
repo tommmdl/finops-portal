@@ -82,6 +82,32 @@ module "api_gateway" {
   report_lambda_function_name = module.report_lambda.lambda_function_name
 }
 
+# ── Import de recursos IAM já existentes na AWS ──────────────
+import {
+  to = module.iam.aws_iam_role.github_actions
+  id = "finops-portal-prod-github-actions-role"
+}
+
+import {
+  to = module.iam.aws_iam_role_policy.github_actions_ecr
+  id = "finops-portal-prod-github-actions-role:ecr-access"
+}
+
+import {
+  to = module.iam.aws_iam_role_policy.github_actions_lambda
+  id = "finops-portal-prod-github-actions-role:lambda-deploy"
+}
+
+import {
+  to = module.iam.aws_iam_role_policy.github_actions_terraform_state
+  id = "finops-portal-prod-github-actions-role:terraform-state"
+}
+
+import {
+  to = module.iam.aws_iam_role_policy_attachment.github_actions_admin
+  id = "finops-portal-prod-github-actions-role/arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
 module "amplify" {
   source                = "./modules/amplify"
   project               = var.project
