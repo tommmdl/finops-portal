@@ -1,5 +1,12 @@
 const { STSClient, AssumeRoleCommand }                       = require("@aws-sdk/client-sts");
-const { CostExplorerClient, GetCostAndUsageCommand }         = require("@aws-sdk/client-cost-explorer");
+const {
+  CostExplorerClient,
+  GetCostAndUsageCommand,
+  GetSavingsPlansCoverageCommand,
+  GetSavingsPlansUtilizationCommand,
+  GetReservationCoverageCommand,
+  GetReservationUtilizationCommand,
+}                                                            = require("@aws-sdk/client-cost-explorer");
 const { DynamoDBClient }                                     = require("@aws-sdk/client-dynamodb");
 const { DynamoDBDocumentClient, ScanCommand, UpdateCommand } = require("@aws-sdk/lib-dynamodb");
 const { SNSClient, PublishCommand }                          = require("@aws-sdk/client-sns");
@@ -8,9 +15,10 @@ const sts      = new STSClient({});
 const dynamodb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const sns      = new SNSClient({});
 
-const TABLE     = process.env.CLIENTS_TABLE;
-const ROLE_NAME = "CrossAccountAccess-FinOpsCrossAccountReadOnlyRole";
-const SNS_TOPIC = process.env.SNS_TOPIC_ARN;
+const TABLE         = process.env.CLIENTS_TABLE;
+const BILLING_TABLE = process.env.BILLING_TABLE;
+const ROLE_NAME     = "CrossAccountAccess-FinOpsCrossAccountReadOnlyRole";
+const SNS_TOPIC     = process.env.SNS_TOPIC_ARN;
 
 // ─────────────────────────────────────────────────────────────
 // Clientes ATIVOS do portal — mapeados pelo campo acessoConta
@@ -62,12 +70,26 @@ const ACCOUNT_ACCESS = {
   "526113637205": { type: "skip",    nome: "Xvision"            },
 };
 
-function getLastMonthPeriod() {
-  const now   = new Date();
-  const start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-  const end   = new Date(now.getFullYear(), now.getMonth(), 1);
-  const fmt   = d => d.toISOString().split("T")[0];
-  return { Start: fmt(start), End: fmt(end) };
+// Retorna N períodos mensais fechados, do mais recente para o mais antigo.
+// Com months=2 e hoje = 2026-05-04, retorna:
+//   [{ Start: "2026-04-01", End: "2026-05-01", label: "2026-04" },
+//    { Start: "2026-03-01", End: "2026-04-01", label: "2026-03" }]
+function buildPeriods(months) {
+  const now    = new Date();
+  const fmt    = d => d.toISOString().split("T")[0];
+  const result = [];
+
+  for (let i = 1; i <= months; i++) {
+    const start = new Date(now.getFullYear(), now.getMonth() - i,     1);
+    const end   = new Date(now.getFullYear(), now.getMonth() - i + 1, 1);
+    result.push({
+      Start: fmt(start),
+      End:   fmt(end),
+      label: fmt(start).slice(0, 7), // "2026-04"
+    });
+  }
+
+  return result;
 }
 
 function calcNivel(consumo) {
@@ -93,36 +115,127 @@ async function getCEClientForAccount(accountId) {
   });
 }
 
-async function fetchCost(accountId, accessType) {
-  const period = getLastMonthPeriod();
+async function fetchSavingsPlans(ce, period, linkedAccountId = null) {
+  const timePeriod = { Start: period.Start, End: period.End };
+  const filter     = linkedAccountId
+    ? { Dimensions: { Key: "LINKED_ACCOUNT", Values: [linkedAccountId] } }
+    : undefined;
+
+  const [covResp, utilResp] = await Promise.all([
+    ce.send(new GetSavingsPlansCoverageCommand({
+      TimePeriod:  timePeriod,
+      Granularity: "MONTHLY",
+      ...(filter && { Filter: filter }),
+    })).catch(() => null),
+    ce.send(new GetSavingsPlansUtilizationCommand({
+      TimePeriod:  timePeriod,
+      Granularity: "MONTHLY",
+      ...(filter && { Filter: filter }),
+    })).catch(() => null),
+  ]);
+
+  const cov  = covResp?.SavingsPlansCoverages?.[0]?.Coverage ?? {};
+  const util = utilResp?.SavingsPlansUtilizationsByTime?.[0]?.Utilization ?? {};
+  const sav  = utilResp?.SavingsPlansUtilizationsByTime?.[0]?.Savings ?? {};
+
+  return {
+    coveragePercent:   parseFloat(cov.CoveragePercentage        ?? 0),
+    spendCoveredBySP:  parseFloat(cov.SpendCoveredBySavingsPlans ?? 0),
+    onDemandCost:      parseFloat(cov.OnDemandCost              ?? 0),
+    utilizationPercent: parseFloat(util.UtilizationPercentage   ?? 0),
+    usedCommitment:    parseFloat(util.UsedCommitment           ?? 0),
+    totalCommitment:   parseFloat(util.TotalCommitment          ?? 0),
+    netSavings:        parseFloat(sav.NetSavings                ?? 0),
+  };
+}
+
+async function fetchRICoverage(ce, period, linkedAccountId = null) {
+  const timePeriod = { Start: period.Start, End: period.End };
+  const filter     = linkedAccountId
+    ? { Dimensions: { Key: "LINKED_ACCOUNT", Values: [linkedAccountId] } }
+    : undefined;
+
+  const [covResp, utilResp] = await Promise.all([
+    ce.send(new GetReservationCoverageCommand({
+      TimePeriod:  timePeriod,
+      Granularity: "MONTHLY",
+      ...(filter && { Filter: filter }),
+    })).catch(() => null),
+    ce.send(new GetReservationUtilizationCommand({
+      TimePeriod:  timePeriod,
+      Granularity: "MONTHLY",
+      ...(filter && { Filter: filter }),
+    })).catch(() => null),
+  ]);
+
+  const cov  = covResp?.Total?.CoverageHours ?? {};
+  const util = utilResp?.Total ?? {};
+
+  const coveragePercent    = parseFloat(cov.CoverageHoursPercentage ?? 0);
+  const utilizationPercent = parseFloat(util.UtilizationPercentage  ?? 0);
+
+  // Retorna {} quando não há RI (consistente com o schema existente)
+  if (coveragePercent === 0 && utilizationPercent === 0) return {};
+
+  return { coveragePercent, utilizationPercent };
+}
+
+function parseServicesBreakdown(resultsByTime) {
+  const breakdown = {};
+  for (const group of resultsByTime?.[0]?.Groups ?? []) {
+    const name = group.Keys?.[0];
+    const cost = parseFloat(group.Metrics?.UnblendedCost?.Amount || "0");
+    if (name && cost > 0) breakdown[name] = Math.round(cost * 100) / 100;
+  }
+  return breakdown;
+}
+
+async function fetchCost(accountId, accessType, period) {
+  const groupBy = [{ Type: "DIMENSION", Key: "SERVICE" }];
 
   if (accessType === "role") {
     const ce = await getCEClientForAccount(accountId);
-    const r  = await ce.send(new GetCostAndUsageCommand({
-      TimePeriod:  period,
-      Granularity: "MONTHLY",
-      Metrics:     ["UnblendedCost"],
-    }));
-    return parseFloat(r.ResultsByTime?.[0]?.Total?.UnblendedCost?.Amount || "0");
+    const [r, savingsPlans, riCoverage] = await Promise.all([
+      ce.send(new GetCostAndUsageCommand({
+        TimePeriod:  { Start: period.Start, End: period.End },
+        Granularity: "MONTHLY",
+        Metrics:     ["UnblendedCost"],
+        GroupBy:     groupBy,
+      })),
+      fetchSavingsPlans(ce, period),
+      fetchRICoverage(ce, period),
+    ]);
+    const services = parseServicesBreakdown(r.ResultsByTime);
+    const total    = Math.round(Object.values(services).reduce((s, v) => s + v, 0) * 100) / 100;
+    return { total, services, savingsPlans, riCoverage };
   }
 
   if (accessType === "solvimm") {
     const ce = new CostExplorerClient({ region: "us-east-1" });
-    const r  = await ce.send(new GetCostAndUsageCommand({
-      TimePeriod:  period,
-      Granularity: "MONTHLY",
-      Metrics:     ["UnblendedCost"],
-      Filter: {
-        Dimensions: { Key: "LINKED_ACCOUNT", Values: [accountId] },
-      },
-    }));
-    return parseFloat(r.ResultsByTime?.[0]?.Total?.UnblendedCost?.Amount || "0");
+    const [r, savingsPlans, riCoverage] = await Promise.all([
+      ce.send(new GetCostAndUsageCommand({
+        TimePeriod:  { Start: period.Start, End: period.End },
+        Granularity: "MONTHLY",
+        Metrics:     ["UnblendedCost"],
+        GroupBy:     groupBy,
+        Filter: { Dimensions: { Key: "LINKED_ACCOUNT", Values: [accountId] } },
+      })),
+      fetchSavingsPlans(ce, period, accountId),
+      fetchRICoverage(ce, period, accountId),
+    ]);
+    const services = parseServicesBreakdown(r.ResultsByTime);
+    const total    = Math.round(Object.values(services).reduce((s, v) => s + v, 0) * 100) / 100;
+    return { total, services, savingsPlans, riCoverage };
   }
 }
 
-exports.handler = async () => {
-  const period = getLastMonthPeriod();
-  console.log(`🚀 Sync FinOps — ${period.Start} → ${period.End}\n`);
+exports.handler = async (event = {}) => {
+  const backfill = event.backfill === true;
+  const months   = backfill ? Math.max(1, parseInt(event.months) || 1) : 1;
+  const periods  = buildPeriods(months);
+
+  console.log(`🚀 Sync FinOps — ${backfill ? `backfill ${months}m` : "mensal"}`);
+  console.log(`   Períodos: ${periods.map(p => p.label).join(", ")}\n`);
 
   const { Items: clients } = await dynamodb.send(new ScanCommand({
     TableName:        TABLE,
@@ -150,27 +263,65 @@ exports.handler = async () => {
     }
 
     try {
-      console.log(`  🔄 ${client.nome} (${accountId}) via ${accessInfo.type.toUpperCase()}`);
+      console.log(`  🔄 ${client.nome} (${accountId}) via ${accessInfo.type.toUpperCase()} — ${periods.map(p => p.label).join(", ")}`);
 
-      const raw     = await fetchCost(accountId, accessInfo.type);
-      const consumo = Math.round(raw * 100) / 100;
-      const oldNivel = client.nivel;
-      const newNivel = calcNivel(consumo);
+      // Coleta todos os períodos solicitados
+      const historico = {};
+      for (const period of periods) {
+        const { total, services, savingsPlans, riCoverage } = await fetchCost(accountId, accessInfo.type, period);
+        historico[period.label] = { total, services, savingsPlans, riCoverage };
+      }
+
+      // O mês mais recente (periods[0]) é o consumo corrente
+      const recentLabel  = periods[0].label;
+      const consumo      = historico[recentLabel].total;
+      const oldNivel     = client.nivel;
+      const newNivel     = calcNivel(consumo);
+
+      // Atributos flat: historico_2026_04, historico_2026_03, etc.
+      // Nested paths (historico.2026-04) falham quando o mapa pai ainda não existe no item.
+      const historicoKeys   = Object.keys(historico).map(l => l.replace("-", "_"));
+      const historicoPaths  = historicoKeys.map(k => `historico_${k} = :h_${k}`).join(", ");
+      const expressionValues = Object.entries(historico).reduce((acc, [label, { total: t }]) => {
+        acc[`:h_${label.replace("-", "_")}`] = t;
+        return acc;
+      }, {
+        ":c": consumo,
+        ":n": newNivel,
+        ":u": new Date().toISOString(),
+        ":s": new Date().toISOString(),
+      });
 
       await dynamodb.send(new UpdateCommand({
         TableName: TABLE,
         Key:       { id: client.id },
-        UpdateExpression: "SET consumo = :c, nivel = :n, updatedAt = :u, lastSyncAt = :s",
-        ExpressionAttributeValues: {
-          ":c": consumo,
-          ":n": newNivel,
-          ":u": new Date().toISOString(),
-          ":s": new Date().toISOString(),
-        },
+        UpdateExpression: `SET consumo = :c, nivel = :n, updatedAt = :u, lastSyncAt = :s, ${historicoPaths}`,
+        ExpressionAttributeValues: expressionValues,
       }));
 
+      // Grava cada período em billing-history preservando campos existentes (cotacao, valor_nf_brl, etc.)
+      if (BILLING_TABLE) {
+        await Promise.all(Object.entries(historico).map(([mesAno, { total, services, savingsPlans, riCoverage }]) =>
+          dynamodb.send(new UpdateCommand({
+            TableName: BILLING_TABLE,
+            Key:       { clienteNome: client.nome, mesAno },
+            UpdateExpression: "SET totalCost = :t, services = :s, savingsPlans = :sp, riCoverage = :ri, updatedAt = :u",
+            ExpressionAttributeValues: {
+              ":t":  total,
+              ":s":  services,
+              ":sp": savingsPlans,
+              ":ri": riCoverage,
+              ":u":  new Date().toISOString(),
+            },
+          }))
+        ));
+      }
+
+      const historicoStr = Object.entries(historico)
+        .map(([label, { total: t }]) => `${label}: $${t.toLocaleString("en-US")}`)
+        .join(" | ");
       const flag = oldNivel !== newNivel ? ` ⚠️  ${oldNivel} → ${newNivel}` : "";
-      console.log(`  ✓  ${client.nome} → $${consumo.toLocaleString("en-US")}${flag}`);
+      console.log(`  ✓  ${client.nome} — ${historicoStr}${flag}`);
 
       if (oldNivel !== newNivel) {
         alerts.push({ nome: client.nome, responsavel: client.responsavel, oldNivel, newNivel, consumo });

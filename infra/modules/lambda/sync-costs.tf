@@ -19,6 +19,7 @@ resource "aws_lambda_function" "sync_costs" {
   environment {
     variables = {
       CLIENTS_TABLE           = var.clients_table_name
+      BILLING_TABLE           = var.billing_table_name
       CROSS_ACCOUNT_ROLE_NAME = "CrossAccountAccess-FinOpsCrossAccountReadOnlyRole"
       SNS_TOPIC_ARN           = aws_sns_topic.cost_alerts.arn
       NODE_ENV                = var.environment
