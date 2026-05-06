@@ -156,6 +156,84 @@ resource "aws_api_gateway_integration_response" "reports_options" {
   depends_on = [aws_api_gateway_integration.reports_options]
 }
 
+# ── Recurso /weekly-report/{client_id} ───────────────────────
+resource "aws_api_gateway_resource" "weekly_report" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_rest_api.main.root_resource_id
+  path_part   = "weekly-report"
+}
+
+resource "aws_api_gateway_resource" "weekly_report_client" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  parent_id   = aws_api_gateway_resource.weekly_report.id
+  path_part   = "{client_id}"
+}
+
+resource "aws_api_gateway_method" "weekly_report_get" {
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+  resource_id   = aws_api_gateway_resource.weekly_report_client.id
+  http_method   = "GET"
+  authorization = "COGNITO_USER_POOLS"
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
+}
+
+resource "aws_api_gateway_method" "weekly_report_options" {
+  rest_api_id   = aws_api_gateway_rest_api.main.id
+  resource_id   = aws_api_gateway_resource.weekly_report_client.id
+  http_method   = "OPTIONS"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_integration" "weekly_report_get" {
+  rest_api_id             = aws_api_gateway_rest_api.main.id
+  resource_id             = aws_api_gateway_resource.weekly_report_client.id
+  http_method             = aws_api_gateway_method.weekly_report_get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.weekly_report_lambda_invoke_arn
+}
+
+resource "aws_api_gateway_integration" "weekly_report_options" {
+  rest_api_id       = aws_api_gateway_rest_api.main.id
+  resource_id       = aws_api_gateway_resource.weekly_report_client.id
+  http_method       = aws_api_gateway_method.weekly_report_options.http_method
+  type              = "MOCK"
+  request_templates = { "application/json" = "{\"statusCode\": 200}" }
+}
+
+resource "aws_api_gateway_method_response" "weekly_report_options" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  resource_id = aws_api_gateway_resource.weekly_report_client.id
+  http_method = aws_api_gateway_method.weekly_report_options.http_method
+  status_code = "200"
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = true
+    "method.response.header.Access-Control-Allow-Methods" = true
+    "method.response.header.Access-Control-Allow-Origin"  = true
+  }
+}
+
+resource "aws_api_gateway_integration_response" "weekly_report_options" {
+  rest_api_id = aws_api_gateway_rest_api.main.id
+  resource_id = aws_api_gateway_resource.weekly_report_client.id
+  http_method = aws_api_gateway_method.weekly_report_options.http_method
+  status_code = "200"
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,Authorization'"
+    "method.response.header.Access-Control-Allow-Methods" = "'GET,OPTIONS'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://main.d4uovab8e7t0i.amplifyapp.com'"
+  }
+  depends_on = [aws_api_gateway_integration.weekly_report_options]
+}
+
+resource "aws_lambda_permission" "api_gw_weekly_report" {
+  statement_id  = "AllowAPIGatewayInvokeWeeklyReport"
+  action        = "lambda:InvokeFunction"
+  function_name = var.weekly_report_lambda_function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
+}
+
 # ── Lambda permissions ────────────────────────────────────────
 resource "aws_lambda_permission" "api_gw" {
   statement_id  = "AllowAPIGatewayInvoke"
@@ -185,6 +263,9 @@ resource "aws_api_gateway_deployment" "main" {
       aws_api_gateway_method_response.reports_options,
       aws_api_gateway_integration_response.reports_options,
       aws_api_gateway_resource.report_data,
+      aws_api_gateway_integration.weekly_report_get,
+      aws_api_gateway_integration.weekly_report_options,
+      aws_api_gateway_integration_response.weekly_report_options,
     ]))
   }
 
@@ -192,6 +273,8 @@ resource "aws_api_gateway_deployment" "main" {
     aws_api_gateway_integration.integrations,
     aws_api_gateway_integration.reports_post,
     aws_api_gateway_integration.reports_options,
+    aws_api_gateway_integration.weekly_report_get,
+    aws_api_gateway_integration.weekly_report_options,
   ]
 
   lifecycle {
