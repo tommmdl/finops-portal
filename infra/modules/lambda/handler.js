@@ -142,7 +142,7 @@ exports.handler = async (event) => {
       const allowed = [
         "nome","razaoSocial","cnpj","ativo","consumo","responsavel",
         "nivel","amCliente","acessoConta","contaPayer","dashBI",
-        "cms","pls","envioFatura","simplesNacional"
+        "cms","pls","envioFatura","simplesNacional","weeklyReport"
       ];
 
       const updates = [];
