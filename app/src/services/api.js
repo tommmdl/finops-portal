@@ -31,4 +31,5 @@ export const api = {
   updateClient: (id, data) => request('PUT',    `/clients/${id}`, data),
   deleteClient: (id)       => request('DELETE', `/clients/${id}`),
   generateReport: (data)   => request('POST',   '/reports/generate', data),
+  getWeeklyReport: (clientId) => request('GET', `/weekly-report/${clientId}`),
 }

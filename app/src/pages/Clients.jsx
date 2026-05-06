@@ -74,6 +74,15 @@ export default function Clients() {
     } catch { showToast('Erro ao remover cliente.') }
   }
 
+  async function handleToggleWeekly(c, e) {
+    e.stopPropagation()
+    try {
+      await api.updateClient(c.id, { weeklyReport: !c.weeklyReport })
+      showToast(`Weekly Report ${!c.weeklyReport ? 'habilitado' : 'desabilitado'} para ${c.nome}`)
+      load()
+    } catch { showToast('Erro ao atualizar.') }
+  }
+
   const filtered = clients.filter(c => {
     const q = search.toLowerCase()
     const matchQ    = !q || c.nome?.toLowerCase().includes(q) || c.responsavel?.toLowerCase().includes(q) || c.cnpj?.toLowerCase().includes(q)
@@ -134,14 +143,14 @@ export default function Clients() {
             <table style={{ width:'100%', borderCollapse:'collapse' }}>
               <thead style={{ background:'var(--surface2)' }}>
                 <tr>
-                  {['Cliente','Status','Nível','Consumo / mês','Responsável','Dash BI','Ações'].map(h => (
+                  {['Cliente','Status','Nível','Consumo / mês','Responsável','Dash BI','Semanal','Ações'].map(h => (
                     <th key={h} style={th}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {slice.length === 0 ? (
-                  <tr><td colSpan="7" style={{ padding:60, textAlign:'center', color:'var(--muted)' }}>Nenhum cliente encontrado</td></tr>
+                  <tr><td colSpan="8" style={{ padding:60, textAlign:'center', color:'var(--muted)' }}>Nenhum cliente encontrado</td></tr>
                 ) : slice.map(c => (
                   <tr key={c.id} style={{ cursor:'pointer' }} onMouseEnter={e => e.currentTarget.style.background='var(--surface2)'} onMouseLeave={e => e.currentTarget.style.background=''}>
                     <td style={td} onClick={() => setModal(c)}>
@@ -158,6 +167,18 @@ export default function Clients() {
                     <td style={{ ...td, fontFamily:'DM Mono, monospace', color: c.consumo>50000 ? 'var(--accent)' : c.consumo>10000 ? 'var(--accent2)' : 'var(--text)' }} onClick={() => setModal(c)}>{fmt(c.consumo)}</td>
                     <td style={{ ...td, fontSize:12 }} onClick={() => setModal(c)}>{c.responsavel || '—'}</td>
                     <td style={td} onClick={() => setModal(c)}>{dashBadge(c.dashBI)}</td>
+                    <td style={td} onClick={e => handleToggleWeekly(c, e)}>
+                      <div style={{
+                        width: 36, height: 20, borderRadius: 10, cursor: 'pointer', transition: 'background 0.2s',
+                        background: c.weeklyReport ? 'var(--accent)' : 'var(--surface3)',
+                        position: 'relative', flexShrink: 0,
+                      }}>
+                        <div style={{
+                          position: 'absolute', top: 2, left: c.weeklyReport ? 18 : 2,
+                          width: 16, height: 16, borderRadius: '50%', background: '#fff', transition: 'left 0.2s',
+                        }} />
+                      </div>
+                    </td>
                     <td style={td}>
                       <div style={{ display:'flex', gap:6 }}>
                         <button onClick={() => setModal(c)} style={{ background:'var(--surface2)', border:'1px solid var(--border2)', borderRadius:6, padding:'5px 10px', fontSize:12, color:'var(--text)', cursor:'pointer' }}>Editar</button>
