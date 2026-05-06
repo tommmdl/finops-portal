@@ -3,6 +3,7 @@ import os
 from datetime import datetime, timedelta
 import boto3
 from boto3.dynamodb.conditions import Key
+from botocore.exceptions import ClientError
 
 CLIENTS_TABLE     = os.environ.get("CLIENTS_TABLE", "")
 DAILY_COSTS_TABLE = os.environ.get("DAILY_COSTS_TABLE", "")
@@ -13,7 +14,7 @@ _dynamodb = None
 def _get_dynamodb():
     global _dynamodb
     if _dynamodb is None:
-        _dynamodb = boto3.resource("dynamodb", region_name="us-east-1")
+        _dynamodb = boto3.resource("dynamodb", region_name=os.environ.get("AWS_REGION", "us-east-1"))
     return _dynamodb
 
 
@@ -36,7 +37,7 @@ def calculate_anomalies(week_items, baseline_items):
         mean_baseline = sum(baseline_costs) / len(baseline_costs) if baseline_costs else 0
         mean_current  = sum(week_costs) / len(week_costs) if week_costs else 0
 
-        if mean_baseline <= 0 or mean_current <= 1:
+        if mean_baseline <= 0 or mean_current < 1:
             continue
 
         variacao_pct = (mean_current - mean_baseline) / mean_baseline * 100
@@ -121,33 +122,41 @@ def build_ticket_text(anomalies):
 # ── Lambda handler ────────────────────────────────────────────
 
 def lambda_handler(event, context):
-    client_id = event["pathParameters"]["client_id"]
+    params    = (event.get("pathParameters") or {})
+    client_id = params.get("client_id")
+    if not client_id:
+        return _resp(400, {"error": "client_id ausente"})
 
     db = _get_dynamodb()
 
-    # 1. Resolve client
-    clients_tbl = db.Table(CLIENTS_TABLE)
-    resp        = clients_tbl.get_item(Key={"id": client_id})
-    client      = resp.get("Item")
+    try:
+        # 1. Resolve client
+        clients_tbl = db.Table(CLIENTS_TABLE)
+        resp        = clients_tbl.get_item(Key={"id": client_id})
+        client      = resp.get("Item")
 
-    if not client:
-        return _resp(404, {"error": "Cliente não encontrado"})
-    if not client.get("weeklyReport"):
-        return _resp(403, {"error": "weeklyReport não habilitado para este cliente"})
+        if not client:
+            return _resp(404, {"error": "Cliente não encontrado"})
+        if not client.get("weeklyReport"):
+            return _resp(403, {"error": "weeklyReport não habilitado para este cliente"})
 
-    cliente_nome = client["nome"]
+        cliente_nome = client.get("nome")
+        if not cliente_nome:
+            return _resp(500, {"error": "Registro de cliente sem campo nome"})
 
-    # 2. Query last 35 days
-    today      = datetime.utcnow().date()
-    end_date   = today.isoformat()
-    start_date = (today - timedelta(days=35)).isoformat()
+        # 2. Query last 35 days
+        today      = datetime.utcnow().date()
+        end_date   = today.isoformat()
+        start_date = (today - timedelta(days=35)).isoformat()
 
-    daily_tbl = db.Table(DAILY_COSTS_TABLE)
-    result    = daily_tbl.query(
-        KeyConditionExpression=Key("clienteNome").eq(cliente_nome) & Key("data").between(start_date, end_date),
-        ScanIndexForward=True,
-    )
-    items = sorted(result.get("Items", []), key=lambda x: x["data"])
+        daily_tbl = db.Table(DAILY_COSTS_TABLE)
+        result    = daily_tbl.query(
+            KeyConditionExpression=Key("clienteNome").eq(cliente_nome) & Key("data").between(start_date, end_date),
+            ScanIndexForward=True,
+        )
+        items = sorted(result.get("Items", []), key=lambda x: x["data"])
+    except ClientError as e:
+        return _resp(500, {"error": "Erro ao consultar DynamoDB", "detail": str(e)})
 
     if not items:
         return _resp(200, {
