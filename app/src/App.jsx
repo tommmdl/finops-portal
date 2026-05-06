@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Clients from './pages/Clients.jsx'
 import Reports from './pages/Reports.jsx'
+import Semanal from './pages/Semanal.jsx'
 import AuthPage from './components/AuthPage.jsx'
 
 export default function App() {
@@ -56,6 +57,7 @@ export default function App() {
         {page === 'dashboard' && <Dashboard setPage={setPage} />}
         {page === 'clients'   && <Clients />}
         {page === 'reports'   && <Reports />}
+        {page === 'semanal'   && <Semanal />}
       </main>
     </div>
   )
