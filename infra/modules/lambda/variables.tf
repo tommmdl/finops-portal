@@ -5,3 +5,4 @@ variable "clients_table_name" { type = string }
 variable "clients_table_arn" { type = string }
 variable "billing_table_name" { type = string }
 variable "billing_table_arn" { type = string }
+variable "daily_costs_table_name" { type = string }
