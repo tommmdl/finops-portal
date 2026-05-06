@@ -3,11 +3,16 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 import { api } from '../services/api.js'
 import Topbar from '../components/Topbar.jsx'
 
-const fmt    = v => `$${Number(v || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
-const fmtPct = v => `${v > 0 ? '+' : ''}${Number(v || 0).toFixed(1)}%`
-const fmtDate = s => {
-  const [, m, d] = s.split('-')
-  return `${d}/${m}`
+const fmt     = v => `$${Number(v || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+const fmtPct  = v => `${v > 0 ? '+' : ''}${Number(v || 0).toFixed(1)}%`
+const fmtDate = s => { const [, m, d] = s.split('-'); return `${d}/${m}` }
+
+// Thresholds para highlight de linha (mais generosos que o badge de status)
+function rowStyle(variacao_pct) {
+  const v = Math.abs(variacao_pct)
+  if (v > 50) return { background: 'rgba(239,68,68,0.08)', borderLeft: '3px solid var(--accent4)' }
+  if (v > 20) return { background: 'rgba(245,158,11,0.08)', borderLeft: '3px solid var(--accent3)' }
+  return { borderLeft: '3px solid transparent' }
 }
 
 const STATUS_COLOR = { green: 'var(--accent)', yellow: 'var(--accent3)', red: 'var(--accent4)' }
@@ -20,23 +25,43 @@ const SERVICE_COLORS = [
 
 function getTopServices(chartData, n = 8) {
   const totals = {}
-  for (const day of chartData) {
-    for (const [svc, cost] of Object.entries(day.services || {})) {
+  for (const day of chartData)
+    for (const [svc, cost] of Object.entries(day.services || {}))
       totals[svc] = (totals[svc] || 0) + cost
-    }
+  return Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, n).map(([s]) => s)
+}
+
+// Calcula breakdown por serviço para um dia específico vs baseline
+function serviceBreakdown(dayData, chartData) {
+  if (!dayData || !chartData) return []
+  const baseline = chartData.slice(0, -7)
+  if (baseline.length === 0) return []
+
+  const services = new Set([
+    ...Object.keys(dayData.services || {}),
+    ...baseline.flatMap(d => Object.keys(d.services || {})),
+  ])
+
+  const rows = []
+  for (const svc of services) {
+    const dayCost = dayData.services?.[svc] || 0
+    const baselineCosts = baseline.map(d => d.services?.[svc] || 0)
+    const baselineMean = baselineCosts.reduce((a, b) => a + b, 0) / baselineCosts.length
+    if (dayCost === 0 && baselineMean < 0.01) continue
+    const variacao = baselineMean > 0 ? (dayCost - baselineMean) / baselineMean * 100 : null
+    rows.push({ svc, dayCost, baselineMean, variacao })
   }
-  return Object.entries(totals)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, n)
-    .map(([svc]) => svc)
+
+  return rows.sort((a, b) => Math.abs(b.variacao ?? 0) - Math.abs(a.variacao ?? 0))
 }
 
 export default function Semanal() {
-  const [clients,   setClients]   = useState([])
-  const [clientId,  setClientId]  = useState('')
-  const [data,      setData]      = useState(null)
-  const [loading,   setLoading]   = useState(false)
-  const [copied,    setCopied]    = useState(false)
+  const [clients,     setClients]     = useState([])
+  const [clientId,    setClientId]    = useState('')
+  const [data,        setData]        = useState(null)
+  const [loading,     setLoading]     = useState(false)
+  const [copied,      setCopied]      = useState(false)
+  const [expandedDay, setExpandedDay] = useState(null)
 
   useEffect(() => {
     api.listClients().then(r => {
@@ -50,6 +75,7 @@ export default function Semanal() {
     if (!clientId) return
     setLoading(true)
     setData(null)
+    setExpandedDay(null)
     api.getWeeklyReport(clientId)
       .then(setData)
       .catch(() => setData(null))
@@ -64,12 +90,26 @@ export default function Semanal() {
     })
   }
 
+  function toggleDay(date) {
+    setExpandedDay(prev => prev === date ? null : date)
+  }
+
   const card  = { background:'var(--surface)', border:'1px solid var(--border)', borderRadius:'var(--radius)', padding:24 }
   const title = { fontFamily:'Syne, sans-serif', fontSize:14, fontWeight:600, marginBottom:16 }
   const th    = { padding:'10px 16px', textAlign:'left', fontSize:11, fontFamily:'DM Mono, monospace', color:'var(--muted)', textTransform:'uppercase', letterSpacing:'0.06em', fontWeight:500 }
   const td    = { padding:'12px 16px', fontSize:13, borderTop:'1px solid var(--border)', verticalAlign:'middle' }
 
   const topServices = data ? getTopServices(data.chartData) : []
+
+  // Pré-computa baseline mean por dia (reutiliza chartData)
+  const baselineMeanByDate = {}
+  if (data?.chartData) {
+    const baseline = data.chartData.slice(0, -7)
+    if (baseline.length > 0) {
+      const mean = baseline.reduce((s, d) => s + (d.totalCost || 0), 0) / baseline.length
+      data.weekDays.forEach(d => { baselineMeanByDate[d.data] = mean })
+    }
+  }
 
   return (
     <div>
@@ -99,26 +139,76 @@ export default function Semanal() {
             <table style={{ width:'100%', borderCollapse:'collapse' }}>
               <thead style={{ background:'var(--surface2)' }}>
                 <tr>
-                  {['Data','Total do dia','Variação vs média','Status'].map(h => (
-                    <th key={h} style={th}>{h}</th>
+                  {['','Data','Total do dia','Média baseline/dia','Variação','Status'].map((h, i) => (
+                    <th key={i} style={{ ...th, width: i === 0 ? 28 : undefined }}>{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {data.weekDays.map(day => (
-                  <tr key={day.data}>
-                    <td style={{ ...td, fontFamily:'DM Mono, monospace' }}>{fmtDate(day.data)}</td>
-                    <td style={{ ...td, fontFamily:'DM Mono, monospace', color:'var(--accent)' }}>{fmt(day.totalCost)}</td>
-                    <td style={{ ...td, fontFamily:'DM Mono, monospace', color: day.variacao_pct > 10 ? STATUS_COLOR[day.status] : 'var(--muted)' }}>
-                      {fmtPct(day.variacao_pct)}
-                    </td>
-                    <td style={td}>
-                      <span style={{ fontSize:12, color: STATUS_COLOR[day.status] }}>
-                        {STATUS_LABEL[day.status]}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                {data.weekDays.map(day => {
+                  const isOpen   = expandedDay === day.data
+                  const baseline = baselineMeanByDate[day.data] ?? 0
+                  const dayChart = data.chartData.find(d => d.data === day.data)
+                  const breakdown = isOpen ? serviceBreakdown(dayChart, data.chartData) : []
+
+                  return [
+                    <tr
+                      key={day.data}
+                      onClick={() => toggleDay(day.data)}
+                      style={{ cursor:'pointer', ...rowStyle(day.variacao_pct), transition:'background 0.15s' }}
+                      onMouseEnter={e => e.currentTarget.style.filter = 'brightness(1.08)'}
+                      onMouseLeave={e => e.currentTarget.style.filter = ''}
+                    >
+                      {/* chevron */}
+                      <td style={{ ...td, padding:'12px 8px 12px 16px', color:'var(--muted)', fontSize:10 }}>
+                        {isOpen ? '▼' : '▶'}
+                      </td>
+                      <td style={{ ...td, fontFamily:'DM Mono, monospace', fontWeight:500 }}>{fmtDate(day.data)}</td>
+                      <td style={{ ...td, fontFamily:'DM Mono, monospace', color:'var(--accent)' }}>{fmt(day.totalCost)}</td>
+                      <td style={{ ...td, fontFamily:'DM Mono, monospace', color:'var(--muted)' }}>{fmt(baseline)}</td>
+                      <td style={{ ...td, fontFamily:'DM Mono, monospace', color: Math.abs(day.variacao_pct) > 20 ? STATUS_COLOR[day.status] : 'var(--muted)', fontWeight: Math.abs(day.variacao_pct) > 20 ? 600 : 400 }}>
+                        {fmtPct(day.variacao_pct)}
+                      </td>
+                      <td style={td}>
+                        <span style={{ fontSize:12, color: STATUS_COLOR[day.status] }}>
+                          {STATUS_LABEL[day.status]}
+                        </span>
+                      </td>
+                    </tr>,
+
+                    isOpen && (
+                      <tr key={`${day.data}-breakdown`}>
+                        <td colSpan={6} style={{ padding:0, background:'var(--surface2)', borderTop:'1px solid var(--border)' }}>
+                          <table style={{ width:'100%', borderCollapse:'collapse' }}>
+                            <thead>
+                              <tr>
+                                {['Serviço','Custo do dia','Média baseline','Variação'].map(h => (
+                                  <th key={h} style={{ ...th, padding:'8px 20px', background:'var(--surface2)', fontSize:10 }}>{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {breakdown.map(row => {
+                                const isAnomaly = row.variacao !== null && row.variacao > 20
+                                const color = isAnomaly ? 'var(--accent4)' : row.variacao !== null && row.variacao > 0 ? 'var(--accent3)' : 'var(--muted)'
+                                return (
+                                  <tr key={row.svc} style={{ background: isAnomaly ? 'rgba(239,68,68,0.06)' : '' }}>
+                                    <td style={{ ...td, padding:'9px 20px', fontWeight: isAnomaly ? 500 : 400 }}>{row.svc}</td>
+                                    <td style={{ ...td, padding:'9px 20px', fontFamily:'DM Mono, monospace', color:'var(--accent)' }}>{fmt(row.dayCost)}</td>
+                                    <td style={{ ...td, padding:'9px 20px', fontFamily:'DM Mono, monospace', color:'var(--muted)' }}>{fmt(row.baselineMean)}</td>
+                                    <td style={{ ...td, padding:'9px 20px', fontFamily:'DM Mono, monospace', color, fontWeight: isAnomaly ? 600 : 400 }}>
+                                      {row.variacao !== null ? fmtPct(row.variacao) : '—'}
+                                    </td>
+                                  </tr>
+                                )
+                              })}
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    ),
+                  ]
+                })}
               </tbody>
             </table>
           )}
