@@ -55,12 +55,12 @@ module "dynamodb" {
 }
 
 module "lambda" {
-  source             = "./modules/lambda"
-  project            = var.project
-  environment        = var.environment
-  lambda_role_arn    = module.iam.lambda_role_arn
-  clients_table_name = module.dynamodb.clients_table_name
-  clients_table_arn  = module.dynamodb.clients_table_arn
+  source                 = "./modules/lambda"
+  project                = var.project
+  environment            = var.environment
+  lambda_role_arn        = module.iam.lambda_role_arn
+  clients_table_name     = module.dynamodb.clients_table_name
+  clients_table_arn      = module.dynamodb.clients_table_arn
   billing_table_name     = module.dynamodb.billing_history_table_name
   billing_table_arn      = module.dynamodb.billing_history_table_arn
   daily_costs_table_name = module.dynamodb.daily_costs_table_name
@@ -87,16 +87,16 @@ module "weekly_report_lambda" {
 }
 
 module "api_gateway" {
-  source                      = "./modules/api_gateway"
-  project                     = var.project
-  environment                 = var.environment
-  lambda_invoke_arn           = module.lambda.lambda_invoke_arn
-  lambda_function_name        = module.lambda.lambda_function_name
-  cognito_user_pool_arn       = module.cognito.user_pool_arn
-  report_lambda_invoke_arn             = module.report_lambda.lambda_invoke_arn
-  report_lambda_function_name          = module.report_lambda.lambda_function_name
-  weekly_report_lambda_invoke_arn      = module.weekly_report_lambda.lambda_invoke_arn
-  weekly_report_lambda_function_name   = module.weekly_report_lambda.lambda_function_name
+  source                             = "./modules/api_gateway"
+  project                            = var.project
+  environment                        = var.environment
+  lambda_invoke_arn                  = module.lambda.lambda_invoke_arn
+  lambda_function_name               = module.lambda.lambda_function_name
+  cognito_user_pool_arn              = module.cognito.user_pool_arn
+  report_lambda_invoke_arn           = module.report_lambda.lambda_invoke_arn
+  report_lambda_function_name        = module.report_lambda.lambda_function_name
+  weekly_report_lambda_invoke_arn    = module.weekly_report_lambda.lambda_invoke_arn
+  weekly_report_lambda_function_name = module.weekly_report_lambda.lambda_function_name
 }
 
 module "amplify" {

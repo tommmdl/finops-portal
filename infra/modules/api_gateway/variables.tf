@@ -5,5 +5,5 @@ variable "lambda_function_name" { type = string }
 variable "cognito_user_pool_arn" { type = string }
 variable "report_lambda_invoke_arn" { type = string }
 variable "report_lambda_function_name" { type = string }
-variable "weekly_report_lambda_invoke_arn"    { type = string }
+variable "weekly_report_lambda_invoke_arn" { type = string }
 variable "weekly_report_lambda_function_name" { type = string }
