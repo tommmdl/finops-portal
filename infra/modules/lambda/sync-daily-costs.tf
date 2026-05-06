@@ -30,12 +30,12 @@ resource "aws_cloudwatch_log_group" "sync_daily_costs" {
   retention_in_days = 30
 }
 
-# ── EventBridge — todo dia às 6h da manhã (horário Brasília = 9h UTC) ──────
+# ── EventBridge — todo dia às 06:00 UTC ──────
 
 resource "aws_cloudwatch_event_rule" "daily_sync" {
   name                = "${var.project}-${var.environment}-daily-cost-sync"
   description         = "Sincroniza custos diários AWS de clientes com weeklyReport habilitado"
-  schedule_expression = "cron(0 9 * * ? *)"
+  schedule_expression = "cron(0 6 * * ? *)"
 }
 
 resource "aws_cloudwatch_event_target" "sync_daily_costs" {
