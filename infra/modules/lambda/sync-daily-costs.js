@@ -10,7 +10,7 @@ const CLIENTS_TABLE     = process.env.CLIENTS_TABLE;
 const DAILY_COSTS_TABLE = process.env.DAILY_COSTS_TABLE;
 const ROLE_NAME         = "CrossAccountAccess-FinOpsCrossAccountReadOnlyRole";
 const EXCLUDED_TYPES    = ["Tax", "Distributor Discount", "Refund"];
-const DAYS              = 35;
+const DAYS              = 65;
 
 function getPeriod() {
   const end   = new Date();

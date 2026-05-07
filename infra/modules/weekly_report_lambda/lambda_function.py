@@ -1,6 +1,7 @@
 import json
 import os
-from datetime import datetime, timedelta
+from calendar import monthrange
+from datetime import datetime, timedelta, date
 import boto3
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
@@ -16,6 +17,23 @@ def _get_dynamodb():
     if _dynamodb is None:
         _dynamodb = boto3.resource("dynamodb", region_name=os.environ.get("AWS_REGION", "us-east-1"))
     return _dynamodb
+
+
+MONTHS_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+             'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+
+
+def get_previous_month_range(today):
+    """Returns (start_iso, end_iso, label) for the previous complete month."""
+    if today.month == 1:
+        year, month = today.year - 1, 12
+    else:
+        year, month = today.year, today.month - 1
+    _, last_day = monthrange(year, month)
+    start = date(year, month, 1)
+    end   = date(year, month, last_day)
+    label = f"{MONTHS_PT[month - 1]} {year}"
+    return start.isoformat(), end.isoformat(), label
 
 
 # ── Core calculation functions (testable without AWS) ─────────
@@ -144,34 +162,46 @@ def lambda_handler(event, context):
         if not cliente_nome:
             return _resp(500, {"error": "Registro de cliente sem campo nome"})
 
-        # 2. Query last 35 days
-        today      = datetime.utcnow().date()
+        today    = datetime.utcnow().date()
+        daily_tbl = db.Table(DAILY_COSTS_TABLE)
+
+        # 2a. Query last 35 days (chart + current week)
         end_date   = today.isoformat()
         start_date = (today - timedelta(days=35)).isoformat()
 
-        daily_tbl = db.Table(DAILY_COSTS_TABLE)
-        result    = daily_tbl.query(
+        result = daily_tbl.query(
             KeyConditionExpression=Key("clienteNome").eq(cliente_nome) & Key("data").between(start_date, end_date),
             ScanIndexForward=True,
         )
         items = sorted(result.get("Items", []), key=lambda x: x["data"])
+
+        # 2b. Query previous complete month (baseline)
+        prev_start, prev_end, baseline_month_label = get_previous_month_range(today)
+
+        baseline_result = daily_tbl.query(
+            KeyConditionExpression=Key("clienteNome").eq(cliente_nome) & Key("data").between(prev_start, prev_end),
+            ScanIndexForward=True,
+        )
+        baseline_items = sorted(baseline_result.get("Items", []), key=lambda x: x["data"])
+
     except ClientError as e:
         return _resp(500, {"error": "Erro ao consultar DynamoDB", "detail": str(e)})
 
     if not items:
         return _resp(200, {
-            "clienteNome": cliente_nome,
-            "weekDays":    [],
-            "anomalies":   [],
-            "chartData":   [],
-            "ticketText":  build_ticket_text([]),
+            "clienteNome":        cliente_nome,
+            "weekDays":           [],
+            "anomalies":          [],
+            "chartData":          [],
+            "baselineData":       [],
+            "baselineMonthLabel": baseline_month_label,
+            "ticketText":         build_ticket_text([]),
         })
 
-    # 3. Split: last 7 = current week, rest = baseline (up to 28 days)
-    week_items     = items[-7:]
-    baseline_items = items[:-7] if len(items) > 7 else []
+    # 3. Current week = last 7 days of the 35-day query
+    week_items = items[-7:]
 
-    # 4. Calculate
+    # 4. Calculate using previous month as baseline
     anomalies = calculate_anomalies(week_items, baseline_items)
 
     baseline_totals     = [float(i.get("totalCost", 0)) for i in baseline_items]
@@ -179,7 +209,7 @@ def lambda_handler(event, context):
 
     week_days = calculate_week_days(week_items, baseline_total_mean)
 
-    # 5. Chart data (all 35 days)
+    # 5. Chart data (last 35 days) + baseline data for service breakdown
     chart_data = [
         {
             "data":      item["data"],
@@ -188,13 +218,23 @@ def lambda_handler(event, context):
         }
         for item in items
     ]
+    baseline_data = [
+        {
+            "data":      item["data"],
+            "totalCost": round(float(item.get("totalCost", 0)), 2),
+            "services":  {k: round(float(v), 2) for k, v in item.get("services", {}).items()},
+        }
+        for item in baseline_items
+    ]
 
     return _resp(200, {
-        "clienteNome": cliente_nome,
-        "weekDays":    week_days,
-        "anomalies":   anomalies,
-        "chartData":   chart_data,
-        "ticketText":  build_ticket_text(anomalies),
+        "clienteNome":        cliente_nome,
+        "weekDays":           week_days,
+        "anomalies":          anomalies,
+        "chartData":          chart_data,
+        "baselineData":       baseline_data,
+        "baselineMonthLabel": baseline_month_label,
+        "ticketText":         build_ticket_text(anomalies),
     })
 
 

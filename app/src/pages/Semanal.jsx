@@ -31,21 +31,19 @@ function getTopServices(chartData, n = 8) {
   return Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, n).map(([s]) => s)
 }
 
-// Calcula breakdown por serviço para um dia específico vs baseline
-function serviceBreakdown(dayData, chartData) {
-  if (!dayData || !chartData) return []
-  const baseline = chartData.slice(0, -7)
-  if (baseline.length === 0) return []
+// Calcula breakdown por serviço para um dia específico vs baseline (mês anterior)
+function serviceBreakdown(dayData, baselineData) {
+  if (!dayData || !baselineData || baselineData.length === 0) return []
 
   const services = new Set([
     ...Object.keys(dayData.services || {}),
-    ...baseline.flatMap(d => Object.keys(d.services || {})),
+    ...baselineData.flatMap(d => Object.keys(d.services || {})),
   ])
 
   const rows = []
   for (const svc of services) {
     const dayCost = dayData.services?.[svc] || 0
-    const baselineCosts = baseline.map(d => d.services?.[svc] || 0)
+    const baselineCosts = baselineData.map(d => d.services?.[svc] || 0)
     const baselineMean = baselineCosts.reduce((a, b) => a + b, 0) / baselineCosts.length
     if (dayCost === 0 && baselineMean < 0.01) continue
     const variacao = baselineMean > 0 ? (dayCost - baselineMean) / baselineMean * 100 : null
@@ -101,15 +99,14 @@ export default function Semanal() {
 
   const topServices = data ? getTopServices(data.chartData) : []
 
-  // Pré-computa baseline mean por dia (reutiliza chartData)
+  // Pré-computa baseline mean por dia usando mês anterior (baselineData)
   const baselineMeanByDate = {}
-  if (data?.chartData) {
-    const baseline = data.chartData.slice(0, -7)
-    if (baseline.length > 0) {
-      const mean = baseline.reduce((s, d) => s + (d.totalCost || 0), 0) / baseline.length
-      data.weekDays.forEach(d => { baselineMeanByDate[d.data] = mean })
-    }
+  if (data?.baselineData?.length > 0) {
+    const mean = data.baselineData.reduce((s, d) => s + (d.totalCost || 0), 0) / data.baselineData.length
+    data.weekDays.forEach(d => { baselineMeanByDate[d.data] = mean })
   }
+
+  const baselineLabel = data?.baselineMonthLabel ?? 'Mês Anterior'
 
   return (
     <div>
@@ -139,7 +136,7 @@ export default function Semanal() {
             <table style={{ width:'100%', borderCollapse:'collapse' }}>
               <thead style={{ background:'var(--surface2)' }}>
                 <tr>
-                  {['','Data','Total do dia','Média baseline/dia','Variação','Status'].map((h, i) => (
+                  {['','Data','Total do dia',`Média ${baselineLabel}/dia`,'Variação','Status'].map((h, i) => (
                     <th key={i} style={{ ...th, width: i === 0 ? 28 : undefined }}>{h}</th>
                   ))}
                 </tr>
@@ -149,7 +146,7 @@ export default function Semanal() {
                   const isOpen   = expandedDay === day.data
                   const baseline = baselineMeanByDate[day.data] ?? 0
                   const dayChart = data.chartData.find(d => d.data === day.data)
-                  const breakdown = isOpen ? serviceBreakdown(dayChart, data.chartData) : []
+                  const breakdown = isOpen ? serviceBreakdown(dayChart, data.baselineData) : []
 
                   return [
                     <tr
@@ -182,7 +179,7 @@ export default function Semanal() {
                           <table style={{ width:'100%', borderCollapse:'collapse' }}>
                             <thead>
                               <tr>
-                                {['Serviço','Custo do dia','Média baseline','Variação'].map(h => (
+                                {['Serviço','Custo do dia',`Média ${baselineLabel}`,'Variação'].map(h => (
                                   <th key={h} style={{ ...th, padding:'8px 20px', background:'var(--surface2)', fontSize:10 }}>{h}</th>
                                 ))}
                               </tr>
@@ -260,7 +257,7 @@ export default function Semanal() {
               <table style={{ width:'100%', borderCollapse:'collapse' }}>
                 <thead style={{ background:'var(--surface2)' }}>
                   <tr>
-                    {['Serviço','Média atual/dia','Média baseline/dia','Variação'].map(h => (
+                    {['Serviço','Média atual/dia',`Média ${baselineLabel}/dia`,'Variação'].map(h => (
                       <th key={h} style={th}>{h}</th>
                     ))}
                   </tr>
