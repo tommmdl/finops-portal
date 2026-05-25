@@ -35,15 +35,19 @@ function getTopServices(chartData, n = 8) {
 function serviceBreakdown(dayData, baselineData) {
   if (!dayData || !baselineData || baselineData.length === 0) return []
 
+  // Exclude day 01 (SP/RI upfront + consolidated Tax distort per-service means)
+  const baselineClean = baselineData.filter(d => !d.data.endsWith('-01'))
+  const baseSrc = baselineClean.length > 0 ? baselineClean : baselineData
+
   const services = new Set([
     ...Object.keys(dayData.services || {}),
-    ...baselineData.flatMap(d => Object.keys(d.services || {})),
+    ...baseSrc.flatMap(d => Object.keys(d.services || {})),
   ])
 
   const rows = []
   for (const svc of services) {
     const dayCost = dayData.services?.[svc] || 0
-    const baselineCosts = baselineData.map(d => d.services?.[svc] || 0)
+    const baselineCosts = baseSrc.map(d => d.services?.[svc] || 0)
     const baselineMean = baselineCosts.reduce((a, b) => a + b, 0) / baselineCosts.length
     if (dayCost === 0 && baselineMean < 0.01) continue
     const variacao = baselineMean > 0 ? (dayCost - baselineMean) / baselineMean * 100 : null
@@ -99,10 +103,13 @@ export default function Semanal() {
 
   const topServices = data ? getTopServices(data.chartData) : []
 
-  // Pré-computa baseline mean por dia usando mês anterior (baselineData)
+  // Pré-computa baseline mean por dia usando mês anterior (baselineData).
+  // Exclui dia 01: cobranças upfront de SP/RI e Tax consolidada distorcem a média.
   const baselineMeanByDate = {}
   if (data?.baselineData?.length > 0) {
-    const mean = data.baselineData.reduce((s, d) => s + (d.totalCost || 0), 0) / data.baselineData.length
+    const baselineClean = data.baselineData.filter(d => !d.data.endsWith('-01'))
+    const baseSrc = baselineClean.length > 0 ? baselineClean : data.baselineData
+    const mean = baseSrc.reduce((s, d) => s + (d.totalCost || 0), 0) / baseSrc.length
     data.weekDays.forEach(d => { baselineMeanByDate[d.data] = mean })
   }
 

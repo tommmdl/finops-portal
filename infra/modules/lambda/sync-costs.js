@@ -190,6 +190,11 @@ function parseServicesBreakdown(resultsByTime) {
   return breakdown;
 }
 
+// Consistent with sync-daily-costs.js — excludes Tax, Distributor Discount, Refund
+// so monthly totals match the daily breakdown (Bug 2: portal showed ~$20/day more than CUR).
+const EXCLUDED_RECORD_TYPES = ["Tax", "Distributor Discount", "Refund"];
+const EXCLUDE_FILTER = { Not: { Dimensions: { Key: "RECORD_TYPE", Values: EXCLUDED_RECORD_TYPES } } };
+
 async function fetchCost(accountId, accessType, period) {
   const groupBy = [{ Type: "DIMENSION", Key: "SERVICE" }];
 
@@ -201,6 +206,7 @@ async function fetchCost(accountId, accessType, period) {
         Granularity: "MONTHLY",
         Metrics:     ["UnblendedCost"],
         GroupBy:     groupBy,
+        Filter:      EXCLUDE_FILTER,
       })),
       fetchSavingsPlans(ce, period),
       fetchRICoverage(ce, period),
@@ -218,7 +224,12 @@ async function fetchCost(accountId, accessType, period) {
         Granularity: "MONTHLY",
         Metrics:     ["UnblendedCost"],
         GroupBy:     groupBy,
-        Filter: { Dimensions: { Key: "LINKED_ACCOUNT", Values: [accountId] } },
+        Filter: {
+          And: [
+            { Dimensions: { Key: "LINKED_ACCOUNT", Values: [accountId] } },
+            EXCLUDE_FILTER,
+          ],
+        },
       })),
       fetchSavingsPlans(ce, period, accountId),
       fetchRICoverage(ce, period, accountId),

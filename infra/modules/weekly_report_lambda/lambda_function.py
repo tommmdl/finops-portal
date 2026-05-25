@@ -201,10 +201,16 @@ def lambda_handler(event, context):
     # 3. Current week = last 7 days of the 35-day query
     week_items = items[-7:]
 
-    # 4. Calculate using previous month as baseline
-    anomalies = calculate_anomalies(week_items, baseline_items)
+    # 4. Calculate using previous month as baseline.
+    # Exclude day 01: SP/RI upfront charges and consolidated Tax land there,
+    # inflating the daily mean from ~$147 to ~$318 and making all % variations wrong.
+    baseline_for_calc = [i for i in baseline_items if not i["data"].endswith("-01")]
+    if not baseline_for_calc:
+        baseline_for_calc = baseline_items  # fallback: month with only 1 day (edge case)
 
-    baseline_totals     = [float(i.get("totalCost", 0)) for i in baseline_items]
+    anomalies = calculate_anomalies(week_items, baseline_for_calc)
+
+    baseline_totals     = [float(i.get("totalCost", 0)) for i in baseline_for_calc]
     baseline_total_mean = sum(baseline_totals) / len(baseline_totals) if baseline_totals else 0
 
     week_days = calculate_week_days(week_items, baseline_total_mean)
