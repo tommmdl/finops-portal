@@ -240,6 +240,7 @@ def lambda_handler(event, context):
         "chartData":          chart_data,
         "baselineData":       baseline_data,
         "baselineMonthLabel": baseline_month_label,
+        "baselineTotalMean":  round(baseline_total_mean, 2),
         "ticketText":         build_ticket_text(anomalies),
     })
 

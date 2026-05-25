@@ -103,14 +103,12 @@ export default function Semanal() {
 
   const topServices = data ? getTopServices(data.chartData) : []
 
-  // Pré-computa baseline mean por dia usando mês anterior (baselineData).
-  // Exclui dia 01: cobranças upfront de SP/RI e Tax consolidada distorcem a média.
+  // Usa baselineTotalMean da API (calculado server-side sem dia 01).
+  // Evita recomputar client-side e elimina dependência de cache de bundle.
+  const baselineMean = data?.baselineTotalMean ?? 0
   const baselineMeanByDate = {}
-  if (data?.baselineData?.length > 0) {
-    const baselineClean = data.baselineData.filter(d => !d.data.endsWith('-01'))
-    const baseSrc = baselineClean.length > 0 ? baselineClean : data.baselineData
-    const mean = baseSrc.reduce((s, d) => s + (d.totalCost || 0), 0) / baseSrc.length
-    data.weekDays.forEach(d => { baselineMeanByDate[d.data] = mean })
+  if (data?.weekDays) {
+    data.weekDays.forEach(d => { baselineMeanByDate[d.data] = baselineMean })
   }
 
   const baselineLabel = data?.baselineMonthLabel ?? 'Mês Anterior'
