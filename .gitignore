@@ -11,6 +11,8 @@ infra/*.tfstate.backup
 infra/*.tfvars
 infra/.terraform.lock.hcl
 infra/**/*.zip
+infra/**/__pycache__/
+infra/*.out
 
 # Report / Python
 report/__pycache__/
